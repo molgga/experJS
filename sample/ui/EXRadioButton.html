@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="../../experCSS/exper.css" />
+<script type="text/javascript" src="../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../experJS");
+	EX.include("events/EXEventListener");
+	EX.include("ui/EXRadioButton");
+	EX.includeEnd();
+	EX.ready(function(){
+		EXRadioButton.init();
+
+	});
+})();
+</script>
+
+</head>
+<body>
+	<div>
+		<input id="radio11" class="experCSS_designUI_radioGroup" type="radio" name="radio111" />
+		<label for="radio11">radio1</label>
+
+		<input id="radio12" class="experCSS_designUI_radioGroup" type="radio" name="radio111" />
+		<label for="radio12">radio1</label>
+
+		<input id="radio13" class="experCSS_designUI_radioGroup" type="radio" name="radio111" />
+		<label for="radio13">radio1</label>
+	</div>
+
+	<br/><br/><br/>
+
+	<div>
+		<input id="radio21" class="experCSS_designUI_radioGroup" type="radio" name="radio222" />
+		<label for="radio21">radio2</label>
+	</div>
+	<div>
+		<input id="radio22" class="experCSS_designUI_radioGroup" type="radio" name="radio222" />
+		<label for="radio22">radio2</label>
+	</div>
+</body>
+</html>

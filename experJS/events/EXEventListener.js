@@ -22,7 +22,8 @@ define(function(require , exports){
 							, "keydown" , "keypress" , "keyup" 
 							, "resize" , "scroll" 
 							, "input"
-							, "touchstart" , "touchend" , "touchmove" , "touchcancel"];
+							, "touchstart" , "touchend" , "touchmove" , "touchcancel"
+							, "DOMSubtreeModified" , "DOMNodeInserted" , "DOMNodeRemoved" ];
 
 	/**
 	EXEvent 가 지원하는 event type 배열입니다. 

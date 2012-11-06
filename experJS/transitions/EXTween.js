@@ -48,6 +48,10 @@ define(function(require , exports){
 	
 	var _getPropertyTypeToColor = ["color" , "backgroundColor" , "borderTopColor" , "borderBottomColor" , "borderLeftColor" , "borderRightColor"];
 
+	var _isOpacityBlockIE8Under = false;
+	EXTween.setOpacityBlockIE8Under = function(val){
+		_isOpacityBlockIE8Under = val;
+	};
 
 	/**
 	EXTween 의 일련의 동작을 console.log 를 통해 출력합니다.
@@ -360,6 +364,10 @@ define(function(require , exports){
 				delete tweenProperty.onInit;
 				delete tweenProperty.onInitParams;
 			}
+			if(_IS_IE == true && _IE_VERSION <= 8 && _isOpacityBlockIE8Under == true){
+				delete tweenProperty.opacity;
+				delete tweenProperty.autoOpacity;
+			}
 			var queueKey = _coreQueueCnt;
 			_coreQueueCnt++;
 			
@@ -521,8 +529,9 @@ define(function(require , exports){
 							tweenObject.style.display = "block";
 						}
 					}
-					if(_IS_IE == true){
+					if(_IS_IE == true && _IE_VERSION <= 8){
 						tweenObject.style.filter = "alpha(opacity="+ Math.floor(targetValue*100) +")";
+						//tweenObject.style["-ms-filter"] = "alpha(opacity="+ Math.floor(targetValue*100) +")";
 					}else{
 						if(tweenCoreSpeed == 1){
 							targetValue = property[propertyKey];
@@ -841,7 +850,7 @@ define(function(require , exports){
 	
 	function getOpacityValueToNumber(tweenObject){
 		var opacityValue = 0;
-		if(_IS_IE == true){
+		if(_IS_IE == true && _IE_VERSION <= 8){
 			var regExpAlpha = /alpha\(opacity\=/;
 			var alphaReg = regExpAlpha.exec(tweenObject.style.filter);
 			if(alphaReg != null){

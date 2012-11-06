@@ -14,8 +14,21 @@ define(function(require, exports){
 	var DOM_BODY = document.body;
 	
 	var DOM_LAYER_BODY = null;
-	var DOM_LAYER_BODY_OPENER = null;
+	var DOM_LAYER_BODY_APPENDER = null;
 	var DOM_LAYER_BODY_REMOVER= null;
+
+	var ClassOf = {
+		LDB : "experCSS_layerDom_body"
+		, LDB_APPENDER : "append"
+		, LDB_REMOVER : "remove"
+		, LDL : "experCSS_layerDom_layer"
+		, LDL_DIM : "dim"
+		, LDL_CONTAINER : "container"
+		, LDLC_CONTENT : "content"
+		, LDLC_CLOSE_BTN : "closeBtn"
+		, LDLC_PROGRESS : "progress"
+		, LDLC_IFRAME : "framei"
+	};
 
 	var OpenType = {
 		LAYER : 1
@@ -26,9 +39,6 @@ define(function(require, exports){
 	var SizeType = {
 		FULL : 1
 		, CENTER : 2
-	};
-
-	var ClassID = {
 	};
 
 	var Model = {};
@@ -54,23 +64,20 @@ define(function(require, exports){
 	
 	exports.hashLayerPopup = {};
 	exports.hashLayerPopupCount = 0;
+	exports.openCount = 0;
+
 	exports.init = function(){
 
 		DOM_LAYER_BODY = document.createElement("div");
-		DOM_LAYER_BODY_OPENER = document.createElement("div");
+		DOM_LAYER_BODY_APPENDER = document.createElement("div");
 		DOM_LAYER_BODY_REMOVER = document.createElement("div");
 
-		DOM_LAYER_BODY.className = "";
-		DOM_LAYER_BODY_OPENER.className = "";
-		DOM_LAYER_BODY_REMOVER.className = "";
-
-		DOM_LAYER_BODY_REMOVER.style.display = "none";
-		DOM_LAYER_BODY_REMOVER.style.width = "0px";
-		DOM_LAYER_BODY_REMOVER.style.height = "0px";
-		DOM_LAYER_BODY_REMOVER.style.overflow = "hidden";
+		DOM_LAYER_BODY.className = ClassOf.LDB;
+		DOM_LAYER_BODY_APPENDER.className = ClassOf.LDB_APPENDER;
+		DOM_LAYER_BODY_REMOVER.className = ClassOf.LDB_REMOVER;
 
 		DOM_LAYER_BODY.appendChild(DOM_LAYER_BODY_REMOVER);
-		DOM_LAYER_BODY.appendChild(DOM_LAYER_BODY_OPENER);
+		DOM_LAYER_BODY.appendChild(DOM_LAYER_BODY_APPENDER);
 		DOM_BODY.appendChild(DOM_LAYER_BODY);
 
 		EXEventListener.add( window , "resize" , exports.resizeHandler );
@@ -83,11 +90,12 @@ define(function(require, exports){
 		layerPopup.init( openType , optionData);
 		layerPopup.open( targetString );
 
-		DOM_LAYER_BODY_OPENER.appendChild( layerPopup.getLayer() );
+		DOM_LAYER_BODY_APPENDER.appendChild( layerPopup.getLayer() );
 		
 		layerPopup.setHashIndex(exports.hashLayerPopupCount);
 		exports.hashLayerPopup[exports.hashLayerPopupCount] = layerPopup;
 		exports.hashLayerPopupCount += 1;
+		exports.openCount += 1;
 	};
 
 	exports.close = function(evt){
@@ -96,7 +104,7 @@ define(function(require, exports){
 		//AJAX 타입 = 삭제. 디스트로이
 		//IFRAME 타입 = 삭제. 디스트로이
 		//LAYER 타입 = 리무브 컨테이너에 담고 삭제, 디스트로이 달라야함.
-		DOM_LAYER_BODY_OPENER.removeChild( layer );
+		DOM_LAYER_BODY_APPENDER.removeChild( layer );
 		switch(layerPopup.openType){
 			case OpenType.LAYER :
 				DOM_LAYER_BODY_REMOVER.appendChild( layer );
@@ -110,6 +118,7 @@ define(function(require, exports){
 		var hashIndex = layerPopup.getHashIndex();
 		delete exports.hashLayerPopup[hashIndex];
 		layerPopup.close();
+		exports.openCount -= 1;
 	};
 
 	exports.closeAll = function(){
@@ -171,47 +180,16 @@ define(function(require, exports){
 			_this.DOM_CLOSE_BTN = document.createElement("div");
 			_this.DOM_PROGRESS = document.createElement("div");
 
-			_this.DOM_LAYER.style.position = "absolute";
-			_this.DOM_LAYER.style.top = 0;
-			_this.DOM_LAYER.style.left = 0;
-			_this.DOM_LAYER.style.width = "100%";
+			_this.DOM_LAYER.className = ClassOf.LDL;
+			_this.DOM_DIM.className = ClassOf.LDL_DIM;
+			_this.DOM_CONTAINER.className = ClassOf.LDL_CONTAINER;
+			_this.DOM_CONTENT.className = ClassOf.LDLC_CONTENT;
+			_this.DOM_PROGRESS.className = ClassOf.LDLC_PROGRESS;
+			_this.DOM_CLOSE_BTN.className = ClassOf.LDLC_CLOSE_BTN;
+			
 			_this.DOM_LAYER.style.height = EXBrowser.scrollHeight("px");
-
-			_this.DOM_DIM.style.position = "absolute";
-			_this.DOM_DIM.style.top = 0;
-			_this.DOM_DIM.style.left = 0;
-			_this.DOM_DIM.style.width = "100%";
-			_this.DOM_DIM.style.height = "100%";
-			_this.DOM_DIM.style.backgroundColor = "#000000";
-			//_this.DOM_DIM.style.opacity = 0.5;
-
-			_this.DOM_PROGRESS.style.position = "absolute";
-			_this.DOM_PROGRESS.style.top = "50%";
-			_this.DOM_PROGRESS.style.left = "50%";
-			_this.DOM_PROGRESS.style.margin = "-25px 0 0 -25px";
-			_this.DOM_PROGRESS.style.width = "50px";
-			_this.DOM_PROGRESS.style.height = "50px";
-			_this.DOM_PROGRESS.style.backgroundColor = "#222222";
-			_this.DOM_PROGRESS.style.borderRadius = "10px";
-
-			_this.DOM_CONTAINER.style.position = "absolute";
-			_this.DOM_CONTAINER.style.top = 0;
-			_this.DOM_CONTAINER.style.left = 0;
 			_this.DOM_CONTAINER.style.width = _optionDataWidth+"px";
 			_this.DOM_CONTAINER.style.height = _optionDataHeight+"px";
-			_this.DOM_CONTAINER.style.overflow = "hidden";
-
-			_this.DOM_CLOSE_BTN.style.position = "fixed";
-			_this.DOM_CLOSE_BTN.style.top = 0;
-			_this.DOM_CLOSE_BTN.style.right = 0;
-			_this.DOM_CLOSE_BTN.style.width = "50px";
-			_this.DOM_CLOSE_BTN.style.height = "50px";
-			_this.DOM_CLOSE_BTN.style.backgroundColor = "#000000";
-			_this.DOM_CLOSE_BTN.style.visibility = "hidden";
-
-			//_this.DOM_CONTENT.style.width = "100%";
-			//_this.DOM_CONTENT.style.height = "100%";
-			_this.DOM_CONTENT.style.visibility = "hidden";
 
 			_this.DOM_CONTAINER.appendChild(_this.DOM_CONTENT);
 			_this.DOM_CONTAINER.appendChild(_this.DOM_PROGRESS);
@@ -219,12 +197,16 @@ define(function(require, exports){
 			_this.DOM_LAYER.appendChild( _this.DOM_DIM );
 			_this.DOM_LAYER.appendChild( _this.DOM_CONTAINER );
 
-			EXTween.to( _this.DOM_DIM , 0 , { opacity:0.5 });
+			if(exports.openCount > 0){
+				EXTween.to( _this.DOM_DIM , 0 , { opacity:0.15 });
+			}else{
+				EXTween.to( _this.DOM_DIM , 0 , { opacity:0.8 });
+			}
 
 			_this.resizeHandler( EXBrowser.screenWidth() , EXBrowser.screenHeight() , 0);
 		};
 		_this.open = function(targetString){
-			EX.debug("LayerPopup.open" , targetString);
+			//EX.debug("LayerPopup.open" , targetString);
 			switch(_this.openType){
 				case OpenType.AJAX :
 					_this.initTextLoader(targetString);
@@ -258,7 +240,7 @@ define(function(require, exports){
 				EXTween.to( _this.DOM_PROGRESS , 0.3 , { autoOpacity:0 });
 
 				EXTween.to( _this.DOM_CLOSE_BTN , 0 , { autoOpacity:0 });
-				EXTween.to( _this.DOM_CLOSE_BTN , 0.3 , { delay:0.6 , autoOpacity:1 });
+				EXTween.to( _this.DOM_CLOSE_BTN , 0.3 , { autoOpacity:1 });
 
 				EXTween.to( _this.DOM_CONTENT , 0 , { autoOpacity:0 });
 				EXTween.to( _this.DOM_CONTENT , 0.3 , { autoOpacity:1 });
@@ -272,18 +254,12 @@ define(function(require, exports){
 					_this.scrollView.init( _this.DOM_CONTAINER , _this.DOM_CONTENT );
 
 					if(_iframeContent != null){
-						var documentElement = _iframeContent.contentWindow.document.documentElement;
-						EXEventListener.remove( documentElement , "mousewheel" , _this.delegateScrollViewMouseWheel );
-						EXEventListener.add( documentElement , "mousewheel" , _this.delegateScrollViewMouseWheel );
+						_this.scrollView.delegateIFrame = _iframeContent;
+						_this.scrollView.delegateWheelEventForIframe(_iframeContent);
 					}
 				} , 100);
 			});
 		};
-
-		_this.delegateScrollViewMouseWheel = function(evt){
-			evt.preventDefault();
-			_this.scrollView.calculateWhellScrolling(evt.delta);
-		}
 
 
 		_this.close = function(){
@@ -305,27 +281,16 @@ define(function(require, exports){
 			_this.openComplete(1);
 		};
 
-
 		_this.initIframeLoader = function(targetString){
-			EX.debug("LayerPopup.initIframeLoader" , targetString);
+			//EX.debug("LayerPopup.initIframeLoader" , targetString);
 			_iframeContent = document.createElement("iframe");
 			_iframeContent.scrolling = "no";
 			_iframeContent.frameBorder = 0;
-			_iframeContent.style.border = "none";
-			_iframeContent.style.padding = "0";
-			_iframeContent.style.margin = "0";
-			_iframeContent.style.width = "100%";
-			_iframeContent.style.height = "100%";
+			_iframeContent.className = ClassOf.LDLC_IFRAME;
+
 			_this.DOM_CONTENT.appendChild(_iframeContent);
 
 			_iframeContent.onload = function(){
-				/*
-				console.log(_iframeContent.contentWindow.document.body.clientHeight);
-				console.log(_iframeContent.contentWindow.document.body.scrollHeight);
-				console.log(_iframeContent.contentWindow.document.body.offsetHeight);
-				console.log(_iframeContent.contentWindow.document.documentElement.clientHeight);
-				console.log(_iframeContent.contentWindow.document.documentElement.offsetHeight);
-				*/
 				_iframeContent.onload = null;
 				var documentElement = _iframeContent.contentWindow.document.documentElement;
 				_iframeContent.style.width = documentElement.scrollWidth + "px";
@@ -337,7 +302,7 @@ define(function(require, exports){
 		};
 
 		_this.initTextLoader = function(targetString){
-			EX.debug("LayerPopup.initTextLoader" , targetString);
+			//EX.debug("LayerPopup.initTextLoader" , targetString);
 			_this.destroyTextLoader();
 			_textLoader = new EXTextLoader();
 			_textLoader.init();
@@ -350,7 +315,7 @@ define(function(require, exports){
 		};
 
 		_this.textLoaderHandler = function(evt){
-			EX.debug("LayerPopup.textLoaderHandler" , evt.type);
+			//EX.debug("LayerPopup.textLoaderHandler" , evt.type);
 			switch(evt.type){
 				case EXLoader.EVENT_START :
 					break;
@@ -418,11 +383,15 @@ define(function(require, exports){
 			}
 
 			if(resizeScrollView == true && _this.scrollView != null){
-				console.log("scrollView");
+				var delegateIFrame = _this.scrollView.delegateIFrame;
 				_this.scrollView.destroy();
 				_this.scrollView = null;
 				_this.scrollView = new EXScrollView();
 				_this.scrollView.init( _this.DOM_CONTAINER , _this.DOM_CONTENT );
+				if(delegateIFrame){
+					_this.scrollView.delegateWheelEventForIframe(delegateIFrame);
+					_this.scrollView.delegateIFrame = delegateIFrame;
+				}
 			}
 		};
 		

@@ -60,7 +60,7 @@ define(function(require, exports){
 		@return {void}
 		*/
 		_this.init = function( scrollContainer , scrollContent ){
-			EX.debug("ScrollViewY" , "init");
+			//EX.debug("ScrollViewY" , "init");
 			if(EXEventListener.isTouchAble() == false) EXEventListener.setTouchAble(true);
 			_scrollContainer = scrollContainer;
 			_scrollContent = scrollContent;
@@ -105,7 +105,7 @@ define(function(require, exports){
 		};
 
 		function scrollContainerEventHandler(evt){
-			EX.debug("ScrollViewY scrollContainerEventHandler" , evt.type);
+			//EX.debug("ScrollViewY scrollContainerEventHandler" , evt.type);
 			switch(evt.type){
 				case "touchstart" :
 					EXBrowser.setDragSelectAble(false);
@@ -156,7 +156,7 @@ define(function(require, exports){
 		@return {void}
 		*/
 		_this.delegateWheelEvent = function(delegateWheelObject){
-			EX.debug("ScrollViewY delegateWheelEvent");
+			//EX.debug("ScrollViewY delegateWheelEvent");
 			if(_delegateWheelObject != null){
 				EXEventListener.remove( delegateWheelObject , "mousewheel" , scrollContainerEventHandler );
 				EXEventListener.remove( _delegateWheelObject , "touchstart" , scrollContainerEventHandler );
@@ -181,16 +181,20 @@ define(function(require, exports){
 		*/
 		var _delegateIframe = null;
 		_this.delegateWheelEventForIframe = function(iframe){
-			EX.debug("ScrollViewY delegateWheelEventForIframe");
+			//EX.debug("ScrollViewY delegateWheelEventForIframe");
 			_delegateIframe = iframe;
 			var delegate = null;
+			var delegateDocument = null;
 
 			if(iframe.contentDocument){
-				delegate = iframe.contentDocument.body;
+				delegateDocument = iframe.contentDocument;
+				delegate = delegateDocument.body;
 			}else if(iframe.contentWindow){
-				delegate = iframe.contentWindow.document.body;
+				delegateDocument = iframe.contentWindow.document;
+				delegate = delegateDocument.body;
 			}
 			_this.delegateWheelEvent(delegate);
+			_this.uiScrollBar.setDelegateDocument(delegateDocument);
 		};
 
 
@@ -201,7 +205,7 @@ define(function(require, exports){
 		@return {void}
 		*/
 		_this.calculateWheelScrolling = function(delta , booster , maxScroll){
-			EX.debug("ScrollViewY calculateWheelScrolling");
+			//EX.debug("ScrollViewY calculateWheelScrolling");
 			var scroll = WHEEL_SPACE;
 			if(delta < 0){
 				scroll = -WHEEL_SPACE;
@@ -226,7 +230,7 @@ define(function(require, exports){
 		@return {void}
 		*/
 		_this.calculateScrollingY = function(calculate , smooth){
-			EX.debug("ScrollViewY calculateScrollingY");
+			//EX.debug("ScrollViewY calculateScrollingY");
 			var currentPositionTop = parseFloat( _scrollContent.style.top );
 			var targetPositionTop = currentPositionTop + calculate;
 			if(targetPositionTop >= _maxScrollY && targetPositionTop <= 0){
@@ -254,7 +258,7 @@ define(function(require, exports){
 		@return {void}
 		*/
 		_this.smoothScrollIntervaling = function(){
-			EX.debug("ScrollViewY smoothScrollIntervaling");
+			//EX.debug("ScrollViewY smoothScrollIntervaling");
 			//console.log(_this.uiScrollBar);
 			var targetY = parseFloat( _scrollContent.style.top );
 			if(_scrollTargetY != targetY){
@@ -278,7 +282,7 @@ define(function(require, exports){
 		@return {void}
 		*/
 		_this.setScrollInterval = function(bool){
-			EX.debug("ScrollViewY setScrollInterval");
+			//EX.debug("ScrollViewY setScrollInterval");
 			if(bool == true){
 				if(_scrollInterval != null){
 					clearInterval(_scrollInterval);
@@ -299,7 +303,7 @@ define(function(require, exports){
 		@return {void}
 		*/
 		_this.destroy = function(){
-			EX.debug("ScrollViewY" , "destroy");
+			//EX.debug("ScrollViewY" , "destroy");
 			try{
 				//_this.setScrollInterval(false);
 
@@ -363,6 +367,8 @@ define(function(require, exports){
 
 		var _currentScrollPercentY = 0;
 
+		var _delegateDocument = null;
+
 		/**
 		@property isMouseDown
 		@type {boolean}
@@ -385,7 +391,7 @@ define(function(require, exports){
 		@return {void}
 		*/
 		_scrollBar.init = function(scrollContainer , maxY ){
-			EX.debug("ScrollViewY.UI_Bar" , "init");
+			//EX.debug("ScrollViewY.UI_Bar" , "init");
 			_scrollContainer = scrollContainer;
 
 			_uiBarContainer = document.createElement("div");
@@ -429,7 +435,7 @@ define(function(require, exports){
 		};
 
 		function interactionContainerMouseEventHandler(evt){
-			EX.debug("ScrollViewY.UI_Bar" , "interactionContainerMouseEventHandler");
+			//EX.debug("ScrollViewY.UI_Bar" , "interactionContainerMouseEventHandler");
 			if(_scrollBar.isMouseDown == false){
 				var half = _scrollContainerOffsetHeight - _uiBarHeight;
 				var mouseY = evt.pageY - EXElement.getElementGlobalPositionY(_uiBarContainer);
@@ -439,7 +445,7 @@ define(function(require, exports){
 		}
 
 		function interactionArrowMouseEventHandler(evt){
-			EX.debug("ScrollViewY.UI_Bar" , "interactionArrowMouseEventHandler");
+			//EX.debug("ScrollViewY.UI_Bar" , "interactionArrowMouseEventHandler");
 			var arrow = evt.currentTarget;
 			switch(evt.type){
 				case "mousedown" :
@@ -460,7 +466,7 @@ define(function(require, exports){
 		}
 
 		function interactionBarMouseEventHandler(evt){
-			EX.debug("ScrollViewY.UI_Bar" , "interactionBarMouseEventHandler");
+			EX.debug("ScrollViewY.UI_Bar" , "interactionBarMouseEventHandler" , evt.type);
 			switch(evt.type){
 				case "mouseup" :
 					EXElement.removeClass(_uiBar , ClassOf.UI_BAR_ACTIVATE );
@@ -469,6 +475,9 @@ define(function(require, exports){
 					EXEventListener.remove( _uiBarContainer , "mousemove" , interactionBarMouseEventHandler);
 					EXEventListener.remove( document , "mouseup" , interactionBarMouseEventHandler);
 					EXEventListener.remove( document , "mousemove" , interactionBarMouseEventHandler);
+					if(_delegateDocument != null){
+						EXEventListener.remove( _delegateDocument , "mouseup" , interactionBarMouseEventHandler);
+					}
 					EXBrowser.setDragSelectAble(true);
 					break;
 				case "mousedown" :
@@ -479,6 +488,9 @@ define(function(require, exports){
 					EXEventListener.add( _scrollContainer , "mouseup" , interactionBarMouseEventHandler);
 					EXEventListener.add( document , "mouseup" , interactionBarMouseEventHandler);
 					EXEventListener.add( document , "mousemove" , interactionBarMouseEventHandler);
+					if(_delegateDocument != null){
+						EXEventListener.add( _delegateDocument , "mouseup" , interactionBarMouseEventHandler);
+					}
 					EXBrowser.setDragSelectAble(false);
 					break;
 				case "mousemove" :
@@ -487,6 +499,14 @@ define(function(require, exports){
 					break;
 			}
 		};
+		/**
+		@method setDelegateDocument
+		@param delegate
+		@return {void}
+		*/
+		_scrollBar.setDelegateDocument = function(delegate){
+			_delegateDocument = delegate;
+		}
 
 		/**
 		ScrollViewY 에 움직여야 할 scroll 값을 요청합니다.
@@ -495,7 +515,7 @@ define(function(require, exports){
 		@return {void}
 		*/
 		_scrollBar.requestScrollPercent = function(movePercent){
-			EX.debug("ScrollViewY.UI_Bar" , "requestScrollPercent");
+			//EX.debug("ScrollViewY.UI_Bar" , "requestScrollPercent");
 			//var movePercent = (layerY-_uiBarHeight/2)/(_scrollContainerOffsetHeight-_uiBarHeight);
 			if(movePercent < 0) movePercent = 0;
 			if(movePercent > 1) movePercent = 1;
@@ -509,7 +529,7 @@ define(function(require, exports){
 		@return {void}
 		*/
 		_scrollBar.setScrollPercent = function(percent){
-			EX.debug("ScrollViewY.UI_Bar" , "setScrollPercent");
+			//EX.debug("ScrollViewY.UI_Bar" , "setScrollPercent");
 			var targetY = Math.floor(percent*_maxScrollY);
 			_uiBar.style.top = targetY+"px";
 			//console.log(_uiBar.style.top);
@@ -576,6 +596,10 @@ define(function(require, exports){
 					EXEventListener.remove( _scrollContainer , EVENT_BAR_SCROLLING , scrollContainerEventHandler );
 					*/
 					_scrollContainer = null;
+				}
+				if(_delegateDocument != null){
+					EXEventListener.remove( _delegateDocument , "mouseup" , interactionBarMouseEventHandler);
+					_delegateDocument = null;
 				}
 				if(_uiBarContainer != null){
 					EXEventListener.remove( _uiBarContainer , "mousedown" , interactionContainerMouseEventHandler);

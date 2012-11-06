@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title></title>
+<script type="text/javascript" src="../../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../../experJS");
+	EX.include("utils/EXBrowser");
+	EX.includeEnd();
+	EX.ready(function(){
+		EX.debug("EX.ready" , "callback");
+		var params = EXBrowser.getLocationParams();
+		var key = null;
+		for( key in params ){
+			EX.debug("getLocationParams " , key+" :" , params[key] );
+		}
+	});
+})();
+</script>
+</head>
+<body>
+	<button onclick="window.location=window.location+'?a=1&b=2&c=3'">test</button>
+</body>
+</html>

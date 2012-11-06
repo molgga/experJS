@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title></title>
+<script type="text/javascript" src="../../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../../experJS");
+	EX.include("utils/EXElement");
+	EX.includeEnd();
+	EX.ready(function(){
+		EX.debug("EX.ready" , "callback");
+		var box = document.getElementById("box");
+		EX.debug("getStyle background-color : " , EXElement.getStyle(box , "background-color") );
+		EX.debug("getStyle border-top : " , EXElement.getStyle(box , "border-top") );
+		EX.debug("getStyle border-top-width : " , EXElement.getStyle(box , "border-top-width") );
+		EX.debug("getStyle border-top-color : " , EXElement.getStyle(box , "border-top-color") );
+	});
+})();
+</script>
+
+<style type="text/css">
+#box { width:100px; height:100px; border:3px solid #000000; background-color:#ff0000; }
+</style>
+</head>
+<body>
+<div id="box" class="default">test box</div>
+</body>
+</html>

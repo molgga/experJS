@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../experJS");
+	EX.include("transitions/EXTween");
+	EX.include("transitions/EXEasing");
+	EX.includeEnd();
+	EX.ready(function(){
+		var testBox1 = document.getElementById("testBox1");
+		var testBox2 = document.getElementById("testBox2");
+		var testBox3 = document.getElementById("testBox3");
+
+		EXTween.setDebugMode(true); // debug console.log
+
+		EXTween.to( testBox1 , 10 , { width:500 });
+		EXTween.to( testBox1 , 6 , { height:400 });
+		EXTween.to( testBox1 , 4 , { backgroundColor:0xffff00 });
+		
+		EXTween.to( testBox2 , 2.5 , { width:200 , onUpdate:function(){
+			testBox2.innerHTML = "width : " + Math.ceil(testBox2.offsetWidth);
+		}});
+		EXTween.to( testBox2 , 2.5 , { height:10 });
+		EXTween.to( testBox2 , 1.5 , { backgroundColor:0x000000 });
+		
+		EXTween.to( testBox3 , 1 , { delay:1 , width:10 });
+		EXTween.to( testBox3 , 1 , { delay:2 , height:10 });
+		EXTween.to( testBox3 , 1 , { delay:3 , backgroundColor:0x000000 });
+
+		EXTween.delayedCall(3 , function(){
+			alert("delayedCall");
+		});
+
+		EXTween.delayedCall(1 , function(){
+			EXTween.killAll(); // all kill!!!
+		});
+	});
+})();
+</script>
+<style type="text/css">
+	html , body { padding:0; margin:0; }
+	.box { position:absolute; width:100px; height:100px; color:#ffffff; }
+	#testBox1 { background-color:#ff0000; }
+	#testBox2 { top:100px; left:400px; background-color:#00ff00; }
+	#testBox3 { top:300px; left:200px; background-color:#0000ff; }
+</style>
+</head>
+<body>
+	<div id="testBox1" class="box"></div>
+	<div id="testBox2" class="box"></div>
+	<div id="testBox3" class="box"></div>
+</body>
+</html>

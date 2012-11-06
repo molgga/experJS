@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title></title>
+<script type="text/javascript" src="../../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../../experJS");
+	EX.include("utils/EXBrowser");
+	EX.includeEnd();
+
+	EX.ready(function(){
+		EX.debug("EX.ready" , "callback");
+		EX.debug("screenHeight : ", EXBrowser.screenHeight());
+		EX.debug("screenHeight : ", EXBrowser.screenHeight("px"));
+		EX.debug("scrollHeight : ", EXBrowser.scrollHeight());
+		EX.debug("scrollHeight : ", EXBrowser.scrollHeight("px"));
+	});
+})();
+</script>
+</head>
+<body>
+<div style="width:3000px; height:3000px; background-color:#ffff00;"></div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="../../experCSS/exper.css" />
+<script type="text/javascript" src="../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../experJS");
+	EX.include("events/EXEventListener");
+	EX.include("transitions/EXTransform");
+	EX.include("transitions/EXTiming");
+	EX.include("vender/CssQuery");
+	EX.includeEnd();
+	EX.ready(function(){
+		EX.debug("EX.ready" , "callback");
+
+		var flipBtn = document.getElementById("flipBtn");
+		var cards = CssQuery(".flip .card");
+		var len = cards.length;
+		for(var i = 0 ; i < len ; i++){
+			var card = cards[i];
+			EXTransform.origin(card , "0px", "50%", "0px");
+			EXTransform.to( card , 0 , { translate3d:[0,0,i*-1] });
+		}
+		var card1 = cards[0];
+		var card2 = cards[1];
+		var sss = 0;
+		EXEventListener.add( flipBtn , "click" , function(evt){
+			switch(sss){
+				case 0 :
+					EXTransform.to( card1 , 1 , { translate3d:[0,0,0] , rotateY:-180 , timing: EXTiming.cutterInOut });
+					break;
+				case 1 :
+					EXTransform.to( card2 , 1 , { translate3d:[0,0,0] , rotateY:-180 , timing: EXTiming.cutterInOut });
+					break;
+				case 2 :
+					EXTransform.to( card2 , 1 , { translate3d:[0,0,-1] , rotateY:0 , timing: EXTiming.cutterInOut });
+					break;
+				case 3 :
+					EXTransform.to( card1 , 1 , { translate3d:[0,0,0] , rotateY:0 , timing: EXTiming.cutterInOut });
+					sss = -1;
+					break;
+			}
+			sss += 1;
+		});
+	});
+})();
+</script>
+
+<style type="text/css">
+.flip {
+	-webkit-perspective: 2000;
+	position:relative;
+	width: 45%;
+	height: 90%;
+    position: absolute;
+	margin-top:-45%;
+	top: 50%;
+	left: 50%;
+  -webkit-transform-style: preserve-3d;
+}
+.flip .card {
+	position:absolute;
+	width: 100%;
+	height: 100%;
+  -webkit-transform-style: preserve-3d;
+	-webkit-box-shadow: 5px 5px 10px rgba(0,0,0, 0.05);
+}
+.flip .card .face {
+	box-sizing: border-box;
+	padding:40px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-backface-visibility: hidden ;
+  z-index: 2;
+    font-family: "dotum", "Arial", "verdana";
+    font-size: 0.8em;
+	line-height:1.6em;
+    text-align: center;
+	overflow:hidden;
+	overflow-y: auto;
+}
+.flip .card .left {
+  position: absolute;
+  z-index: 1;
+    cursor: pointer;
+	background-color:#ffffff;
+	border:1px solid #eeeeee;
+	border-top-left-radius:10px;
+	border-bottom-left-radius:10px;
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+	-webkit-box-shadow: inset 15px 0 30px rgba(0,0,0, 0.05);
+}
+.flip .card .right {
+  -webkit-transform: rotateY(-180deg);
+    cursor: pointer;
+	background-color:#ffffff;
+	border:1px solid #eeeeee;
+	border-right-color:#dddddd;
+	border-top-right-radius:10px;
+	border-bottom-right-radius:10px;
+	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
+	-webkit-box-shadow: inset -15px 0 30px rgba(0,0,0, 0.05);
+}
+
+html, body { padding:0; margin:0; }
+html { width:100%; height:100%; }
+body { width:100%; height:100%; }
+#flipBtn { position:fixed; z-index:999; }​
+</style>
+
+</head>
+<body>
+<button id="flipBtn">flip</button>
+	<div class="flip"> 
+		<div class="card"> 
+			<div class="face left"> 
+                Front1
+            </div>
+            <div class="face right"> 
+                <p><em>테크잇 칼럼니스트이자 소프트웨어 경영/개발 컨설턴트로서 많은 소프트웨어 회사들에게 소프트웨어의 효율적인 개발 방법을 전파하고 있는 전규현님이 <a href="http://allofsoftware.net/274?utm_source=feedburner&#038;utm_medium=feed&#038;utm_campaign=Feed%3A+allofsoftware+%28All+of+Software%29">자신의 블로그에 올린 글</a>을 공유합니다. </em></p>
+<p>우리나라의 많은 소프트웨어 회사들은 주먹구구식 개발에 대한 환상이 있다.</p>
+<p>특히, 첫번째 시스템을 주먹구구식으로 개발을 해서 성공했는데 지금은 좀더 체계를 갖췄는데 더 개발이 잘 안된다면 과거 진짜 주먹구구식으로 개발할 때를 그리워하고 그 때로 돌아가고 싶어 한다. 여기 이와 관련된 과거 글이 있다.</p>
+<p><a href="http://allofsoftware.net/entry/%EC%98%9B%EB%82%A0%EC%97%90%EB%8A%94-%EA%B0%9C%EB%B0%9C-%EC%9E%98%ED%96%88%EB%8A%94%EB%8D%B0">2012/07/26-[소프트웨어이야기]-옛날에는 개발을 더 잘했는데</a></p>
+<p>주먹구구식으로 개발을 하다가 현재 체계를 갖추려고 노력하고 있다면 아직은 불완전할 뿐더러 반쯤은 주먹구구인 것이다. 그럼 주먹구구식 개발은 어떤 것인지 정의를 내려보자. 크게 5가지로 설명할 수 있다.</p>
+<p>첫째, 스펙/설계 없이 개발을 하는 것이다. 또는 기능명세서, 시방서 등의 문서에 기능만 정리하여 개발하는 것이다. 이 방법은 프로젝트 전체 범위를 알 수 없을 뿐더러 좋은 아키텍처를 만들 수도 없고, 개발자들이 효과적으로 일을 나눠서 개발할 수도 없으며 프로젝트 진척상황을 거의 파악할 수 없다. 일정 지연은 일상이고 그야말로 끝나봐야 아는 것이다. </p>
+<p>둘째, SVN, Git 등의 소스코드관리시스템과 Jira, Mantis, Redmine 등의 이슈관리시스템 없이 개발하는 것이다. 둘중 하나라도 사용하지 않으면 심각한 문제이다. 일단 쓰기만 하더라도 다행이지만 제대로 쓰는 것은 정말 어렵다. 대부분은 10% 정도의 기능밖에 사용하지 못하지만, 100% 기능을 활용해야 한다.</p>
+<p>셋째, 혼자 북치고 장구치고 다하는 것이다. 일을 전문적으로 나눠서 하는 것이 아니고, 혼자서 기획, 분석, 설계, 코딩, 테스트, 빌드 등등 다 하는 것이고 이런 개발자가 여럿이고 서로 중복되서 일을 하기도 한다. 첫째에서도 언급했듯이 스펙이 제대로 작성되어야 일을 효과적으로 나눌 수 있는데 스펙이 없거나 부실하면 이런 현상이 벌어진다. 또, 회사의 조직이 소프트웨어 개발에 알맞게 효과적으로 구성되어 있지 않아도 이런 일이 벌어진다. 소프트웨어는 전문가들이 협업하여 개발하는 것이다.</p>
+<p>넷째, 프로세스 없이 대충 개발하는 것이다. 흔히들 프로세스는 개발을 더 느리게 만든다고 주장하곤 한다. 그러면서 회사에서 프로세스를 만들려고 하면 반대 주장을 펼친다. 과거에 개발하던 방법을 서로 암묵적으로 알고 있다가 대충 개발을 하고 서로 이심전심으로 문제를 해결해 나간다.</p>
+<p>다섯째, 리뷰, 공유 없이 개발하는 것이다. 가끔은 대충 기능목록 작성해서 마케팅이나 영업, 경영진과 리뷰를 하기도 하지만 제대로 된 리뷰는 아니다. 개발자를 제외하고는 지금 어떤 제품을 만드는지 정확하게 파악이 안된다. 심지어는 개발자들도 잘 모른다. 다 만들어봐야 어떤 제품을 만들었는지 알게 된다. 그러니 만들기 전에는 무슨 문제가 발생할지 몰라서 만드는 도중에 수많은 문제가 발생하고 재작업은 수시로 이루어 진다. 심지어는 80%쯤 만들었다가 아키텍처가 잘못된 것을 발견하고 다 버리고 다시 만들기도 한다.</p>
+<p>정도의 차이는 있을 수 있다. 다섯가지 중에서 하나 이상이면 아직 주먹구구식 개발에서 완전히 벗어난 것이 아니다. 스스로도 주먹구구식으로 개발을 하고 있는지 평가를 해보자.</p>
+<p><a href="http://allofsoftware.net/entry/%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4-%ED%9A%8C%EC%82%AC%EC%9D%98-%EA%B0%9C%EB%B0%9C-%EC%97%AD%EB%9F%89-%ED%8F%89%EA%B0%80%ED%91%9C">2008/10/29-[소프트웨어이야기]-소프트웨어 회사의 개발 역량 평가표</a></p>
+<p>그럼에도 불구하고 주먹구구식 개발이 여전히 통하는 이유는 무엇일까?</p>
+<p>첫째, Software의 크기가 아주 작다. 빌딩은 제대로 된 분석/설계 없이, 프로세스 없이 만드는 것은 불가능하다. 하지만 개집은 그런 것 필요 없다. 대충 만들어도 문제 없이 만들 수 있다. 한 사람이 머리 속으로 모든 것을 설계해서 만들 수 있는 정도의 규모라면 주먹구구식 방법도 훌륭한 방법이다.</p>
+<p>둘째, 이직률이 극도로 낮다. 한번 개발을 해 놓으면 개발자들이 절대로 퇴사를 하지 않고 끝까지 책임져준다.</p>
+<p>셋째, 회사 규모가 작다. 개발자도 몇 명 안되서 서로 너무 잘 알고 모든 이슈가 더 구두로도 공유가 되고 급한 이슈는 자리에서 바로 일어나서 공유가 되고 논의할 수 있다. 가족적인 분위기에서 주먹구구식 방법이 훌륭하게 작동한다. </p>
+<p>넷째, 소프트웨어 업그레이드가 없다. 한번 개발해 놓은 시스템이 업그레이드가 필요 없는 경우이다. 어떻게 든 첫번째 개발을 해 놓으면 문제가 없다. 그럼, 주먹구구식 개발이 앞으로도 계속 통할까?</p>
+<p>회사가 잘되면 회사는 커지게 되어 있다. 개발자 수는 많이 늘게 되고 더 이상 자리에서 일어나 뒤로 돌아도 모든 개발자의 얼굴을 볼 수 없게 된다. 과거처럼 공유가 그렇게 잘 되지 않는다. 개발자들이 영원히 이직하지 않고 직원으로 있기를 바란다면 너무 큰 욕심이다. </p>
+<p>개발자들은 언젠가는 이직을 하게 마련이고, 개발자들이 이직을 해도 개발은 잘 돌아가도록 되어 있어야 한다. 주먹구구식으로 계속 개발을 하게 된다면 아무리 가족적인 분위기라고 하더라도 직원이 Risk 요인이 된다. </p>
+<p>Software 회사의 경영자라면 지금 대충 잘 굴러가는 것 같다고 해서 방심하면 안된다. 회사가 잘 되면 회사는 커지고 직원도 늘고 더 복잡해질 것이다. 문제를 모르고 방심하다가 문제가 터지고 나면 터진 댐을 막으려고 하는 것처럼 어렵다. 항상 미리 준비를 해야 하는 것이다.</p>
+<p>물론, 처음부터 제대로 하는 것이 가장 빨리 개발하는 방법이고 좋지만 그것을 깨닫기는 매우 어렵다. 대부분은 문제가 터진 후에 우왕좌왕 한다. 주먹구구식 개발이 지금은 통할지도 모른다. 하지만 곧 주먹구구식 개발이 문제가 되는 상황이 올 것이고 이미 문제가 되고 있다면 너무 늦지 않았기만 바랄 뿐이다. 늦었다고 생각할 때가 가장 빠른 때이다</p>
+			</div>
+		</div>
+		<div class="card"> 
+			<div class="face left"> 
+               <p>하버드 대학의 응용물리학 연구팀(SEAS)이 기존의 광학 렌즈를 대신할 수 있는 초박막 평면 렌즈를 개발했다는 소식이다.</p>
+<blockquote><p><a href="http://www.seas.harvard.edu/news-events/press-releases/flat-lens-offers-perfect-image" target="_blank">Flat lens offers a perfect image</a> — Harvard School of SEAS<br />
+Applied physicists at the Harvard School of Engineering and Applied Sciences (SEAS) have created an ultrathin, flat lens that focuses light without imparting the distortions of conventional lenses.</p></blockquote>
+<p>보통 카메라나 망원경에 쓰이는 광학 렌즈는 기본적으로 볼록 렌즈와 오목 렌즈 여러 장을 조합해 만든다. 이 때 렌즈의 두께와 구면 형태에 따라 빛이 서로 다른 각도로 회절하게 하게 되고 이를 조절해 피사체의 초점을 맞추는 방식이다.</p>
+<div id="attachment_9602" class="wp-caption aligncenter" style="width: 410px"><a href="http://techit.co.kr/wp-content/uploads/2012/08/20120827_flatlens_2.jpg"><img src="http://techit.co.kr/wp-content/uploads/2012/08/20120827_flatlens_2.jpg" alt="" title="20120827_flatlens_2" width="400" height="340" class="size-full wp-image-9602" /></a><p class="wp-caption-text">초박막 평면 렌즈의 개념도 (이미지출처: seas.harvard.edu)</p></div>
+<p>하지만 SEAS에서 개발한 초박막 평면 렌즈는 단 한 장의 평평한 실리콘 판으로 되어 있다. 두께는 60nm(나노미터, 1nm는 10억분의 1m)로 머리카락의 1/2000에 불과하다.</p>
+<p>이 박막 위에 금으로 특수 패턴을 입혔다. 입사된 빛은 특수 패턴에 따라 회절하는 각도가 달라진다. 박막 가장 자리와 가운데 부분의 회절 각도를 적절히 변경하여 초점을 하나로 모으는 방식이다.</p>
+<p>SEAS 연구팀은 초박막 평면 렌즈가 상용화 기술이 결합되는 단계에는 일반 광학 분야에도 적용 가능할 것으로 보고 있다. 예를 들어 4~5mm 두께의 초박형 디지털 카메라가 등장할 수 있다.</p>
+<p>특히 스마트폰 등 컨버전스 기기에 적합한 기술이다. 스마트폰의 카메라 모듈을 초박막 평면 렌즈로 교체하게 되면 CCD 센서를 포함해 1~2mm 두께의 카메라 모듈 개발도 가능하다. 스마트폰이 더 얇아질 수 있다.</p>
+<p>SEAS 연구팀의 수석 연구원 프란시스코 아이에타(Francesco Aieta)는 &#8220;가깝게는 우주 망원경, 특수 카메라에 활용 가능할 뿐만 아니라 장기적으로 현존하는 대부분의 광학 렌즈를 대체할 수 있을 것&#8221;이라고 자신하고 있다.</p>
+            </div>
+            <div class="face right"> 
+                Back2
+			</div>
+		</div> 
+	</div> 
+</body>
+</html>

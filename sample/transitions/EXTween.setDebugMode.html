@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../experJS");
+	EX.include("transitions/EXTween");
+	EX.includeEnd();
+	EX.ready(function(){
+		var testBox1 = document.getElementById("testBox1");
+		EXTween.setDebugMode(true); // console.log 로 EXTween 동작을 출력합니다.
+		EXTween.to(testBox1 , 1 , { width:400 });
+		EXTween.to(testBox1 , 1 , { delay:1 , height:300 , backgroundColor:0xffff00 });
+		EXTween.to(testBox1 , 1 , { delay:2 , width:100 , height:100 , onUpdate:tweenUpdate1 });
+		EXTween.to(testBox1 , 1 , { delay:2.5 , width:40 , height:20 , backgroundColor:0xcccccc ,  onComplete:tweenComplete1 });
+
+		function tweenUpdate1(){
+			testBox1.innerHTML = Math.ceil(testBox1.offsetWidth);
+		}
+		function tweenComplete1(){
+			console.log("tweenComplete1");
+		}
+	});
+})();
+</script>
+<style type="text/css">
+	#testBox1 { width:100px; height:100px; background-color:#ff0000; }
+</style>
+</head>
+<body>
+	<div id="testBox1"></div>
+</body>
+</html>

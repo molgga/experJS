@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title></title>
+<script type="text/javascript" src="../../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../../experJS");
+	EX.include("utils/EXElement");
+	EX.includeEnd();
+	EX.ready(function(){
+		EX.debug("EX.ready" , "callback");
+
+		var btn = document.getElementById("btn");
+		var box = document.getElementById("box");
+		var count = 0;
+
+		btn.onclick = function(){
+			count++;
+			if(count > 3) count = 0;
+			switch(count){
+				case 0 :
+					box.className = "default type1 type2 type3";
+					break;
+				case 1 :
+					EXElement.removeClass(box , "type1");
+					break;
+				case 2 :
+					EXElement.removeClass(box , "type2");
+					break;
+				case 3 :
+					EXElement.removeClass(box , "type3");
+					break;
+			}
+			EX.debug("box className : " , box.className);
+		}
+	});
+})();
+</script>
+
+<style type="text/css">
+#box { width:100px; height:100px; background-color:#ff0000; }
+#box.default { font-size:0.8em; font-weight:bold; color:#ffffff; background-color:#000000; }
+#box.type1 { color:#000000; }
+#box.type2 { background-color:#ff0000; }
+#box.type3 { font-size:1.2em; }
+</style>
+</head>
+<body>
+<button id="btn">addClass</button>
+<div id="box" class="default type1 type2 type3">test box</div>
+</body>
+</html>

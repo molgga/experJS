@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+.experCSS {}
+.experCSS_layerDom_body {}
+.experCSS_layerDom_body .append {}
+.experCSS_layerDom_body .remove { display:none; width:0px; height:0px; overflow:hidden; }
+.experCSS_layerDom_layer { position:absolute; top:0; left:0; width:100%; }
+.experCSS_layerDom_layer .dim { position:absolute; top:0; left:0; width:100%; height:100%; background-color:#000000; }
+.experCSS_layerDom_layer .container { position:absolute; top:0; left:0; overflow:hidden; }
+.experCSS_layerDom_layer .container .content {}
+.experCSS_layerDom_layer .container .closeBtn { position:fixed; top:0; right:0; width:50px; height:50px; background-color:#000000; visibility:hidden; }
+.experCSS_layerDom_layer .container .progress { position:absolute; top:50%; left:50%; margin:-25px 0 0 -25px; width:50px; height:50px; background-color:#222222; border-radius:10px; }
+.experCSS_layerDom_layer .container .framei { margin:0; padding:0; width:100%; height:100%; border:none; }
+
+.experCSS_scrollView_uiBarContainer { position:absolute; top:0; right:0; width:15px; cursor:pointer; }
+.experCSS_scrollView_uiBar { position:absolute; right:5px; margin-top:5px; width:2px; border:1px solid #555555; border-radius:10px; background-color:#707070; }
+
+.experCSS_toast_alternate { position:fixed; bottom:20px; left:50%; padding:2px 10px 4px 10px; text-align:center; line-height:1.6em; font-size:1em; color:#ffffff; background-color:#444444; 0px 5px 8px rgba(0,0,0,0.3); }

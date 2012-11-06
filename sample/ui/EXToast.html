@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../experCSS/exper.css"></link>
+<script type="text/javascript" src="../../experJS/experJS.js"></script>
+
+<style type="text/css">
+body { font-family:"돋움"; font-size:0.8em; }
+</style>
+
+</head>
+<body>
+	<input id="showMessage" type="text" />
+	<button id="showToastBtn">showToastBtn</button>
+	
+	<script type="text/javascript">
+	(function(){
+		EX.includeBegin("../../experJS");
+		EX.include("ui/EXToast");
+		EX.includeEnd();
+		EX.ready(function(){
+			EX.debug("EX.ready" , "callback");
+			var showToastBtn = document.getElementById("showToastBtn");
+			var showMessage = document.getElementById("showMessage");
+
+			showToastBtn.onclick = function(evt){
+				EXToast.message( showMessage.value );
+			}
+		});
+	})();
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../experJS");
+	EX.include("transitions/EXTween");
+	EX.includeEnd();
+	EX.ready(function(){
+		var testBox1 = document.getElementById("testBox1");
+		var btn = document.getElementById("btn");
+		EXTween.setGlobalIntervalRender(36); // default 12 - if you increase value then slowly render tween.
+		EXTween.to(testBox1 , 1 , { width:400 });
+		
+		btn.onclick = function(){
+			EXTween.setGlobalIntervalRender(12); 
+			EXTween.to(testBox1 , 1 , { width:400 });
+		};
+	});
+})();
+</script>
+<style type="text/css">
+	#testBox1 { width:100px; height:100px; background-color:#ff0000; }
+</style>
+</head>
+<body>
+	<button id="btn">btn</button>
+	<div id="testBox1"></div>
+</body>
+</html>

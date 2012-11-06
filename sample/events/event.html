@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title></title>
+<script type="text/javascript" src="../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../experJS");
+	EX.include("events/EXEventListener");
+	EX.includeEnd();
+	EX.ready(function(){
+		EX.debug("EX.ready" , "callback");
+
+		var testButton1 = document.getElementById("testButton1");
+		var testButton2 = document.getElementById("testButton2");
+		var testButton3 = document.getElementById("testButton3");
+		EXEventListener.add(testButton1 , "click" , eventHandler);
+		EXEventListener.add(testButton2 , "click" , eventHandler);
+		EXEventListener.add(testButton3 , "click" , eventHandler);
+		EXEventListener.add(testButton1 , "mouseover" , eventHandler);
+		EXEventListener.add(testButton2 , "mouseover" , eventHandler);
+		EXEventListener.add(testButton3 , "mouseover" , eventHandler);
+
+		function eventHandler(evt){
+			EX.debug("eventHandler" , evt.type);
+			EX.debug(evt.currentTarget);
+		}
+	});
+})();
+</script>
+
+</head>
+<body>
+	<button id="testButton1">testButton1</button>
+	<button id="testButton2">testButton2</button>
+	<button id="testButton3">testButton3</button>
+</body>
+</html>

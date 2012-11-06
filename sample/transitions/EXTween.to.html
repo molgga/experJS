@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../experJS");
+	EX.include("transitions/EXTween");
+	EX.include("transitions/EXEasing");
+	EX.includeEnd();
+	EX.ready(function(){
+		var testBox1 = document.getElementById("testBox1");
+
+		EXTween.setDebugMode(true); // debug console.log
+
+		EXTween.to( testBox1 , 1 , { opacity:0.3 , width:300 , height:300 , ease:EXEasing.easeOutQuint });
+		EXTween.to( testBox1 , 1 , { delay:1 , width:50 , height:50 , ease:EXEasing.easeInOutBack});
+		EXTween.to( testBox1 , 1 , { delay:2.5 , top:200 , ease:EXEasing.easeOutBounce });
+		EXTween.to( testBox1 , 1 , { delay:4 , left:200 , ease:EXEasing.easeOutBack });
+		EXTween.to( testBox1 , 0.8 , { delay:5 , width:100 , height:300 , top:100 , ease:EXEasing.easeOutExpo });
+		EXTween.to( testBox1 , 0.5 , { delay:6 , backgroundColor:0xffff00 });
+		EXTween.to( testBox1 , 0.5 , { delay:7 , opacity:1 , backgroundColor:0xeeeeee });
+
+		EXTween.delayedCall(8 , delayedComplete2);
+		EXTween.delayedCall(12 , delayedComplete3);
+		EXTween.delayedCall(20 , delayedComplete4);
+
+		function delayedComplete2(){
+			EXTween.to( testBox1 , 0.5 , { borderLeftWidth:10 , borderRightWidth:10 });
+			EXTween.to( testBox1 , 0.5 , { delay:1 , borderTopWidth:10 , borderBottomWidth:10 });
+			EXTween.to( testBox1 , 0.5 , { delay:2 , borderLeftColor:0xff0000 , borderRightColor:0x00cc00 });
+			EXTween.to( testBox1 , 0.5 , { delay:3 , borderLeftWidth:0 , borderRightWidth:0 , borderTopWidth:0 , borderBottomWidth:0 });
+		}
+
+		function delayedComplete3(){
+			EXTween.to( testBox1 , 0.5 , { width:400 , height:80 , left:10 , top:10 });
+
+			var numObject = new NumberObject();
+			EXTween.to( numObject , 1.5 , { delay:1 , x:1000 , onUpdate:function(){
+					testBox1.innerHTML = "<strong> number </strong>tween X : " + numObject.x;
+				}, ease:EXEasing.easeOutExpo });
+				
+			EXTween.to( numObject , 1.5 , { delay:4 , y:-2000 , toInt:true 
+				, onUpdate:function(){
+					testBox1.innerHTML = "<strong> integer </strong>tween Y : " + numObject.y;
+				}
+				, onComplete:function( param1 , param2 ){
+					testBox1.innerHTML = param1 + " - " + param2 + "!!";
+				}
+				, onCompleteParams: ["tween" , "complete"]
+				, ease:EXEasing.easeInOutQuint });
+
+			function NumberObject(){
+				var numObj = {};
+				numObj.x = 0;
+				numObj.y = 2000;
+				return numObj
+			}
+		}
+
+		function delayedComplete4(){
+			EXTween.to( testBox1 , 0.5 , { fontSize:40 , ease:EXEasing.easeOutQuart });
+			EXTween.to( testBox1 , 0.5 , { delay:1 , color:0xff0000 , ease:EXEasing.easeOutQuart });
+			EXTween.to( testBox1 , 0.5 , { delay:2 , fontSize:12 , color:0x000000 , ease:EXEasing.easeOutQuart });
+			EXTween.to( testBox1 , 0.5 , { delay:3 , paddingTop:20 });
+			EXTween.to( testBox1 , 0.5 , { delay:4 , paddingLeft:20 , onComplete:function(){
+				testBox1.style.background = "#bbbbbb url(../../data/img/visual_cat.gif) 0 0 no-repeat";
+				alert("background-position");
+			}});
+			
+			EXTween.to( testBox1 , 0.5 , { delay:6 , backgroundPositionX:50 , ease:EXEasing.easeOutQuint });
+			EXTween.to( testBox1 , 0.5 , { delay:7 , backgroundPositionX:-100 , ease:EXEasing.easeOutQuint });
+			EXTween.to( testBox1 , 0.5 , { delay:8 , backgroundPositionY:30 , ease:EXEasing.easeOutQuint });
+			EXTween.to( testBox1 , 0.5 , { delay:9 , backgroundPositionY:-100 , ease:EXEasing.easeOutQuint });
+			EXTween.to( testBox1 , 0.5 , { delay:10 , autoOpacity:0 , onComplete:function(){
+				alert("Hello EXTween ~ :)");
+			}});
+		}
+	});
+})();
+</script>
+<style type="text/css">
+	html , body { padding:0; margin:0; }
+	.bgBox { position:absolute; width:300px; height:300px; background-color:#00ff00; }
+	.bgBox.sm1 { top:230px; left:120px; }
+	.bgBox.sm2 { top:110px; left:320px; height:100px; background-color:#0000ff; }
+	#testBox1 { position:absolute; width:100px; height:100px; border:0px solid #000000; background-color:#ff0000; }
+</style>
+</head>
+<body>
+	<div class="bgBox sm1"></div>
+	<div class="bgBox sm2"></div>
+	<div id="testBox1"></div>
+</body>
+</html>

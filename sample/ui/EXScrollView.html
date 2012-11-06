@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="../../experCSS/exper.css?v=1" />
+<script type="text/javascript" src="../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../experJS");
+	EX.include("ui/EXScrollView");
+	EX.includeEnd();
+	EX.ready(function(){
+		EX.debug("EX.ready" , "callback");
+		EX.debug = function(){};
+		
+		var scrollView = null;
+		var scrollContainer = document.getElementById("scrollContainer");
+		var scrollContent = document.getElementById("scrollContent");
+
+		var contentHeight = 0;
+		var cnt = 0;
+		var interval = setInterval(function(){
+			if(scrollView != null){
+				scrollView.destroy();
+				scrollView = null;
+			}
+			contentHeight = cnt*50;
+			scrollContent.style.height =  contentHeight + "px";
+			scrollContent.innerHTML = "remake : " + cnt + "<br/>height : " + contentHeight;
+			scrollView = new EXScrollView();
+			scrollView.init( scrollContainer , scrollContent );
+			
+			if(cnt >= 20){
+				clearInterval(interval);
+			}
+			cnt += 1;
+		} , 100);
+		
+		var scrollView2 = new EXScrollView();
+		scrollView2.init( document.getElementById("scrollContainer2") , document.getElementById("scrollContent2") );
+	});
+})();
+</script>
+
+<style type="text/css">
+body { font-family:"돋움"; font-size:0.8em; }
+#scrollContainer { width:200px; height:200px; overflow:hidden; }
+#scrollContent { width:200px; height:300px; border:10px dotted #000000; }
+
+#scrollContainer2 { width:400px; height:200px; overflow:hidden;  }
+#scrollContent2 { width:400px; height:300px; border:10px dotted #000000; }
+</style>
+
+</head>
+<body>
+<div id="scrollContainer">
+	<div id="scrollContent"></div>
+</div>
+<div id="scrollContainer2">
+	<iframe id="scrollContent2" src="http://molgga.com" scrolling="no"></iframe>
+</div>
+</body>
+</html>

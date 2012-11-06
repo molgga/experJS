@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title></title>
+<script type="text/javascript" src="../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../experJS");
+	EX.include("events/EXEventListener");
+	EX.include("transitions/EXTween");
+	EX.includeEnd();
+	EX.ready(function(){
+		EX.debug("EX.ready" , "callback");
+
+
+		var canvas = document.getElementById("canvasView");
+		var canvasContext = canvas.getContext("2d");
+		
+		var rgb = 255;
+		var interval = null;
+
+		
+		canvasContext.clearRect(0,0,600,400);
+		canvasContext.fillStyle = "rgb(0,0,0)";
+		canvasContext.fillRect(0,0,600,400);
+
+		render(true);
+
+		function render(bool){
+			EX.debug("render" , bool);
+			if(bool == true){
+				if(interval != null){
+					render(false);
+				}
+				interval = setInterval(rendering , 10);
+			}else{
+				clearInterval(interval);
+			}
+		}
+
+var xx = 0;
+var rad = 10;
+var radgrad = canvasContext.createRadialGradient(rad,rad,0,rad,rad,rad);
+  radgrad.addColorStop(0, 'rgba(255,0,0,1)');
+  radgrad.addColorStop(0.2, 'rgba(228,0,0, 0.3)');
+  radgrad.addColorStop(1, 'rgba(228,0,0,0)');
+
+		function rendering(){
+			radgrad = canvasContext.createRadialGradient(xx+rad,rad,0,xx+rad,rad,rad);
+			radgrad.addColorStop(0, 'rgba(255,255,255,1)');
+			radgrad.addColorStop(0.2, 'rgba(255,255,255, 0.2)');
+			radgrad.addColorStop(0.4, 'rgba(255,255,255, 0.1)');
+			radgrad.addColorStop(1, 'rgba(255,255,255,0)');
+			/*
+			rgb -= 1;
+			if(rgb == 0){
+				render(false);
+			}
+			canvasContext.clearRect(0,0,600,400);
+			canvasContext.fillStyle = "rgb("+rgb+","+rgb+","+rgb+")";
+			canvasContext.fillRect(0,0,600,400);
+			*/
+			canvasContext.fillStyle = "rgba( 0,0,0 , 0.1)";
+			canvasContext.fillRect(0,0, 600 , 400);
+
+			canvasContext.beginPath();
+			//canvasContext.fillStyle = "rgba(255,255,0,1)";
+// 			canvasContext.arc( this.x , this.y , this.radius , 0 , arcFrom , true);
+			//canvasContext.arc( xx , 100 , 2 , 0 , 360 );
+			canvasContext.fillStyle = radgrad;
+			canvasContext.fillRect(xx,0,rad*2,rad*2);
+			canvasContext.fill();
+			canvasContext.closePath();
+
+			xx++;
+		}
+	});
+})();
+</script>
+
+</head>
+<body style="background-color:#333333;">
+	<canvas id="canvasView" width="600" height="400"></canvas>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<script type="text/javascript" src="../../../experJS/experJS.js"></script>
+<script type="text/javascript">
+	EX.includeBegin("../../../experJS");
+	EX.include("utils/EXTimer");
+	EX.includeEnd();
+
+	EX.ready(function(){
+		var timer = new EXTimer(1000 , 3);
+		timer.addListener(EXTimer.EVENT_TIMER , timerEventHandler);
+		timer.addListener(EXTimer.EVENT_TIMER_COMPLETE , timerEventCompleteHandler);
+
+		function timerEventHandler(){
+			EX.debug("timer :" , timer.count());
+		}
+		function timerEventCompleteHandler(){
+			EX.debug("complete :" , timer.countAll());
+			toggleTimer();
+		}
+
+		var btn = document.getElementById("btn");
+		var isStart = false;
+		btn.onclick = toggleTimer;
+		function toggleTimer(){
+			if(isStart == true){
+				EX.debug("timer stop");
+				timer.stop();
+			}else{
+				EX.debug("timer start");
+				timer.start();
+			}
+			isStart = !isStart;
+		}
+	});
+</script>
+</head>
+<body>
+<button id="btn">start&stop toggle</button>
+</body>
+</html>

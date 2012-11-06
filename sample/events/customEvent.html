@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title></title>
+<script type="text/javascript" src="../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../experJS");
+	EX.include("events/EXEventListener");
+	EX.include("events/EXCustomEvent");
+	EX.includeEnd();
+
+
+	var dispatchEventType = "testEvent";
+	var dispatchEventObject = {};
+	EX.ready(function(){
+		EXEventListener.add( dispatchEventObject , dispatchEventType , function(evt){
+			EX.debug("dispatchEventObject" , evt.type);
+		});
+	});
+
+	EX.ready(function(){
+		EX.debug("EX.ready" , "callback");
+		var dispatchButton = document.getElementById("dispatchButton");
+		EXEventListener.add(dispatchButton , "click" , eventHandler);
+		function eventHandler(evt){
+			EX.debug("eventHandler" , evt.type);
+			EXEventListener.dispatch( dispatchEventObject , new EXCustomEvent(dispatchEventType, { passParam: 12}, true));
+		}
+	});
+})();
+</script>
+
+</head>
+<body>
+<div id="wrapper">
+	<button id="dispatchButton">dispatchButton</button>
+</div>
+</body>
+</html>

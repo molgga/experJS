@@ -18,10 +18,10 @@ define(function(require, exports){
 	var DOM_LAYER_BODY_REMOVER= null;
 
 	var ClassOf = {
-		LDB : "experCSS_layerDom_body"
+		LDB : "exUIKit_layerDom_body"
 		, LDB_APPENDER : "append"
 		, LDB_REMOVER : "remove"
-		, LDL : "experCSS_layerDom_layer"
+		, LDL : "exUIKit_layerDom_layer"
 		, LDL_DIM : "dim"
 		, LDL_CONTAINER : "container"
 		, LDLC_CONTENT : "content"

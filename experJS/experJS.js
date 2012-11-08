@@ -137,7 +137,7 @@ var EX = {};
 		</body>
 		</html>
 	*/
-	EX.include = function(packageClass){
+	EX.include = function(packageClass, compulsionName){
 		includePackage.push(includeBasePath +"/"+ packageClass+".js");
 		
 		var classReg = /\//g;
@@ -148,7 +148,11 @@ var EX = {};
 			classSearchIndex = classSearch.index+1;
 			if(loopCount > 10) break;
 		}
-		includeClass.push(packageClass.substring(classSearchIndex , packageClass.length));
+		var packName = packageClass.substring(classSearchIndex , packageClass.length);
+		if(compulsionName != undefined && typeof(compulsionName) == "string"){
+			packName = compulsionName;
+		}
+		includeClass.push(packName);
 	};
 
 	/**

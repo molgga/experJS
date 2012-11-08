@@ -11,10 +11,12 @@
 	EX.include("events/EXEventListener"); // class name EXEventListener
 	EX.includeBegin("../../");
 	EX.include("experJS/transitions/EXTween"); // class name EXTween
+	EX.include("experJS/transitions/EXEasing" , "Easing"); // compulsion name Easing
 	EX.includeEnd();
 	EX.ready(function(){
 		EX.debug("EX.ready" , "callback" , EXEventListener);
 		EX.debug("EX.ready" , "callback" , EXTween);
+		EX.debug("EX.ready" , "callback" , Easing);
 	});
 })();
 </script>

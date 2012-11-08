@@ -13,13 +13,13 @@ define(function(require, exports){
 	에 지정된 공통 타입 UI 등을 생성, query 하기 위한 class || id 명 입니다.
 	*/
 	var ClassOf = {
-		UI_BAR_CONTAINER : "experCSS_scrollView_uiBarContainer"
+		UI_BAR_CONTAINER : "exUIKit_scrollView"
 		, UI_BAR_CONTAINER_DISABLE : "disable"
 		, UI_BAR_CONTAINER_NEEDLESS : "needless"
-		, UI_BAR : "experCSS_scrollView_uiBar"
+		, UI_BAR : "uiBar"
 		, UI_BAR_ACTIVATE : "activate"
-		, UI_ARROW_UP : "arrow up"
-		, UI_ARROW_DOWN : "arrow down"
+		, UI_ARROW_UP : "uiArrow up"
+		, UI_ARROW_DOWN : "uiArrow down"
 	}
 
 	var _isIE9 = false;
@@ -81,6 +81,8 @@ define(function(require, exports){
 
 			_scrollContainer.appendChild(_this.uiScrollBar.getBarContainer());
 
+			_this.uiScrollBar.initComplete();
+
 			if(parseScrollY == 0 || isNaN(parseScrollY)){
 			}else{
 				_scrollTargetY = parseScrollY;
@@ -119,7 +121,7 @@ define(function(require, exports){
 				case "touchmove" :
 					if(_this.uiScrollBar.isMouseDown == false){
 						evt.preventDefault();
-						_this.calculateScrollingY(evt.touchMoveY*2);
+						_this.calculateScrollingY(evt.touchMoveY/10 , false);
 					}
 					break;
 
@@ -357,6 +359,8 @@ define(function(require, exports){
 		var _scrollContainerOffsetHeight = 0;
 		var _uiBarHeight = 0;
 		
+		var _tempMaxY = 0;
+		var _minScrollY = 0;
 		var _maxScrollY = 0;
 		var _scrollingClientY = 0;
 		var _scrollingPositionY = 0;
@@ -393,29 +397,35 @@ define(function(require, exports){
 		_scrollBar.init = function(scrollContainer , maxY ){
 			//EX.debug("ScrollViewY.UI_Bar" , "init");
 			_scrollContainer = scrollContainer;
+			_tempMaxY = maxY;
 
 			_uiBarContainer = document.createElement("div");
 			_uiBar = document.createElement("div");
 			_uiArrowUp = document.createElement("div");
 			_uiArrowDown = document.createElement("div");
 
-			_uiBarContainer.className = ClassOf.UI_BAR_CONTAINER;//"experCSS_scrollView_uiBarContainer";
-			_uiBar.className = ClassOf.UI_BAR;//"experCSS_scrollView_uiBar";
-			_uiArrowUp.className = ClassOf.UI_ARROW_UP;//"arrow up";
-			_uiArrowDown.className = ClassOf.UI_ARROW_DOWN;//"arrow down";
+			_uiBarContainer.className = ClassOf.UI_BAR_CONTAINER;
+			_uiBar.className = ClassOf.UI_BAR;
+			_uiArrowUp.className = ClassOf.UI_ARROW_UP;
+			_uiArrowDown.className = ClassOf.UI_ARROW_DOWN;
 
 			_uiBarContainer.appendChild(_uiArrowDown);
 			_uiBarContainer.appendChild(_uiArrowUp);
 			_uiBarContainer.appendChild(_uiBar);
-			
+
+		};
+
+		_scrollBar.initComplete = function(){
 			_scrollContainerOffsetHeight = _scrollContainer.offsetHeight;
-			_uiBarHeight = Math.floor( _scrollContainerOffsetHeight * Math.abs(_scrollContainerOffsetHeight/(_scrollContainerOffsetHeight-maxY)));
+			_uiBarHeight = Math.floor( _scrollContainerOffsetHeight * Math.abs(_scrollContainerOffsetHeight/(_scrollContainerOffsetHeight - _tempMaxY)));
 			if(_uiBarHeight < 20 ) _uiBarHeight = 20;
-			_maxScrollY = (_scrollContainerOffsetHeight - _uiBarHeight);// - 0;
+			_maxScrollY = (_scrollContainerOffsetHeight - _uiBarHeight) - _uiArrowUp.offsetHeight - _uiArrowDown.offsetHeight;// - 0;
+			_minScrollY = _uiArrowUp.offsetHeight;
 
 			try{
 				_uiBarContainer.style.height = _scrollContainerOffsetHeight+"px";
 				_uiBar.style.height = _uiBarHeight +"px";
+				_uiBar.style.top = _minScrollY +"px";
 			}catch(e){
 			}
 			
@@ -455,9 +465,6 @@ define(function(require, exports){
 					}else if(arrow == _uiArrowDown){
 						_scrollBar.requestScrollPercent( _currentScrollPercentY + 0.2 );
 					}
-					EXTween.killTweensOf(arrow);
-					EXTween.to(arrow , 0 , { backgroundColor:0xeeeeee });
-					EXTween.to(arrow , 0 , { delay:0.1 , backgroundColor:0xffffff  });
 					break;
 				case "mouseup" :
 					_scrollBar.isMouseDown = false;
@@ -530,7 +537,7 @@ define(function(require, exports){
 		*/
 		_scrollBar.setScrollPercent = function(percent){
 			//EX.debug("ScrollViewY.UI_Bar" , "setScrollPercent");
-			var targetY = Math.floor(percent*_maxScrollY);
+			var targetY = Math.floor(percent*_maxScrollY) + _minScrollY;
 			_uiBar.style.top = targetY+"px";
 			//console.log(_uiBar.style.top);
 			_scrollingPositionY = targetY;

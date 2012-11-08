@@ -58,7 +58,7 @@ define(function(require , exports){
 		var originalSelectBox = null;
 		for(var i = 0 ; i < len ; i++){
 			originalSelectBox = selectArr[i];
-			if(originalSelectBox.is_experCSS_designUI_selectBox == true) continue; //ajax 중첩 호출. 테스트.
+			if(originalSelectBox.is_exUIKit_selectBox == true) continue; //ajax 중첩 호출. 테스트.
 
 			selectBox = new SelectBox();
 			selectBox.init( originalSelectBox );
@@ -202,7 +202,7 @@ define(function(require , exports){
 		_this.init = function(originalSelectBox){
 			//EX.debug("SelectBox init");
 			_originalSelectBox = originalSelectBox;
-			_originalSelectBox.is_experCSS_designUI_selectBox = true;
+			_originalSelectBox.is_exUIKit_selectBox = true;
 			_selectFocusBox = document.createElement("span");
 			_selectFocusBox.className = ClassOf.SELECTION;
 			EXElement.addClass( _this , ClassOf.SELECTBOX );
@@ -259,7 +259,11 @@ define(function(require , exports){
 			EXEventListener.add( _this , "mouseover" , interactionDesignSelectBoxEventHandler);
 			EXEventListener.add( _this , "mouseout" , interactionDesignSelectBoxEventHandler);
 			EXEventListener.add( _originalSelectBox , "change" , interactionOriginalEventHandler);
-			EXEventListener.add( _originalSelectBox , "DOMSubtreeModified" , interactionOriginalEventHandler);
+			if(_originalSelectBox.addEventListener){
+				EXEventListener.add( _originalSelectBox , "DOMSubtreeModified" , domChangeEventHandler);
+			}else if(_originalSelectBox.attachEvent){
+				_originalSelectBox.attachEvent( "onpropertychange" , domChangeEventHandler);
+			}
 			EXEventListener.add( _selectOptionGroup , EventModel.OPTION_SELECTED , interactionSelectOptionGroupEventHandler);
 
 			_autoCloseTimer = new EXTimer(800 , 1);
@@ -359,15 +363,15 @@ define(function(require , exports){
 		function interactionOriginalEventHandler(evt){
 			//EX.debug("SelectBox interactionOriginalEventHandler" , evt.type);
 			switch(evt.type){
-				case "DOMSubtreeModified" :
-					//originalSelectBox 의 disabled 와 같은 속성이 변경되거나 부여될 때 이벤트
-					_this.setDisabled(_originalSelectBox.disabled);
-					break;
 				case "change" :
 					var optionText = _selectOptionGroup.optionSelectByIndex(_originalSelectBox.selectedIndex);
 					_selectFocusBox.innerHTML = optionText;
 					break;
 			}
+		}
+
+		function domChangeEventHandler(evt){
+			_this.setDisabled(_originalSelectBox.disabled);
 		}
 
 		/**
@@ -416,9 +420,14 @@ define(function(require , exports){
 				}
 				_this.setDisabled(_originalSelectBox.disabled);
 				if(_originalSelectBox != null){
-					_originalSelectBox.is_experCSS_designUI_selectBox = false;
+					_originalSelectBox.is_exUIKit_selectBox = false;
+					EXElement.removeClass( _originalSelectBox , ClassOf.SELECTBOX_ORIGINAL );
 					EXEventListener.remove( _originalSelectBox , "change" , interactionOriginalEventHandler);
-					EXEventListener.remove( _originalSelectBox , "DOMSubtreeModified" , interactionOriginalEventHandler);
+					if(_originalSelectBox.addEventListener){
+						EXEventListener.remove( _originalSelectBox , "DOMSubtreeModified" , domChangeEventHandler);
+					}else if(_originalSelectBox.attachEvent){
+						_originalSelectBox.detachEvent("DOMSubtreeModified" , domChangeEventHandler);
+					}
 					var parentNode = _originalSelectBox.parentNode;
 					parentNode.replaceChild( _originalSelectBox , _this );
 					//parentNode.removeChild(_this);

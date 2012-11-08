@@ -10,112 +10,134 @@
 	EX.includeBegin("../../experJS");
 	EX.include("events/EXEventListener");
 	EX.include("ui/EXSelectBox");
+	EX.include("utils/EXMath");
+	EX.include("utils/EXString");
 	EX.includeEnd();
 	EX.ready(function(){
-		
-		EXSelectBox.init();
-return;
-		var _testSelectBox = document.getElementById("testSelectBox");
-		setTimeout(function(){
-			//_testSelectBox.disabled = true;
-			//_testSelectBox.innerHTML ="<option selected='selected'>갱신갱신1</option><option>갱신2</option>";
 
-			var option = document.createElement("option");
-			option.innerHTML = "optionoption"
-			_testSelectBox.appendChild(option);
+		EXSelectBox.init(); // EXSelectBox initialize
 
-			//EXSelectBox.destroy();
-			//EXSelectBox.init();
-			EXSelectBox.remake(_testSelectBox);
-		} , 2000);
 	});
 })();
+
+
+
+function option1Change(){
+	remakeSelectBox( document.getElementById("testSelectBox1") );
+}
+function option2Change(){
+	remakeSelectBox( document.getElementById("testSelectBox2") );
+}
+
+function remakeSelectBox(selectBox){
+	selectBox.innerHTML = "";
+	var len = EXMath.getRandomToInt(1 , 10);
+	var option = null;
+	var charLen = 0;
+	var optionChar = "";
+	for(var i = 0 ; i < len ; i +=1 ){
+		option = document.createElement("option");
+		optionChar = "";
+		charLen = EXMath.getRandomToInt(3 , 12);
+		for(var k = 0 ; k < charLen ; k += 1){
+			optionChar = optionChar + i.toString();
+		}
+		option.value = optionChar;
+		option.innerHTML = optionChar;
+		selectBox.appendChild(option);
+	}
+	EXSelectBox.remake(selectBox); // @param selectBox {HTMLSelectElement} 지정된 셀렉트 박스만 바꿈.
+}
+
+/**
+incomplete support IE ~9
+not support FireFox(2012.11.07) https://developer.mozilla.org/en-US/docs/Mozilla_event_reference
+*/
+function option4Abled(){
+	var selectBox4 = document.getElementById("testSelectBox4");
+	if(selectBox4.disabled == true){
+		selectBox4.disabled = false;
+	}else{
+		selectBox4.disabled = true;
+	}
+	EXSelectBox.remake(selectBox4); // solution. remake selectbox :)
+}
+
+var toggleDestroy = false;
+function toggleEXSelectBox(){
+	if(toggleDestroy == true){
+		EXSelectBox.init(); 
+	}else{
+		EXSelectBox.destroy(); 
+	}
+	toggleDestroy = !toggleDestroy;
+}
+
+
+function testSubmit(){
+	var testForm = document.getElementById("testForm");
+	document.charset = testForm.acceptCharset;
+	testForm.submit();
+}
+
 </script>
 
 <style>
-/*
-.exUIKit_selectBox {}
-.exUIKit_selectBox.original { position:absolute; left:-9999px; }
-
-.exUIKit_selectBox.selectBox { display:inline-block; position:relative; vertical-align:middle; z-index:1; cursor:pointer; }
-.exUIKit_selectBox.selectBox .selection { display:inline-block; position:absolute; text-indent:8px; border:1px solid #cccccc; overflow:hidden; background:#ffffff url("../images/ui/jsui_select_normal.png") right 50% no-repeat; }
-.exUIKit_selectBox.selectBox .optionGroup { padding:0; margin:0; display:none; position:absolute; overflow:hidden; overflow-y:auto; border:1px solid #cccccc; border-top:none; }
-.exUIKit_selectBox.selectBox .optionGroup .option { width:100%; text-indent:8px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; border-top:1px solid #cccccc; background-color:#ffffff; }
-.exUIKit_selectBox.selectBox .optionGroup .option.selected { background-color:#ccdcec; }
-.exUIKit_selectBox.selectBox.open { z-index:2; }
-.exUIKit_selectBox.selectBox.open .selection { background-image:url("../images/ui/jsui_select_open.png");  }
-.exUIKit_selectBox.selectBox.open .optionGroup { display:block; }
-.exUIKit_selectBox.selectBox.disabled {  }
-.exUIKit_selectBox.selectBox.disabled .selection { color:#999999; background-image:url("../images/ui/jsui_select_disabled.png"); background-color:#f5f5f5; }
-*/
-.exUIKit_selectBox { visibility:hidden; font-family:"Arial" , "Malgun Gothic"; font-size:12px;  }
-.exUIKit_selectBox.original { position:absolute; left:-9999px; }
-
-.exUIKit_selectBox.selectBox { visibility:visible; display:inline-block; position:relative; vertical-align:middle; z-index:1; cursor:pointer; }
-.exUIKit_selectBox.selectBox .selection { 
-	display:inline-block; position:absolute; text-indent:8px; overflow:hidden; 
-	border:1px solid #dddddd; border-radius:3px; 
-	background: #eeeeee; /* Old browsers */
-	background: -moz-linear-gradient(top, #ffffff 0%, #eeeeee 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #ffffff 0%,#eeeeee 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #ffffff 0%,#eeeeee 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #ffffff 0%,#eeeeee 100%); /* IE10+ */
-	background: linear-gradient(to bottom, #ffffff 0%,#eeeeee 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
-}
-.exUIKit_selectBox.selectBox .optionContainer { 
-	padding:10px 0; margin-top:1px;  position:absolute; overflow:hidden; 
-	border:1px solid #dddddd; border-radius:0 0 10px 10px; 
-	background: #eeeeee;
-	box-shadow:4px 4px 10px rgba(0,0,0,0.1); 
-}
-.exUIKit_selectBox.selectBox .optionScrollView { overflow:hidden; height:70px; }
-.exUIKit_selectBox.selectBox .optionGroup { padding:0;  margin:0; overflow:hidden; line-height:22px; width:100%; }
-.exUIKit_selectBox.selectBox .optionGroup .option { 
-	margin:0 10px 0 5px; text-indent:8px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; 
-	border-bottom:1px solid #ffffff; 
-}
-.exUIKit_selectBox.selectBox .optionGroup .option:hover { background-color:#eeeeee; }
-.exUIKit_selectBox.selectBox .optionGroup .option.selected { 
-	background-color:#ccdcec; 
-}
-
-.exUIKit_selectBox.selectBox.open { z-index:2; }
-.exUIKit_selectBox.selectBox.open .selection { border-bottom:none; border-radius:4px 4px 0 0; }
-.exUIKit_selectBox.selectBox.open .optionContainer { display:block !important; border-top:none; }
-.exUIKit_selectBox.selectBox.disabled {  }
-.exUIKit_selectBox.selectBox.disabled .selection { color:#999999; background-color:#f5f5f5; }
-
-/*
-.exUIKit_selectBox.selectBox .optionScrollView .experCSS_scrollView_uiBarContainer { right: -5px; }
-*/
-
+.exampleBox { padding:20px; border:1px dotted #999999; }
+select.exUIKit_selectBox { visibility:visible !important; position:static  !important; left:0  !important; } /* for example */
 </style>
 
 </head>
 <body>
 	<div>
-		<select id="testSelectBox" class="exUIKit_selectBox">
-			<option>1111</option>
-			<option>2222222222</option>
-			<option>3333</option>
-		</select>
-		<select id="testSelectBox2" class="exUIKit_selectBox">
-			<option>312312</option>
-			<option>한글입니당</option>
-			<option>3312312333</option>
-			<option>11111</option>
-			<option>22222</option>
-			<option>33333</option>
-		</select>
+		<button onclick="option1Change()">selectBox1 option change&remake test</button>
+		<button onclick="option2Change()">selectBox2 option change&remake test</button>
+		<br/>
+		<button onclick="option4Abled()" title="incomplete support IE ~9 and not support FireFox. But, i'm suggest solution in a source code">selectBox4 disabled test</button>
+		<br/>
+		<button onclick="toggleEXSelectBox()">toggle init&destroy test</button>
+		<br/>
+		<button onclick="testSubmit()">submit test</button>
 	</div>
-	<!--
-	<div style="width:100px; height:100px; overflow:hidden; border:2px solid #ff0000; border-radius:10px;">
-		<div style="padding:20px; background-color:#0000ff;">123</div>
-		<div style="padding:20px; background-color:#0000ff;">123</div>
-		<div style="padding:20px; background-color:#0000ff;">123</div>
-	</div>
-	//-->
+
+	<form id="testForm" accept-charset="utf-8">
+		<div class="exampleBox">
+			<select id="testSelectBox1" name="selectBox1" class="exUIKit_selectBox">
+				<option>가</option>
+				<option>나나</option>
+				<option>다다다</option>
+				<option>안녕하세요</option>
+				<option>이윤석 입니다.</option>
+			</select>
+		</div>
+
+		<div class="exampleBox">
+			<select id="testSelectBox2" name="selectBox2" class="exUIKit_selectBox">
+				<option>AA</option>
+				<option>BBBB</option>
+				<option>CCCCCC</option>
+				<option>Hello javascript</option>
+				<option>molgga</option>
+			</select>
+		</div>
+		
+		<div class="exampleBox">
+			<select id="testSelectBox3" name="selectBox3" class="exUIKit_selectBox">
+				<option>123</option>
+				<option>456</option>
+				<option selected="selected">7890</option>
+			</select>
+			<select id="testSelectBox4" name="selectBox4" class="exUIKit_selectBox" disabled="disabled">
+				<option>11111111</option>
+				<option>22222222</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+			</select>
+		</div>
+	</form>
+
 </body>
 </html>

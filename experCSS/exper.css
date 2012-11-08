@@ -1,54 +1,57 @@
 @charset "utf-8";
 
-.experCSS {}
-.experCSS_layerDom_body {}
-.experCSS_layerDom_body .append {}
-.experCSS_layerDom_body .remove { display:none; width:0px; height:0px; overflow:hidden; }
-.experCSS_layerDom_layer { position:absolute; top:0; left:0; width:100%; }
-.experCSS_layerDom_layer .dim { position:absolute; top:0; left:0; width:100%; height:100%; background-color:#000000; }
-.experCSS_layerDom_layer .container { position:absolute; top:0; left:0; overflow:hidden; }
-.experCSS_layerDom_layer .container .content { visibility:hidden; }
-.experCSS_layerDom_layer .container .closeBtn { 
-	position:fixed; top:10px; right:10px; width:40px; height:40px; visibility:hidden; cursor:pointer; 
-	background:url("./images/EXLayerDOM/close_btn.gif") no-repeat;
-}
-.experCSS_layerDom_layer .container .closeBtn:hover { 
-	background:url("./images/EXLayerDOM/close_btn_hover.gif") no-repeat;
-}
-.experCSS_layerDom_layer .container .progress { 
-	position:absolute; top:50%; left:50%; margin:-18px 0 0 -18px; width:36px; height:36px; 
-	border-radius:5px; background:#222222 url("./images/EXLayerDOM/progress_loading.gif") no-repeat 50% 50%; 
-}
-.experCSS_layerDom_layer .container .framei { margin:0; padding:0; width:100%; height:100%; border:none; }
+.exUIKit_layerDom_body {}
+.exUIKit_layerDom_body .append {}
+.exUIKit_layerDom_body .remove { display:none; width:0px; height:0px; overflow:hidden; }
+.exUIKit_layerDom_layer { position:absolute; top:0; left:0; width:100%; }
+.exUIKit_layerDom_layer .dim { position:absolute; top:0; left:0; width:100%; height:100%; background-color:#000000; }
+.exUIKit_layerDom_layer .container { position:absolute; top:0; left:0; overflow:hidden; }
+.exUIKit_layerDom_layer .container .content { visibility:hidden; }
+.exUIKit_layerDom_layer .container .closeBtn { position:fixed; top:10px; right:10px; width:40px; height:40px; visibility:hidden; cursor:pointer; background:url("./images/EXLayerDOM/close_btn.gif") no-repeat; }
+.exUIKit_layerDom_layer .container .closeBtn:hover {  background:url("./images/EXLayerDOM/close_btn_hover.gif") no-repeat; }
+.exUIKit_layerDom_layer .container .progress { position:absolute; top:50%; left:50%; margin:-18px 0 0 -18px; width:36px; height:36px; border-radius:5px; background:#222222 url("./images/EXLayerDOM/progress_loading.gif") no-repeat 50% 50%; }
+.exUIKit_layerDom_layer .container .framei { margin:0; padding:0; width:100%; height:100%; border:none; }
 
 
+.exUIKit_scrollView { position:absolute; top:0; right:0; width:5px; cursor:pointer; background-color:#eeeeee; }
+.exUIKit_scrollView.needless { display:none; }
+.exUIKit_scrollView.disable { display:none; }
+.exUIKit_scrollView:hover .uiBar { background-color:#ff0000; }
+.exUIKit_scrollView .uiBar { position:absolute; right:0px; width:100%; background-color:#707070; }
+.exUIKit_scrollView .uiBar.activate { background-color:#ff0000; }
+.exUIKit_scrollView .uiArrow { position:absolute; top:0; left:0; }
+.exUIKit_scrollView .uiArrow.up { }
+.exUIKit_scrollView .uiArrow.down { top:auto; bottom:0; }
 
-.experCSS_scrollView_uiBarContainer { position:absolute; top:0; right:0; width:5px; cursor:pointer; background-color:#eeeeee; }
-.experCSS_scrollView_uiBarContainer.needless { display:none; }
-.experCSS_scrollView_uiBarContainer.disable { display:none; }
-.experCSS_scrollView_uiBar { position:absolute; right:0px; width:5px; background-color:#707070; }
-.experCSS_scrollView_uiBarContainer:hover .experCSS_scrollView_uiBar { background-color:#ff0000; }
-.experCSS_scrollView_uiBar.activate { background-color:#ff0000; }
-
-
-
-.experCSS_toast_alternate { 
+.exUIKit_toast { 
 	position:fixed; bottom:20px; left:50%; padding:2px 10px 4px 10px; 
 	text-align:center; line-height:1.6em; font-size:1em; color:#ffffff; 
 	background-color:#444444; 0px 5px 8px rgba(0,0,0,0.3); 
 }
 
-
-
+/*
+.exUIKit_checkBox {}
+.exUIKit_checkBox:hover { background-color:#ff0000; }
 .exUIKit_checkBox.original { position:absolute; left:-99999px; }
 .exUIKit_checkBox.checkBtn {}
-.exUIKit_checkBox:hover { background-color:#ff0000; }
 .exUIKit_checkBox.checkBtn .checkBox { display:inline-block; width:17px; height:17px; vertical-align:middle; background:url("./images/EXCheckBox/normal.png") 0 0 no-repeat; }
 .exUIKit_checkBox.checkBtn .checkBox.checked {  background:url("./images/EXCheckBox/checked.png") 0 0 no-repeat; }
 .exUIKit_checkBox.checkBtn.disabled .checkBox { background-image:url("./images/EXCheckBox/disabled.png"); }
 .exUIKit_checkBox.checkBtn.disabled .checkBox.checked { background-image:url("./images/EXCheckBox/disabled_checked.png"); }
+*/
 
+.exUIKit_checkBox { visibility:hidden; }
+.exUIKit_checkBox.original { position:absolute; left:-99999px; }
+.exUIKit_checkBox.checkBtn { visibility:visible; display:inline-block; vertical-align:middle; width:16px; height:16px; cursor:pointer; }
+.exUIKit_checkBox.checkBtn .checkBox { display:inline-block; width:14px; height:14px; border:1px solid #d0d0d0; background:#ffffff url("./images/EXCheckBox/checked.gif") no-repeat center top; 
+	-webkit-transition: color,background-color 0.2s;
+	-moz-transition: color,background-color 0.2s;
+}
+.exUIKit_checkBox.checkBtn .checkBox.checked { border-color:#444444; background-color:#444444; background-position:center bottom; }
+.exUIKit_checkBox.checkBtn.disabled .checkBox { border-color:#bbbbbb; background-color:#d8d8d8; }
+.exUIKit_checkBox.checkBtn.disabled .checkBox.checked { background-position:center bottom; }
 
+/*
 .exUIKit_radioGroup {}
 .exUIKit_radioGroup.original { position:absolute; left:-9000px; }
 .exUIKit_radioGroup.radioBtn { }
@@ -56,12 +59,31 @@
 .exUIKit_radioGroup.radioBtn .radio.checked { background:url("../../experCSS/images/EXRadioButton/checked.png") 0 0 no-repeat; }
 .exUIKit_radioGroup.radioBtn.disabled .radio { background-image:url("../../experCSS/images/EXRadioButton/disabled.png"); }
 .exUIKit_radioGroup.radioBtn.disabled .radio.checked { background-image:url("../../experCSS/images/EXRadioButton/checked.png"); }
-
-/*
-.experCSS_designUI_checkBox.checkBtn .checkBox { -webkit-transition: -webkit-transform 0.2s; }
-.experCSS_designUI_checkBox.checkBtn .checkBox.checked { -webkit-transform:translateX(3px); }
-.experCSS_designUI_radioGroup.radioBtn .radio { -webkit-transition: -webkit-transform 0.3s; }
-.experCSS_designUI_radioGroup.radioBtn .radio.checked { -webkit-transform:translateX(3px); }
-.exUIKit_checkBox.checkBtn .checkBox { -webkit-transform:scale(0.5,0.5); -webkit-transition: -webkit-transform 0.1s; }
-.exUIKit_checkBox.checkBtn .checkBox.checked { -webkit-transform:scale(1,1); }
 */
+.exUIKit_radioGroup { visibility:hidden; }
+.exUIKit_radioGroup.original { position:absolute; left:-9000px; }
+.exUIKit_radioGroup.radioBtn { visibility:visible; display:inline-block; vertical-align:bottom; width:16px; height:16px; cursor:pointer; }
+.exUIKit_radioGroup.radioBtn .radio { display:inline-block; width:14px; height:14px; border:1px solid #d0d0d0; border-radius:7px; background:#ffffff url("./images/EXRadioButton/check.png") no-repeat center top; 
+	-webkit-transition: color,background-color 0.2s; 
+	-moz-transition: color,background-color 0.2s;
+}
+.exUIKit_radioGroup.radioBtn .radio.checked { border-color:#444444; background-color:#444444; background-position:center bottom; }
+.exUIKit_radioGroup.radioBtn.disabled .radio { border-color:#bbbbbb; background-color:#d8d8d8; }
+.exUIKit_radioGroup.radioBtn.disabled .radio.checked { background-position:center bottom; }
+
+.exUIKit_selectBox { visibility:hidden; height:26px; line-height:26px; font-family:"Arial" , "Malgun Gothic"; font-size:14px; vertical-align:middle; }
+.exUIKit_selectBox.original { position:absolute; left:-9999px; }
+.exUIKit_selectBox.selectBox { visibility:visible; display:inline-block; position:relative; vertical-align:middle; z-index:1; cursor:pointer; }
+.exUIKit_selectBox.selectBox .selection { display:inline-block; position:absolute; overflow:hidden; text-indent:8px; border:1px solid #d0d0d0; background:#ffffff url("../../experCSS/images/EXSelectBox/arrow.gif") no-repeat right bottom; -webkit-transition: background 0.3s; }
+.exUIKit_selectBox.selectBox .optionContainer { padding:5px 0; margin-top:1px;  position:absolute; overflow:hidden;  border:1px solid #cccccc; background: #ffffff; box-shadow:4px 4px 10px rgba(0,0,0,0.1); }
+.exUIKit_selectBox.selectBox .optionScrollView { overflow:hidden; height:93px; }
+.exUIKit_selectBox.selectBox .optionScrollView .exUIKit_scrollView { right:-3px; }
+.exUIKit_selectBox.selectBox .optionGroup { padding:0;  margin:0; overflow:hidden; line-height:30px; width:100%; }
+.exUIKit_selectBox.selectBox .optionGroup .option {  margin:1px 5px 0 5px; text-indent:8px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;  -webkit-transition: color,background-color 0.2s; }
+.exUIKit_selectBox.selectBox .optionGroup .option:hover { color:#ffffff; background-color:#9c9ea0; }
+.exUIKit_selectBox.selectBox .optionGroup .option.selected { color:#ffffff; background-color:#3399ff; }
+.exUIKit_selectBox.selectBox.open { z-index:2; }
+.exUIKit_selectBox.selectBox.open .selection { color:#ffffff; font-weight:bold; letter-spacing:-1px; border:1px solid #444444; background-color:#444444; background-position:right top; }
+.exUIKit_selectBox.selectBox.open .optionContainer { display:block !important; border-top:none; }
+.exUIKit_selectBox.selectBox.disabled { cursor:auto; }
+.exUIKit_selectBox.selectBox.disabled .selection { color:#999999; background-color:#f5f5f5; }

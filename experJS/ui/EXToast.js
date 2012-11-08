@@ -45,7 +45,7 @@ define(function(require, exports){
 	var previewMessage = "";
 
 	var ClassOf = {
-		ALTERNATE : "experCSS_toast_alternate"
+		ALTERNATE : "exUIKit_toast"
 	}
 	
 	/**

@@ -4,7 +4,7 @@ define(function(require , exports){
 	var EXEventListener = require("../events/EXEventListener");
 
 	var ClassOf = {
-		CHECKBOX : "experCSS_designUI_checkBox"
+		CHECKBOX : "exUIKit_checkBox"
 		, ORIGINAL_CHECKBOX_ADD : "original"
 		, DESIGN_CHECKBOX : "checkBtn"
 		, DESIGN_CHECKBOX_VIEW : "checkBox"

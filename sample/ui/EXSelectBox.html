@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="../../experCSS/exper.css" />
+<script type="text/javascript" src="../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../experJS");
+	EX.include("events/EXEventListener");
+	EX.include("ui/EXSelectBox");
+	EX.includeEnd();
+	EX.ready(function(){
+		
+		EXSelectBox.init();
+return;
+		var _testSelectBox = document.getElementById("testSelectBox");
+		setTimeout(function(){
+			//_testSelectBox.disabled = true;
+			//_testSelectBox.innerHTML ="<option selected='selected'>갱신갱신1</option><option>갱신2</option>";
+
+			var option = document.createElement("option");
+			option.innerHTML = "optionoption"
+			_testSelectBox.appendChild(option);
+
+			//EXSelectBox.destroy();
+			//EXSelectBox.init();
+			EXSelectBox.remake(_testSelectBox);
+		} , 2000);
+	});
+})();
+</script>
+
+<style>
+/*
+.exUIKit_selectBox {}
+.exUIKit_selectBox.original { position:absolute; left:-9999px; }
+
+.exUIKit_selectBox.selectBox { display:inline-block; position:relative; vertical-align:middle; z-index:1; cursor:pointer; }
+.exUIKit_selectBox.selectBox .selection { display:inline-block; position:absolute; text-indent:8px; border:1px solid #cccccc; overflow:hidden; background:#ffffff url("../images/ui/jsui_select_normal.png") right 50% no-repeat; }
+.exUIKit_selectBox.selectBox .optionGroup { padding:0; margin:0; display:none; position:absolute; overflow:hidden; overflow-y:auto; border:1px solid #cccccc; border-top:none; }
+.exUIKit_selectBox.selectBox .optionGroup .option { width:100%; text-indent:8px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; border-top:1px solid #cccccc; background-color:#ffffff; }
+.exUIKit_selectBox.selectBox .optionGroup .option.selected { background-color:#ccdcec; }
+.exUIKit_selectBox.selectBox.open { z-index:2; }
+.exUIKit_selectBox.selectBox.open .selection { background-image:url("../images/ui/jsui_select_open.png");  }
+.exUIKit_selectBox.selectBox.open .optionGroup { display:block; }
+.exUIKit_selectBox.selectBox.disabled {  }
+.exUIKit_selectBox.selectBox.disabled .selection { color:#999999; background-image:url("../images/ui/jsui_select_disabled.png"); background-color:#f5f5f5; }
+*/
+.exUIKit_selectBox { visibility:hidden; font-family:"Arial" , "Malgun Gothic"; font-size:12px;  }
+.exUIKit_selectBox.original { position:absolute; left:-9999px; }
+
+.exUIKit_selectBox.selectBox { visibility:visible; display:inline-block; position:relative; vertical-align:middle; z-index:1; cursor:pointer; }
+.exUIKit_selectBox.selectBox .selection { 
+	display:inline-block; position:absolute; text-indent:8px; overflow:hidden; 
+	border:1px solid #dddddd; border-radius:3px; 
+	background: #eeeeee; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #eeeeee 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ffffff 0%,#eeeeee 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ffffff 0%,#eeeeee 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #ffffff 0%,#eeeeee 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #ffffff 0%,#eeeeee 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
+}
+.exUIKit_selectBox.selectBox .optionContainer { 
+	padding:10px 0; margin-top:1px;  position:absolute; overflow:hidden; 
+	border:1px solid #dddddd; border-radius:0 0 10px 10px; 
+	background: #eeeeee;
+	box-shadow:4px 4px 10px rgba(0,0,0,0.1); 
+}
+.exUIKit_selectBox.selectBox .optionScrollView { overflow:hidden; height:70px; }
+.exUIKit_selectBox.selectBox .optionGroup { padding:0;  margin:0; overflow:hidden; line-height:22px; width:100%; }
+.exUIKit_selectBox.selectBox .optionGroup .option { 
+	margin:0 10px 0 5px; text-indent:8px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; 
+	border-bottom:1px solid #ffffff; 
+}
+.exUIKit_selectBox.selectBox .optionGroup .option:hover { background-color:#eeeeee; }
+.exUIKit_selectBox.selectBox .optionGroup .option.selected { 
+	background-color:#ccdcec; 
+}
+
+.exUIKit_selectBox.selectBox.open { z-index:2; }
+.exUIKit_selectBox.selectBox.open .selection { border-bottom:none; border-radius:4px 4px 0 0; }
+.exUIKit_selectBox.selectBox.open .optionContainer { display:block !important; border-top:none; }
+.exUIKit_selectBox.selectBox.disabled {  }
+.exUIKit_selectBox.selectBox.disabled .selection { color:#999999; background-color:#f5f5f5; }
+
+/*
+.exUIKit_selectBox.selectBox .optionScrollView .experCSS_scrollView_uiBarContainer { right: -5px; }
+*/
+
+</style>
+
+</head>
+<body>
+	<div>
+		<select id="testSelectBox" class="exUIKit_selectBox">
+			<option>1111</option>
+			<option>2222222222</option>
+			<option>3333</option>
+		</select>
+		<select id="testSelectBox2" class="exUIKit_selectBox">
+			<option>312312</option>
+			<option>한글입니당</option>
+			<option>3312312333</option>
+			<option>11111</option>
+			<option>22222</option>
+			<option>33333</option>
+		</select>
+	</div>
+	<!--
+	<div style="width:100px; height:100px; overflow:hidden; border:2px solid #ff0000; border-radius:10px;">
+		<div style="padding:20px; background-color:#0000ff;">123</div>
+		<div style="padding:20px; background-color:#0000ff;">123</div>
+		<div style="padding:20px; background-color:#0000ff;">123</div>
+	</div>
+	//-->
+</body>
+</html>

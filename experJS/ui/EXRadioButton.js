@@ -6,7 +6,7 @@ define(function(require , exports){
 	var EXCustomEvent = require("../events/EXCustomEvent");
 
 	var ClassOf = {
-		RADIO_GROUP : "experCSS_designUI_radioGroup"
+		RADIO_GROUP : "exUIKit_radioGroup"
 		, ORIGINAL_ADD : "original"
 		, DESIGN_RADIO : "radioBtn"
 		, DESIGN_RADIO_VIEW : "radio"

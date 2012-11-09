@@ -40,6 +40,9 @@ define(function(require , exports){
 	@public
 	*/
 	exports.init = function(){
+		if(window.EXEventListener != undefined){
+			EXEventListener = window.EXEventListener;
+		}
 		_designRadioButtonArr = [];
 		var radioButtonArr = CssQuery( "." + ClassOf.RADIO_GROUP );
 		var len = radioButtonArr.length;

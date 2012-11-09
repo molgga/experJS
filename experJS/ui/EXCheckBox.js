@@ -20,6 +20,9 @@ define(function(require , exports){
 	@param originalCheckBoxClassName {String}
 	*/
 	exports.init = function(originalCheckBoxClassName){
+		if(window.EXEventListener != undefined){
+			EXEventListener = window.EXEventListener;
+		}
 		if(originalCheckBoxClassName != undefined){
 			ClassOf.CHECKBOX = originalCheckBoxClassName;
 		}

@@ -83,7 +83,7 @@
 .exUIKit_selectBox.selectBox .optionGroup .option:hover { color:#ffffff; background-color:#9c9ea0; }
 .exUIKit_selectBox.selectBox .optionGroup .option.selected { color:#ffffff; background-color:#3399ff; }
 .exUIKit_selectBox.selectBox.open { z-index:2; }
-.exUIKit_selectBox.selectBox.open .selection { color:#ffffff; font-weight:bold; letter-spacing:-1px; border:1px solid #444444; background-color:#444444; background-position:right top; }
+.exUIKit_selectBox.selectBox.open .selection { color:#ffffff; border:1px solid #444444; background-color:#444444; background-position:right top; }
 .exUIKit_selectBox.selectBox.open .optionContainer { display:block !important; border-top:none; }
 .exUIKit_selectBox.selectBox.disabled { cursor:auto; }
 .exUIKit_selectBox.selectBox.disabled .selection { color:#999999; background-color:#f5f5f5; }

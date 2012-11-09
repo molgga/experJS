@@ -51,6 +51,9 @@ define(function(require , exports){
 	@public
 	*/
 	exports.init = function(){
+		if(window.EXEventListener != undefined){
+			EXEventListener = window.EXEventListener;
+		}
 		_designSelectBoxArr = [];
 		var selectArr = CssQuery("." + ClassOf.SELECTBOX);
 		var len = selectArr.length;
@@ -394,7 +397,7 @@ define(function(require , exports){
 
 			_originalSelectBox.options[index].selected = "selected";
 			if(_originalSelectBox.onchange) _originalSelectBox.onchange();
-			EXEventListener.dispatch( _originalSelectBox , new EXCustomEvent("change") );
+			EXEventListener.dispatch( _originalSelectBox , new EXCustomEvent("change"));
 			EXEventListener.dispatch( EventModel , new EXCustomEvent( EventModel.CLOSE_SELECTBOX , { selectBox : _this } ));
 		}
 

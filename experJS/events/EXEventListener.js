@@ -331,6 +331,7 @@ define(function(require , exports){
 		}else{
 			evt = convertEventPropertyForIE(evt || window.event , evt);
 		}
+		_domPropSelectBox = CssQuery.getSingle("#domPropSelectBox");
 		var bindQueue = null;
 		var cnt;
 		if(target == null){

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="../../experCSS/exper.css" />
+<script type="text/javascript" src="../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../experJS");
+	EX.include("transitions/EXTween");
+	EX.include("transitions/EXEasing");
+	EX.include("events/EXEventListener");
+	EX.include("events/EXCustomEvent");
+	EX.include("utils/EXCompare");
+	EX.include("utils/EXString");
+	EX.include("utils/EXElement");
+	EX.include("ui/EXSelectBox");
+	EX.include("ui/EXCheckBox");
+	EX.include("ui/EXScrollView");
+	EX.include("ui/EXToast");
+	EX.include("vender/CssQuery");
+	EX.includeEnd();
+	EX.ready(function(){
+		EXSelectBox.init();
+		EXCheckBox.init();
+		
+		var EventModel = {
+			CHANGE_DURATION		: "EventModel.CHANGE_DURATION"
+			, CHANGE_PROPERTY	: "EventModel.CHANGE_PROPERTY"
+			, CHANGE_EASING	: "EventModel.CHANGE_EASING"
+		};
+
+		function TweenController(){
+			var _this = this;
+			var _propertyHandler = null;
+			var _durationHandler = null;
+			var _sourceCodeView= null;
+
+			var _propertyScrollView = null;
+			
+			var _domViewProperty = null;
+			var _domViewPropertyScrollView = null;
+			var _domExecuteTween = null;
+			var _domExecuteClear = null;
+			var _tweenObject = null;
+			var _tweenProperty = null;
+			var _tweenDuration = 1;
+			var _tweenEasing = null;
+
+
+			_this.init = function(){
+				_tweenProperty = {
+					top : 100 
+					, left : 100
+					, width : 200
+					, height : 200
+				};
+				_tweenDuration = 1;
+				_tweenEasing = "EXEasing.easeInOutExpo";
+
+				_domViewProperty = CssQuery.getSingle("#viewProperty");
+				_domViewPropertyScrollView = CssQuery.getSingle("#viewPropertyScrollView");
+
+				_domExecuteTween = CssQuery.getSingle("#domExecuteTween");
+				_domExecuteClear = CssQuery.getSingle("#domExecuteClear");
+				_tweenObject = CssQuery.getSingle("#tweenObject");
+				EXEventListener.add( EventModel , EventModel.CHANGE_DURATION , catchedPublicEventHandler);
+				EXEventListener.add( EventModel , EventModel.CHANGE_PROPERTY , catchedPublicEventHandler);
+				EXEventListener.add( EventModel , EventModel.CHANGE_EASING , catchedPublicEventHandler);
+				EXEventListener.add( _domExecuteTween , "click" , interactionExecuteTweenHandler);
+				EXEventListener.add( _domExecuteClear , "click" , interactionExecuteClearHandler);
+				
+				_durationHandler = new DurationHandler();
+				_propertyHandler = new PropertyHandler();
+				_sourceCodeView = new SourceCodeView();
+
+				EXEventListener.add(window , "resize" , resizeHandler );
+
+				_sourceCodeView.init();
+				_durationHandler.init();
+				_propertyHandler.init();
+				
+				_propertyScrollView = new EXScrollView();
+				_propertyScrollView.init( _domViewProperty , _domViewPropertyScrollView );
+			}
+			function catchedPublicEventHandler(evt){
+				//EX.debug("TweenController" , "catchedPublicEventHandler" , evt.type);
+				switch(evt.type){
+					case EventModel.CHANGE_PROPERTY :
+						var dataObject = evt.dataObject;
+						_tweenProperty[dataObject.property] = dataObject.value;
+
+						var sourceCode = getTweenSourceCode();
+						if(sourceCode != null){
+							_sourceCodeView.insert(sourceCode);
+						}
+						break;
+					case EventModel.CHANGE_EASING :
+						//var prevEasing = _tweenEasing;
+						var sourceCode = _sourceCodeView.getCode();
+						_tweenEasing = evt.dataObject.value;
+
+						//sourceCode = EXString.replaceAll(sourceCode , prevEasing , evt.dataObject.value );
+						var len = sourceCode.length;
+						var startIndex = sourceCode.indexOf("ease:");
+						var lastIndex = sourceCode.indexOf("}");
+						var tempStr = sourceCode.substring(0, startIndex+5);
+						sourceCode = tempStr + _tweenEasing + sourceCode.substring(lastIndex,len);
+						_sourceCodeView.insert(sourceCode);
+						break;
+
+					case EventModel.CHANGE_DURATION :
+						_tweenDuration = evt.dataObject.duration;
+
+						var sourceCode = getTweenSourceCode();
+						if(sourceCode != null){
+							_sourceCodeView.insert(sourceCode);
+						}
+						break;
+				}
+			}
+			function getTweenSourceCode(){
+				var sourceCode = null;
+				var key = null;
+				var property = ""
+				for(key in _tweenProperty){
+					property = property + key + ":" + _tweenProperty[key] +" , ";
+				}
+				if(property != ""){
+					property = property.substring(0 , property.length-2);
+					sourceCode = "EXTween.to( _tweenObject , "+ _tweenDuration +" , { "+ property +" , ease:"+ _tweenEasing +"});";
+				}
+				return sourceCode;
+			}
+
+			function interactionExecuteTweenHandler(evt){
+				var sourceCode = _sourceCodeView.getCode();
+				if(sourceCode != null){
+					eval(sourceCode);
+				}
+			}
+			function interactionExecuteClearHandler(evt){
+				if(_tweenProperty != null){
+					var key = null;
+					for(key in _tweenProperty){
+						delete _tweenProperty[key];
+					}
+					_tweenProperty = {};
+				}
+				if(_durationHandler != null){
+					_durationHandler.destroy();
+					_durationHandler.init();
+				}
+				if(_propertyHandler != null){
+					_propertyHandler.destroy();
+					_propertyHandler.init();
+				}
+				_tweenProperty = {
+					top : 100 
+					, left : 100
+					, width : 200
+					, height : 200
+				};
+				_tweenDuration = 1;
+				_tweenEasing = "EXEasing.easeInOutExpo";
+
+				var sourceCode = getTweenSourceCode();
+				console.log(sourceCode);
+				if(sourceCode != null){
+					_sourceCodeView.insert(sourceCode);
+				}
+			}
+			function resizeHandler(evt){
+				if(_propertyScrollView != null){
+					_propertyScrollView.destroy();
+					_propertyScrollView.init( _domViewProperty , _domViewPropertyScrollView );
+				}
+			}
+		};
+
+		function PropertyHandler(){
+			var _this = this;
+			var _domPropSelectBox = null;
+			var _domPropValue = null;
+			var _domEasingSelectBox = null;
+
+			var _domUseColorProperty = null;
+			var _domColorSelectBox = null;
+			var _domColorValue = null;
+
+			var _domDebugMode = null;
+			var _domGlobalInterval = null;
+			var _domGlobalIntervalRender = null;
+
+			_this.init = function(){
+				_domPropSelectBox = CssQuery.getSingle("#domPropSelectBox");
+				_domPropValue = CssQuery.getSingle("#domPropValue");
+				_domEasingSelectBox = CssQuery.getSingle("#domEasingSelectBox");
+				
+				_domUseColorProperty = CssQuery.getSingle("#domUseColorProperty");
+				_domColorSelectBox = CssQuery.getSingle("#domColorSelectBox");
+				_domColorValue = CssQuery.getSingle("#domColorValue");
+
+				_domDebugMode = CssQuery.getSingle("#domDebugMode");
+				_domGlobalInterval = CssQuery.getSingle("#domGlobalInterval");
+				_domGlobalIntervalRender = CssQuery.getSingle("#domGlobalIntervalRender");
+
+				//EXEventListener.add( _domPropSelectBox , "change" , interactionPropetyChangeHandler);
+				EXEventListener.add( _domEasingSelectBox , "change" , interactionEasingChangeHandler);
+				EXEventListener.add( _domPropValue , "blur" , interactionPropetyChangeHandler);
+				if(typeof(console) == "undefined"){
+					_domDebugMode.disabled = "disabled";
+					//EXCheckBox.remake(_domDebugMode);
+				}else{
+					EXEventListener.add( _domDebugMode , "click" , interactionCheckDebugModeHandler);
+				}
+				
+				EXEventListener.add( _domGlobalInterval , "blur" , changeIntervalTweenSpeed );
+				EXEventListener.add( _domGlobalIntervalRender , "blur" , changeIntervalRenderSpeed );
+				
+				EXEventListener.add( _domUseColorProperty , "click" , interactionColorUseCheckHandler );
+				//EXEventListener.add( _domColorSelectBox , "change" , interactionColorPropertyHandler );
+				EXEventListener.add( _domColorValue , "blur" , interactionColorPropertyHandler );
+
+				//interactionEasingChangeHandler(null);
+				//interactionPropetyChangeHandler(null);
+				//interactionColorPropertyHandler(null);
+			};
+			function changeIntervalTweenSpeed(evt){
+				var value = parseFloat(_domGlobalInterval.value);
+				_domGlobalInterval.value = value;
+				EXTween.setGlobalInterval(value);
+			}
+			function changeIntervalRenderSpeed(evt){
+				var value = parseInt(_domGlobalIntervalRender.value);
+				_domGlobalIntervalRender.value = value;
+				EXTween.setGlobalIntervalRender(value);
+			}
+			function interactionCheckDebugModeHandler(evt){
+				var checked = _domDebugMode.checked;
+				EXTween.setDebugMode(checked);
+			}
+
+			function interactionColorUseCheckHandler(evt){
+				var checked = _domUseColorProperty.checked;
+				if(checked == true){
+					_domColorSelectBox.disabled = false;
+					_domColorValue.disabled = false;
+					EXSelectBox.remake(_domColorSelectBox);
+					interactionColorPropertyHandler(null);
+				}else{
+					_domColorSelectBox.disabled = true;
+					_domColorValue.disabled = true;
+					EXSelectBox.remake(_domColorSelectBox);
+				}
+			}
+
+			function interactionColorPropertyHandler(evt){
+				var property = _domColorSelectBox.value;
+				var colorPattern = /\b[0-9a-fA-F]+\b/;
+				var value = _domColorValue.value;
+				if(colorPattern.test(value) == true){
+					value = "0x" + value;
+					EXEventListener.dispatch( EventModel , new EXCustomEvent( EventModel.CHANGE_PROPERTY , {property: property , value: value}));
+				}else{
+					EXToast.message("Only hexadecimal number(string)" , 3);
+					_domColorValue.value = "ff0000";
+					value = "ff0000";
+				}
+			}
+
+			function interactionPropetyChangeHandler(evt){
+				//EX.debug("PropertyHandler" , "interactionPropetyChangeHandler" );
+				var property = _domPropSelectBox.value;
+				var value = parseFloat(_domPropValue.value);
+				if(isNaN(value) == true){
+					_domPropValue.value = 1;
+					value =1;
+				}else{
+					if(value < 0){
+						_domPropValue.value = 1;
+						value = 1;
+					}
+				}
+				EXEventListener.dispatch( EventModel , new EXCustomEvent( EventModel.CHANGE_PROPERTY , {property: property , value: value}));
+			};
+			function interactionEasingChangeHandler(evt){
+				var easing = _domEasingSelectBox.value;
+				EXEventListener.dispatch( EventModel , new EXCustomEvent( EventModel.CHANGE_EASING , {property:"ease" , value: easing }));
+			};
+			_this.destroy = function(){
+				EXEventListener.remove( _domPropValue , "blur" , interactionPropetyChangeHandler);
+				EXEventListener.remove( _domPropSelectBox , "change" , interactionPropetyChangeHandler);
+				EXEventListener.remove( _domEasingSelectBox , "change" , interactionEasingChangeHandler);
+				EXEventListener.remove( _domDebugMode , "click" , interactionCheckDebugModeHandler);
+				EXEventListener.remove( _domGlobalInterval , "blur" , changeIntervalTweenSpeed );
+				EXEventListener.remove( _domGlobalIntervalRender , "blur" , changeIntervalRenderSpeed );
+				EXEventListener.remove( _domUseColorProperty , "click" , interactionColorUseCheckHandler );
+				EXEventListener.remove( _domColorSelectBox , "change" , interactionColorPropertyHandler );
+				EXEventListener.remove( _domColorValue , "blur" , interactionColorPropertyHandler );
+
+				_domPropSelectBox.options[0].selected = "selected";
+				_domEasingSelectBox.options[0].selected = "selected";
+				_domColorSelectBox.options[0].selected = "selected";
+				EXSelectBox.remake(_domPropSelectBox);
+				EXSelectBox.remake(_domEasingSelectBox);
+				EXSelectBox.remake(_domColorSelectBox);
+				_domPropValue.value = 200;
+				_domGlobalInterval.value = 1;
+				_domGlobalIntervalRender.value = 12;
+				_domColorValue.value = "ff0000";
+			};
+		};
+		
+		function DurationHandler(){
+			var _this = this;
+			var _domDuration = null;
+			_this.init = function(){
+				_domDuration = CssQuery.getSingle("#domDuration");
+				EXEventListener.add( _domDuration , "blur" , interactionDurationChangeHandler);
+			};
+			function interactionDurationChangeHandler(evt){
+				var value = parseFloat(_domDuration.value);
+				if(isNaN(value) == true){
+					_domDuration.value = 1;
+					value =1;
+				}else{
+					if(value < 0){
+						_domDuration.value = 1;
+						value = 1;
+					}
+				}
+				EXEventListener.dispatch( EventModel , new EXCustomEvent( EventModel.CHANGE_DURATION , { duration: value}));
+			};
+
+			_this.destroy = function(){
+				EXEventListener.remove( _domDuration , "blur" , interactionDurationChangeHandler);
+				_domDuration.value = 1;
+			};
+		};
+
+		function SourceCodeView(){
+			var _this = this;
+			var _domViewCode = null;
+			var _domSourceCode = null;
+			_this.init = function(){
+				_domViewCode = CssQuery.getSingle("#viewCode");
+				_domSourceCode = CssQuery.getSingle("#domSourceCode");
+
+				EXEventListener.add(_domSourceCode , "focus" , interactionSourceCodeAreaEventHandler);
+				EXEventListener.add(_domSourceCode , "blur" , interactionSourceCodeAreaEventHandler);
+			};
+			function interactionSourceCodeAreaEventHandler(evt){
+				switch(evt.type){
+					case "focus" :
+						EXElement.addClass(_domSourceCode , "focus");
+						break;
+					case "blur" :
+						EXElement.removeClass(_domSourceCode , "focus");
+						break;
+				}
+			};
+			_this.insert = function(sourceCode){
+				_domSourceCode.value = sourceCode;
+				EXTween.killTweensOf(_domViewCode);
+				EXTween.to(_domSourceCode , 0 , { color:0xee8e05 });
+				EXTween.to(_domSourceCode , 0.3 , { delay:0.5 , color:0xbbbbbb });
+			};
+			_this.getCode = function(){
+				return _domSourceCode.value;
+			}
+			_this.destroy = function(){
+			};
+		};
+
+		(new TweenController()).init();
+	});
+})();
+</script>
+<style type="text/css">
+	* {padding:0; margin:0;}
+	html, body{ height:100%; }
+	body { font-family:"Arial" , "Helvetica", "verdana", Sans-serif ; background-color:#323232; overflow:hidden; }
+	#viewProperty { float:left; position:relative; margin-right:10px; width:300px; height:100%; border-right:1px solid #292929; background-color:#2e2e2e;  z-index:20; }
+	#viewProperty dl { padding:15px 0 20px 10px; background-color:#2e2e2e; }
+	#viewProperty dl:hover { background-color:#2a2a2a; }
+	#viewProperty dl > dt { padding-bottom:5px; margin-bottom:5px; font-size:0.75em; line-height:0.75em; font-weight:bold; color:#777777; }
+	#viewProperty dl > dd {  }
+	#viewProperty dl > dd input { height:24px; vertical-align:top; text-align:center; }
+	#viewProperty .execute button { padding:5px 10px 6px 10px; border:none; color:#ffffff; font-size:0.8em; font-weight:bold; background-color:#696969; cursor:pointer; }
+	#viewProperty .execute button.tween { background-color:#3399ff; }
+	#viewProperty .execute button.clear { }
+	#viewProperty .execute button:hover { background-color:#ee8e05; }
+	#viewProperty .method {  }
+	#viewProperty .method > dd{ color:#aaaaaa; font-size:0.8em;  }
+	#viewProperty .method span.check {  }
+	#viewProperty .method span.check label { padding-left:10px; cursor:pointer; }
+	#viewProperty .method div.value { display:block; margin-top:10px; }
+	#viewProperty .method div.value input { width:40px; vertical-align:middle; }
+	#viewProperty .method div.value span { padding:10px; vertical-align:middle; cursor:pointer; }
+	#viewPropertyScrollView { width:100%; }
+	#viewProperty .exUIKit_scrollView { z-index:3; }
+	#viewCopyright { position:absolute; bottom:0; padding:10px; font-size:0.7em; color:#494949; }
+	#viewCopyright a { color:#595959; text-decoration:none; }
+
+	#viewTween { float:left; position:relative; z-index:10; }
+	#domDuration { width:50px; }
+	#domPropValue { width:80px; }
+	#domColorValue { width:80px; }
+	#tweenObject { position:absolute; top:0; left:0; width:40px; height:40px; overflow:hidden; font-size:12px; border:1px solid #ff0000; color:#ffffff; background-color:#f3b24c; }
+	#viewCode { position:absolute; left:301px; right:0; bottom:0; height:60px; border-top:1px solid #222222; background-color:#262626; z-index:30; }
+	#domSourceCode { width:100%; color:#dddddd; font-family:"verdana" , "Helvetica", Sans-serif; outline:none; border:none; background:none; }
+	#domSourceCode.focus { color:#ee8e05 !important; }
+	
+	.exUIKit_toast { z-index:99; 
+		bottom:50%; border:1px solid #dc8282; color:#c02d2d; font-weight:bold;
+		background-color:#f5adad; 0px 5px 8px rgba(0,0,0,0.3); 
+	}
+	.exUIKit_selectBox.selectBox {  }
+	.exUIKit_selectBox.selectBox .optionContainer { box-shadow:5px 5px 10px rgba(0,0,0, 0.5); }
+	.exUIKit_selectBox.selectBox .optionScrollView { height:124px; }
+</style>
+</head>
+<body>
+	<div id="viewProperty">
+		<div id="viewPropertyScrollView">
+			<dl class="duration">
+				<dt>duration</dt>
+				<dd><input id="domDuration" type="text" value="1" title="duration value" /></dd>
+			</dl>
+			<dl class="property">
+				<dt>property</dt>
+				<dd>
+					<select id="domPropSelectBox" class="exUIKit_selectBox" title="property name">
+						<option>width</option>
+						<option>height</option>
+						<option>top</option>
+						<option>left</option>
+						<option>right</option>
+						<option>bottom</option>
+						<option>marginTop</option>
+						<option>marginBottom</option>
+						<option>marginLeft</option>
+						<option>marginRight</option>
+						<option>paddingTop</option>
+						<option>paddingBottom</option>
+						<option>paddingLeft</option>
+						<option>paddingRight</option>
+						<option>borderTopWidth</option>
+						<option>borderBottomWidth</option>
+						<option>borderLeftWidth</option>
+						<option>borderRightWidth</option>
+						<option>delay</option>
+					</select>
+					<input id="domPropValue" type="number" value="200" title="property value" />
+				</dd>
+			</dl>
+			<dl class="pColor">
+				<dt>color property <input id="domUseColorProperty" type="checkbox" class="exUIKit_checkBox"/></dt>
+				<dd>
+					<select id="domColorSelectBox" class="exUIKit_selectBox" title="color property name" disabled="disabled">
+						<option>backgroundColor</option>
+						<option>color</option>
+						<option>borderTopColor</option>
+						<option>borderBottomColor</option>
+						<option>borderLeftColor</option>
+						<option>borderRightColor</option>
+					</select>
+					<input id="domColorValue" type="text" value="ff0000" maxlength="6" title="color property value" disabled="disabled"/>
+				</dd>
+			</dl>
+			<dl class="easing">
+				<dt>easing</dt>
+				<dd>
+					<select id="domEasingSelectBox" class="exUIKit_selectBox">
+						<option>EXEasing.easeInOutExpo</option>
+						<option>EXEasing.easeOutExpo</option>
+						<option>EXEasing.easeInExpo</option>
+
+						<option>EXEasing.easeInOutQuint</option>
+						<option>EXEasing.easeOutQuint</option>
+						<option>EXEasing.easeInQuint</option>
+
+						<option>EXEasing.easeInOutBack</option>
+						<option>EXEasing.easeOutBack</option>
+						<option>EXEasing.easeInBack</option>
+
+						<option>EXEasing.easeOutBounce</option>
+						<option>EXEasing.easeInOutBounce</option>
+						<option>EXEasing.easeInBounce</option>
+
+						<option>EXEasing.easeInOutElastic</option>
+						<option>EXEasing.easeOutElastic</option>
+						<option>EXEasing.easeInElastic</option>
+
+						<option>EXEasing.easeInOutCirc</option>
+						<option>EXEasing.easeOutCirc</option>
+						<option>EXEasing.easeInCirc</option>
+
+						<option>EXEasing.easeInOutCubic</option>
+						<option>EXEasing.easeOutCubic</option>
+						<option>EXEasing.easeInCubic</option>
+
+						<option>EXEasing.easeInOutQuad</option>
+						<option>EXEasing.easeOutQuad</option>
+						<option>EXEasing.easeInQuad</option>
+
+						<option>EXEasing.easeInOutQuart</option>
+						<option>EXEasing.easeOutQuart</option>
+						<option>EXEasing.easeInQuart</option>
+
+						<option>EXEasing.easeInOutSine</option>
+						<option>EXEasing.easeOutSine</option>
+						<option>EXEasing.easeInSine</option>
+					</select>
+				</dd>
+			</dl>
+			<dl class="method">
+				<dt>method</dt>
+				<dd>
+					<span class="check debug">
+						<input id="domDebugMode" type="checkbox" class="exUIKit_checkBox"/><label for="domDebugMode" title="use debug console.log">setDebugMode</label>
+					</span>
+					<div class="value gInter">
+						<input id="domGlobalInterval" value="1" /><span title="tween calculation speed">setGlobalInterval</span>
+					</div>
+					<div class="value gRender">
+						<input id="domGlobalIntervalRender" value="12" /><span title="tween interval speed">setGlobalIntervalRender</span>
+					</div>
+				</dd>
+			</dl>
+			<dl class="execute">
+				<dt>execute</dt>
+				<dd>
+					<button id="domExecuteTween" class="tween">Tween</button>
+					<button id="domExecuteClear" class="clear">Clear</button>
+				</dd>
+			</dl>
+		</div>
+		<div id="viewCopyright">
+			copyright 2012 (c) leeyoonseok.
+			<br/>open source : <a href="https://github.com/molgga/experJS" target="blank" title="My open soruce Project : experJS">https://github.com/molgga/experJS</a>
+			<br/><a href="mailto:molgga84@gmail.com" target="blank">molgga84@gmail.com</a> or <a href="http://molgga.com" target="blank" title="Private portfolio">http://molgga.com</a>
+		</div>
+	</div>
+
+	<div id="viewTween">
+		<div id="tweenObject">tween object</div>
+	</div>
+
+	<div id="viewCode">
+		<div style="padding:10px">
+			<textarea id="domSourceCode" spellcheck="false">EXTween.to( _tweenObject , 1 , { top:100 , left:100 , width:200 , height:200  , ease:EXEasing.easeInOutExpo});</textarea>
+		</div>
+	</div>
+
+</body>
+</html>

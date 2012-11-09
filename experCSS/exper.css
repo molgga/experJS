@@ -74,7 +74,7 @@
 .exUIKit_selectBox { visibility:hidden; height:26px; line-height:26px; font-family:"Arial" , "Malgun Gothic"; font-size:14px; vertical-align:middle; }
 .exUIKit_selectBox.original { position:absolute; left:-9999px; }
 .exUIKit_selectBox.selectBox { visibility:visible; display:inline-block; position:relative; vertical-align:middle; z-index:1; cursor:pointer; }
-.exUIKit_selectBox.selectBox .selection { display:inline-block; position:absolute; overflow:hidden; text-indent:8px; border:1px solid #d0d0d0; background:#ffffff url("../../experCSS/images/EXSelectBox/arrow.gif") no-repeat right bottom; -webkit-transition: background 0.3s; }
+.exUIKit_selectBox.selectBox .selection { display:inline-block; position:absolute; overflow:hidden; text-indent:8px; border:1px solid #d0d0d0; background:#ffffff url("./images/EXSelectBox/arrow.gif") no-repeat right bottom; -webkit-transition: background 0.3s; }
 .exUIKit_selectBox.selectBox .optionContainer { padding:5px 0; margin-top:1px;  position:absolute; overflow:hidden;  border:1px solid #cccccc; background: #ffffff; box-shadow:4px 4px 10px rgba(0,0,0,0.1); }
 .exUIKit_selectBox.selectBox .optionScrollView { overflow:hidden; height:93px; }
 .exUIKit_selectBox.selectBox .optionScrollView .exUIKit_scrollView { right:-3px; }

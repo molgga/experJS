@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>experJS\vender\CssQuery.js</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.7.0&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/define.html">define</a></li>
+            
+                <li><a href="..&#x2F;classes/EX.html">EX</a></li>
+            
+                <li><a href="..&#x2F;classes/EXBrowser.html">EXBrowser</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCheckBox.html">EXCheckBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCheckBox.CheckBox.html">EXCheckBox.CheckBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCompare.html">EXCompare</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCookie.html">EXCookie</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCustomEvent.html">EXCustomEvent</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEasing.html">EXEasing</a></li>
+            
+                <li><a href="..&#x2F;classes/EXElement.html">EXElement</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEvent.html">EXEvent</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEventListener.html">EXEventListener</a></li>
+            
+                <li><a href="..&#x2F;classes/EXJsonLoader.html">EXJsonLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXLoader.html">EXLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXMath.html">EXMath</a></li>
+            
+                <li><a href="..&#x2F;classes/EXRadioButton.html">EXRadioButton</a></li>
+            
+                <li><a href="..&#x2F;classes/EXRadioButton.RadioButton.html">EXRadioButton.RadioButton</a></li>
+            
+                <li><a href="..&#x2F;classes/EXScrollViewY.html">EXScrollViewY</a></li>
+            
+                <li><a href="..&#x2F;classes/EXScrollViewY.UI_Bar.html">EXScrollViewY.UI_Bar</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.html">EXSelectBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBox.html">EXSelectBox.SelectBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBoxOption.html">EXSelectBox.SelectBoxOption</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBoxOptionGroup.html">EXSelectBox.SelectBoxOptionGroup</a></li>
+            
+                <li><a href="..&#x2F;classes/EXString.html">EXString</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTextLoader.html">EXTextLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTimer.html">EXTimer</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTiming.html">EXTiming</a></li>
+            
+                <li><a href="..&#x2F;classes/EXToast.html">EXToast</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTransform.html">EXTransform</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTween.html">EXTween</a></li>
+            
+                <li><a href="..&#x2F;classes/EXURLRequest.html">EXURLRequest</a></li>
+            
+                <li><a href="..&#x2F;classes/EXValidator.html">EXValidator</a></li>
+            
+                <li><a href="..&#x2F;classes/EXXmlLoader.html">EXXmlLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/require.html">require</a></li>
+            
+                <li><a href="..&#x2F;classes/requirejs.html">requirejs</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: experJS\vender\CssQuery.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function(require, exports){
+	var CssQuery = (function() {
+		var sVersion = &#x27;3.0&#x27;;
+		var debugOption = { repeat : 1 };
+		var UID = 1;
+		
+		var cost = 0;
+		var validUID = {};
+		
+		var bSupportByClassName = document.getElementsByClassName ? true : false;
+		var safeHTML = false;
+		
+		var getUID4HTML = function(oEl) {
+			
+			var nUID = safeHTML ? (oEl._cssquery_UID &amp;&amp; oEl._cssquery_UID[0]) : oEl._cssquery_UID;
+			if (nUID &amp;&amp; validUID[nUID] == oEl) return nUID;
+			
+			nUID = UID++;
+			oEl._cssquery_UID = safeHTML ? [ nUID ] : nUID;
+			
+			validUID[nUID] = oEl;
+			return nUID;
+
+		};
+		
+		var getUID4XML = function(oEl) {
+			
+			var oAttr = oEl.getAttribute(&#x27;_cssquery_UID&#x27;);
+			var nUID = safeHTML ? (oAttr &amp;&amp; oAttr[0]) : oAttr;
+			
+			if (!nUID) {
+				nUID = UID++;
+				oEl.setAttribute(&#x27;_cssquery_UID&#x27;, safeHTML ? [ nUID ] : nUID);
+			}
+			
+			return nUID;
+			
+		};
+		
+		var getUID = getUID4HTML;
+		
+		var uniqid = function(sPrefix) {
+			return (sPrefix || &#x27;&#x27;) + new Date().getTime() + parseInt(Math.random() * 100000000,10);
+		};
+		
+		function getElementsByClass(searchClass,node,tag) {
+			var classElements = new Array();
+			if ( node == null )
+					node = document;
+			if ( tag == null )
+					tag = &#x27;*&#x27;;
+			var els = node.getElementsByTagName(tag);
+			var elsLen = els.length;
+			var pattern = new RegExp(&quot;(^|\\s)&quot;+searchClass+&quot;(\\s|$)&quot;);
+			for (i = 0, j = 0; i &lt; elsLen; i++) {
+					if ( pattern.test(els[i].className) ) {
+							classElements[j] = els[i];
+							j++;
+					}
+			}
+			return classElements;
+		}
+
+		var getChilds_dontShrink = function(oEl, sTagName, sClassName) {
+			if (bSupportByClassName &amp;&amp; sClassName) {
+				if(oEl.getElementsByClassName)
+					return oEl.getElementsByClassName(sClassName);
+				if(oEl.querySelectorAll)
+					return oEl.querySelectorAll(sClassName);
+				return getElementsByClass(sClassName, oEl, sTagName);
+			}else if (sTagName == &#x27;*&#x27;) {
+				return oEl.all || oEl.getElementsByTagName(sTagName);
+			}
+			return oEl.getElementsByTagName(sTagName);
+		};
+
+		var clearKeys = function() {
+			 backupKeys._keys = {};
+		};
+		
+		var oDocument_dontShrink = document;
+		
+		var bXMLDocument = false;
+		
+		&#x2F;*
+		 
+	따옴표, [] 등 파싱에 문제가 될 수 있는 부분 replace 시켜놓기
+	  
+		 *&#x2F;
+		var backupKeys = function(sQuery) {
+			
+			var oKeys = backupKeys._keys;
+			
+			&#x2F;*
+			 
+	작은 따옴표 걷어내기
+	  
+			 *&#x2F;
+			sQuery = sQuery.replace(&#x2F;&#x27;(\\&#x27;|[^&#x27;])*&#x27;&#x2F;g, function(sAll) {
+				var uid = uniqid(&#x27;QUOT&#x27;);
+				oKeys[uid] = sAll;
+				return uid;
+			});
+			
+			&#x2F;*
+			 
+	큰 따옴표 걷어내기
+	  
+			 *&#x2F;
+			sQuery = sQuery.replace(&#x2F;&quot;(\\&quot;|[^&quot;])*&quot;&#x2F;g, function(sAll) {
+				var uid = uniqid(&#x27;QUOT&#x27;);
+				oKeys[uid] = sAll;
+				return uid;
+			});
+			
+			&#x2F;*
+			 
+	[ ] 형태 걷어내기
+	  
+			 *&#x2F;
+			sQuery = sQuery.replace(&#x2F;\[(.*?)\]&#x2F;g, function(sAll, sBody) {
+				if (sBody.indexOf(&#x27;ATTR&#x27;) == 0) return sAll;
+				var uid = &#x27;[&#x27; + uniqid(&#x27;ATTR&#x27;) + &#x27;]&#x27;;
+				oKeys[uid] = sAll;
+				return uid;
+			});
+		
+			&#x2F;*
+			
+	( ) 형태 걷어내기
+	  
+			 *&#x2F;
+			var bChanged;
+			
+			do {
+				
+				bChanged = false;
+			
+				sQuery = sQuery.replace(&#x2F;\(((\\\)|[^)|^(])*)\)&#x2F;g, function(sAll, sBody) {
+					if (sBody.indexOf(&#x27;BRCE&#x27;) == 0) return sAll;
+					var uid = &#x27;_&#x27; + uniqid(&#x27;BRCE&#x27;);
+					oKeys[uid] = sAll;
+					bChanged = true;
+					return uid;
+				});
+			
+			} while(bChanged);
+		
+			return sQuery;
+			
+		};
+		
+		&#x2F;*
+		 
+	replace 시켜놓은 부분 복구하기
+	  
+		 *&#x2F;
+		var restoreKeys = function(sQuery, bOnlyAttrBrace) {
+			
+			var oKeys = backupKeys._keys;
+		
+			var bChanged;
+			var rRegex = bOnlyAttrBrace ? &#x2F;(\[ATTR[0-9]+\])&#x2F;g : &#x2F;(QUOT[0-9]+|\[ATTR[0-9]+\])&#x2F;g;
+			
+			do {
+				
+				bChanged = false;
+		
+				sQuery = sQuery.replace(rRegex, function(sKey) {
+					
+					if (oKeys[sKey]) {
+						bChanged = true;
+						return oKeys[sKey];
+					}
+					
+					return sKey;
+		
+				});
+			
+			} while(bChanged);
+			
+			&#x2F;*
+			
+	( ) 는 한꺼풀만 벗겨내기
+	  
+			 *&#x2F;
+			sQuery = sQuery.replace(&#x2F;_BRCE[0-9]+&#x2F;g, function(sKey) {
+				return oKeys[sKey] ? oKeys[sKey] : sKey;
+			});
+			
+			return sQuery;
+			
+		};
+		
+		&#x2F;*
+		 
+	replace 시켜놓은 문자열에서 Quot 을 제외하고 리턴
+	  
+		 *&#x2F;
+		var restoreString = function(sKey) {
+			
+			var oKeys = backupKeys._keys;
+			var sOrg = oKeys[sKey];
+			
+			if (!sOrg) return sKey;
+			return eval(sOrg);
+			
+		};
+		
+		var wrapQuot = function(sStr) {
+			return &#x27;&quot;&#x27; + sStr.replace(&#x2F;&quot;&#x2F;g, &#x27;\\&quot;&#x27;) + &#x27;&quot;&#x27;;
+		};
+		
+		var getStyleKey = function(sKey) {
+
+			if (&#x2F;^@&#x2F;.test(sKey)) return sKey.substr(1);
+			return null;
+			
+		};
+		
+		var getCSS = function(oEl, sKey) {
+			
+			if (oEl.currentStyle) {
+				
+				if (sKey == &quot;float&quot;) sKey = &quot;styleFloat&quot;;
+				return oEl.currentStyle[sKey] || oEl.style[sKey];
+				
+			} else if (window.getComputedStyle) {
+				
+				return oDocument_dontShrink.defaultView.getComputedStyle(oEl, null).getPropertyValue(sKey.replace(&#x2F;([A-Z])&#x2F;g,&quot;-$1&quot;).toLowerCase()) || oEl.style[sKey];
+				
+			}
+
+			if (sKey == &quot;float&quot; &amp;&amp; &#x2F;MSIE&#x2F;.test(window.navigator.userAgent)) sKey = &quot;styleFloat&quot;;
+			return oEl.style[sKey];
+			
+		};
+
+		var oCamels = {
+			&#x27;accesskey&#x27; : &#x27;accessKey&#x27;,
+			&#x27;cellspacing&#x27; : &#x27;cellSpacing&#x27;,
+			&#x27;cellpadding&#x27; : &#x27;cellPadding&#x27;,
+			&#x27;class&#x27; : &#x27;className&#x27;,
+			&#x27;colspan&#x27; : &#x27;colSpan&#x27;,
+			&#x27;for&#x27; : &#x27;htmlFor&#x27;,
+			&#x27;maxlength&#x27; : &#x27;maxLength&#x27;,
+			&#x27;readonly&#x27; : &#x27;readOnly&#x27;,
+			&#x27;rowspan&#x27; : &#x27;rowSpan&#x27;,
+			&#x27;tabindex&#x27; : &#x27;tabIndex&#x27;,
+			&#x27;valign&#x27; : &#x27;vAlign&#x27;
+		};
+
+		var getDefineCode = function(sKey) {
+			
+			var sVal;
+			var sStyleKey;
+
+			if (bXMLDocument) {
+				
+				sVal = &#x27;oEl.getAttribute(&quot;&#x27; + sKey + &#x27;&quot;,2)&#x27;;
+			
+			} else {
+			
+				if (sStyleKey = getStyleKey(sKey)) {
+					
+					sKey = &#x27;$$&#x27; + sStyleKey;
+					sVal = &#x27;getCSS(oEl, &quot;&#x27; + sStyleKey + &#x27;&quot;)&#x27;;
+					
+				} else {
+					
+					switch (sKey) {
+					case &#x27;checked&#x27;:
+						sVal = &#x27;oEl.checked + &quot;&quot;&#x27;;
+						break;
+						
+					case &#x27;disabled&#x27;:
+						sVal = &#x27;oEl.disabled + &quot;&quot;&#x27;;
+						break;
+						
+					case &#x27;enabled&#x27;:
+						sVal = &#x27;!oEl.disabled + &quot;&quot;&#x27;;
+						break;
+						
+					case &#x27;readonly&#x27;:
+						sVal = &#x27;oEl.readOnly + &quot;&quot;&#x27;;
+						break;
+						
+					case &#x27;selected&#x27;:
+						sVal = &#x27;oEl.selected + &quot;&quot;&#x27;;
+						break;
+						
+					default:
+						if (oCamels[sKey]) {
+							sVal = &#x27;oEl.&#x27; + oCamels[sKey];
+						} else {
+							sVal = &#x27;oEl.getAttribute(&quot;&#x27; + sKey + &#x27;&quot;,2)&#x27;;
+						} 
+					}
+					
+				}
+				
+			}
+				
+			return &#x27;_&#x27; + sKey + &#x27; = &#x27; + sVal;
+		};
+		
+		var getReturnCode = function(oExpr) {
+			
+			var sStyleKey = getStyleKey(oExpr.key);
+			
+			var sVar = &#x27;_&#x27; + (sStyleKey ? &#x27;$$&#x27; + sStyleKey : oExpr.key);
+			var sVal = oExpr.val ? wrapQuot(oExpr.val) : &#x27;&#x27;;
+			
+			switch (oExpr.op) {
+			case &#x27;~=&#x27;:
+				return &#x27;(&#x27; + sVar + &#x27; &amp;&amp; (&quot; &quot; + &#x27; + sVar + &#x27; + &quot; &quot;).indexOf(&quot; &quot; + &#x27; + sVal + &#x27; + &quot; &quot;) &gt; -1)&#x27;;
+			case &#x27;^=&#x27;:
+				return &#x27;(&#x27; + sVar + &#x27; &amp;&amp; &#x27; + sVar + &#x27;.indexOf(&#x27; + sVal + &#x27;) == 0)&#x27;;
+			case &#x27;$=&#x27;:
+				return &#x27;(&#x27; + sVar + &#x27; &amp;&amp; &#x27; + sVar + &#x27;.substr(&#x27; + sVar + &#x27;.length - &#x27; + oExpr.val.length + &#x27;) == &#x27; + sVal + &#x27;)&#x27;;
+			case &#x27;*=&#x27;:
+				return &#x27;(&#x27; + sVar + &#x27; &amp;&amp; &#x27; + sVar + &#x27;.indexOf(&#x27; + sVal + &#x27;) &gt; -1)&#x27;;
+			case &#x27;!=&#x27;:
+				return &#x27;(&#x27; + sVar + &#x27; != &#x27; + sVal + &#x27;)&#x27;;
+			case &#x27;=&#x27;:
+				return &#x27;(&#x27; + sVar + &#x27; == &#x27; + sVal + &#x27;)&#x27;;
+			}
+		
+			return &#x27;(&#x27; + sVar + &#x27;)&#x27;;
+			
+		};
+		
+		var getNodeIndex = function(oEl) {
+			var nUID = getUID(oEl);
+			var nIndex = oNodeIndexes[nUID] || 0;
+			
+			&#x2F;*
+			 
+	노드 인덱스를 구할 수 없으면
+	  
+			 *&#x2F;
+			if (nIndex == 0) {
+
+				for (var oSib = (oEl.parentNode || oEl._IE5_parentNode).firstChild; oSib; oSib = oSib.nextSibling) {
+					
+					if (oSib.nodeType != 1){ 
+						continue;
+					}
+					nIndex++;
+
+					setNodeIndex(oSib, nIndex);
+					
+				}
+							
+				nIndex = oNodeIndexes[nUID];
+				
+			}
+					
+			return nIndex;
+					
+		};
+		
+		&#x2F;*
+		 
+	몇번째 자식인지 설정하는 부분
+	  
+		 *&#x2F;
+		var oNodeIndexes = {};
+
+		var setNodeIndex = function(oEl, nIndex) {
+			var nUID = getUID(oEl);
+			oNodeIndexes[nUID] = nIndex;
+		};
+		
+		var unsetNodeIndexes = function() {
+			setTimeout(function() { oNodeIndexes = {}; }, 0);
+		};
+		
+		&#x2F;*
+		 
+	가상 클래스
+	  
+		 *&#x2F;
+		var oPseudoes_dontShrink = {
+		
+			&#x27;contains&#x27; : function(oEl, sOption) {
+				return (oEl.innerText || oEl.textContent || &#x27;&#x27;).indexOf(sOption) &gt; -1;
+			},
+			
+			&#x27;last-child&#x27; : function(oEl, sOption) {
+				for (oEl = oEl.nextSibling; oEl; oEl = oEl.nextSibling){
+					if (oEl.nodeType == 1)
+						return false;
+				}
+					
+				
+				return true;
+			},
+			
+			&#x27;first-child&#x27; : function(oEl, sOption) {
+				for (oEl = oEl.previousSibling; oEl; oEl = oEl.previousSibling){
+					if (oEl.nodeType == 1)
+						return false;
+				}
+					
+						
+				return true;
+			},
+			
+			&#x27;only-child&#x27; : function(oEl, sOption) {
+				var nChild = 0;
+				
+				for (var oChild = (oEl.parentNode || oEl._IE5_parentNode).firstChild; oChild; oChild = oChild.nextSibling) {
+					if (oChild.nodeType == 1) nChild++;
+					if (nChild &gt; 1) return false;
+				}
+				
+				return nChild ? true : false;
+			},
+
+			&#x27;empty&#x27; : function(oEl, _) {
+				return oEl.firstChild ? false : true;
+			},
+			
+			&#x27;nth-child&#x27; : function(oEl, nMul, nAdd) {
+				var nIndex = getNodeIndex(oEl);
+				return nIndex % nMul == nAdd;
+			},
+			
+			&#x27;nth-last-child&#x27; : function(oEl, nMul, nAdd) {
+				var oLast = (oEl.parentNode || oEl._IE5_parentNode).lastChild;
+				for (; oLast; oLast = oLast.previousSibling){
+					if (oLast.nodeType == 1) break;
+				}
+					
+					
+				var nTotal = getNodeIndex(oLast);
+				var nIndex = getNodeIndex(oEl);
+				
+				var nLastIndex = nTotal - nIndex + 1;
+				return nLastIndex % nMul == nAdd;
+			},
+			&#x27;checked&#x27; : function(oEl){
+				return !!oEl.checked;
+			},
+			&#x27;selected&#x27; : function(oEl){
+				return !!oEl.selected;
+			},
+			&#x27;enabled&#x27; : function(oEl){
+				return !oEl.disabled;
+			},
+			&#x27;disabled&#x27; : function(oEl){
+				return !!oEl.disabled;
+			}
+		};
+		
+		&#x2F;*
+		 
+	단일 part 의 body 에서 expression 뽑아냄
+	  
+		 *&#x2F;
+		var getExpression = function(sBody) {
+
+			var oRet = { defines : &#x27;&#x27;, returns : &#x27;true&#x27; };
+			
+			var sBody = restoreKeys(sBody, true);
+		
+			var aExprs = [];
+			var aDefineCode = [], aReturnCode = [];
+			var sId, sTagName;
+			
+			&#x2F;*
+			 
+	유사클래스 조건 얻어내기
+	  
+			 *&#x2F;
+			var sBody = sBody.replace(&#x2F;:([\w-]+)(\(([^)]*)\))?&#x2F;g, function(_1, sType, _2, sOption) {
+				
+				switch (sType) {
+				case &#x27;not&#x27;:
+					&#x2F;*
+					 
+	괄호 안에 있는거 재귀파싱하기
+	  
+					 *&#x2F;
+					var oInner = getExpression(sOption);
+					
+					var sFuncDefines = oInner.defines;
+					var sFuncReturns = oInner.returnsID + oInner.returnsTAG + oInner.returns;
+					
+					aReturnCode.push(&#x27;!(function() { &#x27; + sFuncDefines + &#x27; return &#x27; + sFuncReturns + &#x27; })()&#x27;);
+					break;
+					
+				case &#x27;nth-child&#x27;:
+				case &#x27;nth-last-child&#x27;:
+					sOption =  restoreString(sOption);
+					
+					if (sOption == &#x27;even&#x27;){
+						sOption = &#x27;2n&#x27;;
+					}else if (sOption == &#x27;odd&#x27;) {
+						sOption = &#x27;2n+1&#x27;;
+					}
+
+					var nMul, nAdd;
+					var matchstr = sOption.match(&#x2F;([0-9]*)n([+-][0-9]+)*&#x2F;);
+					if (matchstr) {
+						nMul = matchstr[1] || 1;
+						nAdd = matchstr[2] || 0;
+					} else {
+						nMul = Infinity;
+						nAdd = parseInt(sOption,10);
+					}
+					aReturnCode.push(&#x27;oPseudoes_dontShrink[&#x27; + wrapQuot(sType) + &#x27;](oEl, &#x27; + nMul + &#x27;, &#x27; + nAdd + &#x27;)&#x27;);
+					break;
+					
+				case &#x27;first-of-type&#x27;:
+				case &#x27;last-of-type&#x27;:
+					sType = (sType == &#x27;first-of-type&#x27; ? &#x27;nth-of-type&#x27; : &#x27;nth-last-of-type&#x27;);
+					sOption = 1;
+					
+				case &#x27;nth-of-type&#x27;:
+				case &#x27;nth-last-of-type&#x27;:
+					sOption =  restoreString(sOption);
+					
+					if (sOption == &#x27;even&#x27;) {
+						sOption = &#x27;2n&#x27;;
+					}else if (sOption == &#x27;odd&#x27;){
+						sOption = &#x27;2n+1&#x27;;
+					}
+
+					var nMul, nAdd;
+					
+					if (&#x2F;([0-9]*)n([+-][0-9]+)*&#x2F;.test(sOption)) {
+						nMul = parseInt(RegExp.$1,10) || 1;
+						nAdd = parseInt(RegExp.$2,20) || 0;
+					} else {
+						nMul = Infinity;
+						nAdd = parseInt(sOption,10);
+					}
+					
+					oRet.nth = [ nMul, nAdd, sType ];
+					break;
+					
+				default:
+					sOption = sOption ? restoreString(sOption) : &#x27;&#x27;;
+					aReturnCode.push(&#x27;oPseudoes_dontShrink[&#x27; + wrapQuot(sType) + &#x27;](oEl, &#x27; + wrapQuot(sOption) + &#x27;)&#x27;);
+					break;
+				}
+				
+				return &#x27;&#x27;;
+				
+			});
+			
+			&#x2F;*
+			 
+	[key=value] 형태 조건 얻어내기
+	  
+			 *&#x2F;
+			var sBody = sBody.replace(&#x2F;\[(@?[\w-]+)(([!^~$*]?=)([^\]]*))?\]&#x2F;g, function(_1, sKey, _2, sOp, sVal) {
+				
+				sKey = restoreString(sKey);
+				sVal = restoreString(sVal);
+				
+				if (sKey == &#x27;checked&#x27; || sKey == &#x27;disabled&#x27; || sKey == &#x27;enabled&#x27; || sKey == &#x27;readonly&#x27; || sKey == &#x27;selected&#x27;) {
+					
+					if (!sVal) {
+						sOp = &#x27;=&#x27;;
+						sVal = &#x27;true&#x27;;
+					}
+					
+				}
+				
+				aExprs.push({ key : sKey, op : sOp, val : sVal });
+				return &#x27;&#x27;;
+		
+			});
+			
+			var sClassName = null;
+		
+			&#x2F;*
+			 
+	클래스 조건 얻어내기
+	  
+			 *&#x2F;
+			var sBody = sBody.replace(&#x2F;\.([\w-]+)&#x2F;g, function(_, sClass) { 
+				aExprs.push({ key : &#x27;class&#x27;, op : &#x27;~=&#x27;, val : sClass });
+				if (!sClassName) sClassName = sClass;
+				return &#x27;&#x27;;
+			});
+			
+			&#x2F;*
+			 
+	id 조건 얻어내기
+	  
+			 *&#x2F;
+			var sBody = sBody.replace(&#x2F;#([\w-]+)&#x2F;g, function(_, sIdValue) {
+				if (bXMLDocument) {
+					aExprs.push({ key : &#x27;id&#x27;, op : &#x27;=&#x27;, val : sIdValue });
+				}else{
+					sId = sIdValue;
+				}
+				return &#x27;&#x27;;
+			});
+			
+			sTagName = sBody == &#x27;*&#x27; ? &#x27;&#x27; : sBody;
+		
+			&#x2F;*
+			 
+	match 함수 코드 만들어 내기
+	  
+			 *&#x2F;
+			var oVars = {};
+			
+			for (var i = 0, oExpr; oExpr = aExprs[i]; i++) {
+				
+				var sKey = oExpr.key;
+				
+				if (!oVars[sKey]) aDefineCode.push(getDefineCode(sKey));
+				&#x2F;*
+				 
+	유사클래스 조건 검사가 맨 뒤로 가도록 unshift 사용
+	  
+				 *&#x2F;
+				aReturnCode.unshift(getReturnCode(oExpr));
+				oVars[sKey] = true;
+				
+			}
+			
+			if (aDefineCode.length) oRet.defines = &#x27;var &#x27; + aDefineCode.join(&#x27;,&#x27;) + &#x27;;&#x27;;
+			if (aReturnCode.length) oRet.returns = aReturnCode.join(&#x27;&amp;&amp;&#x27;);
+			
+			oRet.quotID = sId ? wrapQuot(sId) : &#x27;&#x27;;
+			oRet.quotTAG = sTagName ? wrapQuot(bXMLDocument ? sTagName : sTagName.toUpperCase()) : &#x27;&#x27;;
+			
+			if (bSupportByClassName) oRet.quotCLASS = sClassName ? wrapQuot(sClassName) : &#x27;&#x27;;
+			
+			oRet.returnsID = sId ? &#x27;oEl.id == &#x27; + oRet.quotID + &#x27; &amp;&amp; &#x27; : &#x27;&#x27;;
+			oRet.returnsTAG = sTagName &amp;&amp; sTagName != &#x27;*&#x27; ? &#x27;oEl.tagName == &#x27; + oRet.quotTAG + &#x27; &amp;&amp; &#x27; : &#x27;&#x27;;
+			
+			return oRet;
+			
+		};
+		
+		&#x2F;*
+		 
+	쿼리를 연산자 기준으로 잘라냄
+	  
+		 *&#x2F;
+		var splitToParts = function(sQuery) {
+			
+			var aParts = [];
+			var sRel = &#x27; &#x27;;
+			
+			var sBody = sQuery.replace(&#x2F;(.*?)\s*(!?[+&gt;~ ]|!)\s*&#x2F;g, function(_, sBody, sRelative) {
+				
+				if (sBody) aParts.push({ rel : sRel, body : sBody });
+		
+				sRel = sRelative.replace(&#x2F;\s+$&#x2F;g, &#x27;&#x27;) || &#x27; &#x27;;
+				return &#x27;&#x27;;
+				
+			});
+		
+			if (sBody) aParts.push({ rel : sRel, body : sBody });
+			
+			return aParts;
+			
+		};
+		
+		var isNth_dontShrink = function(oEl, sTagName, nMul, nAdd, sDirection) {
+			
+			var nIndex = 0;
+			for (var oSib = oEl; oSib; oSib = oSib[sDirection]){
+				if (oSib.nodeType == 1 &amp;&amp; (!sTagName || sTagName == oSib.tagName))
+						nIndex++;
+			}
+				
+
+			return nIndex % nMul == nAdd;
+
+		};
+		
+		&#x2F;*
+		 
+	잘라낸 part 를 함수로 컴파일 하기
+	  
+		 *&#x2F;
+		var compileParts = function(aParts) {
+			
+			var aPartExprs = [];
+			
+			&#x2F;*
+			 
+	잘라낸 부분들 조건 만들기
+	  
+			 *&#x2F;
+			for (var i = 0, oPart; oPart = aParts[i]; i++)
+				aPartExprs.push(getExpression(oPart.body));
+			
+			&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F; BEGIN
+			
+			var sFunc = &#x27;&#x27;;
+			var sPushCode = &#x27;aRet.push(oEl); if (oOptions.single) { bStop = true; }&#x27;;
+
+			for (var i = aParts.length - 1, oPart; oPart = aParts[i]; i--) {
+				
+				var oExpr = aPartExprs[i];
+				var sPush = (debugOption.callback ? &#x27;cost++;&#x27; : &#x27;&#x27;) + oExpr.defines;
+				
+
+				var sReturn = &#x27;if (bStop) {&#x27; + (i == 0 ? &#x27;return aRet;&#x27; : &#x27;return;&#x27;) + &#x27;}&#x27;;
+				
+				if (oExpr.returns == &#x27;true&#x27;) {
+					sPush += (sFunc ? sFunc + &#x27;(oEl);&#x27; : sPushCode) + sReturn;
+				}else{
+					sPush += &#x27;if (&#x27; + oExpr.returns + &#x27;) {&#x27; + (sFunc ? sFunc + &#x27;(oEl);&#x27; : sPushCode ) + sReturn + &#x27;}&#x27;;
+				}
+				
+				var sCheckTag = &#x27;oEl.nodeType != 1&#x27;;
+				if (oExpr.quotTAG) sCheckTag = &#x27;oEl.tagName != &#x27; + oExpr.quotTAG;
+				
+				var sTmpFunc =
+					&#x27;(function(oBase&#x27; +
+						(i == 0 ? &#x27;, oOptions) { var bStop = false; var aRet = [];&#x27; : &#x27;) {&#x27;);
+
+				if (oExpr.nth) {
+					sPush =
+						&#x27;if (isNth_dontShrink(oEl, &#x27; +
+						(oExpr.quotTAG ? oExpr.quotTAG : &#x27;false&#x27;) + &#x27;,&#x27; +
+						oExpr.nth[0] + &#x27;,&#x27; +
+						oExpr.nth[1] + &#x27;,&#x27; +
+						&#x27;&quot;&#x27; + (oExpr.nth[2] == &#x27;nth-of-type&#x27; ? &#x27;previousSibling&#x27; : &#x27;nextSibling&#x27;) + &#x27;&quot;)) {&#x27; + sPush + &#x27;}&#x27;;
+				}
+				
+				switch (oPart.rel) {
+				case &#x27; &#x27;:
+					if (oExpr.quotID) {
+						
+						sTmpFunc +=
+							&#x27;var oEl = oDocument_dontShrink.getElementById(&#x27; + oExpr.quotID + &#x27;);&#x27; +
+							&#x27;var oCandi = oEl;&#x27; +
+							&#x27;for (; oCandi; oCandi = (oCandi.parentNode || oCandi._IE5_parentNode)) {&#x27; +
+								&#x27;if (oCandi == oBase) break;&#x27; +
+							&#x27;}&#x27; +
+							&#x27;if (!oCandi || &#x27; + sCheckTag + &#x27;) return aRet;&#x27; +
+							sPush;
+						
+					} else {
+						
+						sTmpFunc +=
+							&#x27;var aCandi = getChilds_dontShrink(oBase, &#x27; + (oExpr.quotTAG || &#x27;&quot;*&quot;&#x27;) + &#x27;, &#x27; + (oExpr.quotCLASS || &#x27;null&#x27;) + &#x27;);&#x27; +
+							&#x27;for (var i = 0, oEl; oEl = aCandi[i]; i++) {&#x27; +
+								(oExpr.quotCLASS ? &#x27;if (&#x27; + sCheckTag + &#x27;) continue;&#x27; : &#x27;&#x27;) +
+								sPush +
+							&#x27;}&#x27;;
+						
+					}
+				
+					break;
+					
+				case &#x27;&gt;&#x27;:
+					if (oExpr.quotID) {
+		
+						sTmpFunc +=
+							&#x27;var oEl = oDocument_dontShrink.getElementById(&#x27; + oExpr.quotID + &#x27;);&#x27; +
+							&#x27;if ((oEl.parentNode || oEl._IE5_parentNode) != oBase || &#x27; + sCheckTag + &#x27;) return aRet;&#x27; +
+							sPush;
+						
+					} else {
+		
+						sTmpFunc +=
+							&#x27;for (var oEl = oBase.firstChild; oEl; oEl = oEl.nextSibling) {&#x27; +
+								&#x27;if (&#x27; + sCheckTag + &#x27;) { continue; }&#x27; +
+								sPush +
+							&#x27;}&#x27;;
+						
+					}
+					
+					break;
+					
+				case &#x27;+&#x27;:
+					if (oExpr.quotID) {
+		
+						sTmpFunc +=
+							&#x27;var oEl = oDocument_dontShrink.getElementById(&#x27; + oExpr.quotID + &#x27;);&#x27; +
+							&#x27;var oPrev;&#x27; +
+							&#x27;for (oPrev = oEl.previousSibling; oPrev; oPrev = oPrev.previousSibling) { if (oPrev.nodeType == 1) break; }&#x27; +
+							&#x27;if (!oPrev || oPrev != oBase || &#x27; + sCheckTag + &#x27;) return aRet;&#x27; +
+							sPush;
+						
+					} else {
+		
+						sTmpFunc +=
+							&#x27;for (var oEl = oBase.nextSibling; oEl; oEl = oEl.nextSibling) { if (oEl.nodeType == 1) break; }&#x27; +
+							&#x27;if (!oEl || &#x27; + sCheckTag + &#x27;) { return aRet; }&#x27; +
+							sPush;
+						
+					}
+					
+					break;
+				
+				case &#x27;~&#x27;:
+		
+					if (oExpr.quotID) {
+		
+						sTmpFunc +=
+							&#x27;var oEl = oDocument_dontShrink.getElementById(&#x27; + oExpr.quotID + &#x27;);&#x27; +
+							&#x27;var oCandi = oEl;&#x27; +
+							&#x27;for (; oCandi; oCandi = oCandi.previousSibling) { if (oCandi == oBase) break; }&#x27; +
+							&#x27;if (!oCandi || &#x27; + sCheckTag + &#x27;) return aRet;&#x27; +
+							sPush;
+						
+					} else {
+		
+						sTmpFunc +=
+							&#x27;for (var oEl = oBase.nextSibling; oEl; oEl = oEl.nextSibling) {&#x27; +
+								&#x27;if (&#x27; + sCheckTag + &#x27;) { continue; }&#x27; +
+								&#x27;if (!markElement_dontShrink(oEl, &#x27; + i + &#x27;)) { break; }&#x27; +
+								sPush +
+							&#x27;}&#x27;;
+		
+					}
+					
+					break;
+					
+				case &#x27;!&#x27; :
+				
+					if (oExpr.quotID) {
+						
+						sTmpFunc +=
+							&#x27;var oEl = oDocument_dontShrink.getElementById(&#x27; + oExpr.quotID + &#x27;);&#x27; +
+							&#x27;for (; oBase; oBase = (oBase.parentNode || oBase._IE5_parentNode)) { if (oBase == oEl) break; }&#x27; +
+							&#x27;if (!oBase || &#x27; + sCheckTag + &#x27;) return aRet;&#x27; +
+							sPush;
+							
+					} else {
+						
+						sTmpFunc +=
+							&#x27;for (var oEl = (oBase.parentNode || oBase._IE5_parentNode); oEl; oEl = (oEl.parentNode || oEl._IE5_parentNode)) {&#x27;+
+								&#x27;if (&#x27; + sCheckTag + &#x27;) { continue; }&#x27; +
+								sPush +
+							&#x27;}&#x27;;
+						
+					}
+					
+					break;
+		
+				case &#x27;!&gt;&#x27; :
+				
+					if (oExpr.quotID) {
+		
+						sTmpFunc +=
+							&#x27;var oEl = oDocument_dontShrink.getElementById(&#x27; + oExpr.quotID + &#x27;);&#x27; +
+							&#x27;var oRel = (oBase.parentNode || oBase._IE5_parentNode);&#x27; +
+							&#x27;if (!oRel || oEl != oRel || (&#x27; + sCheckTag + &#x27;)) return aRet;&#x27; +
+							sPush;
+						
+					} else {
+		
+						sTmpFunc +=
+							&#x27;var oEl = (oBase.parentNode || oBase._IE5_parentNode);&#x27; +
+							&#x27;if (!oEl || &#x27; + sCheckTag + &#x27;) { return aRet; }&#x27; +
+							sPush;
+						
+					}
+					
+					break;
+					
+				case &#x27;!+&#x27; :
+					
+					if (oExpr.quotID) {
+		
+						sTmpFunc +=
+							&#x27;var oEl = oDocument_dontShrink.getElementById(&#x27; + oExpr.quotID + &#x27;);&#x27; +
+							&#x27;var oRel;&#x27; +
+							&#x27;for (oRel = oBase.previousSibling; oRel; oRel = oRel.previousSibling) { if (oRel.nodeType == 1) break; }&#x27; +
+							&#x27;if (!oRel || oEl != oRel || (&#x27; + sCheckTag + &#x27;)) return aRet;&#x27; +
+							sPush;
+						
+					} else {
+		
+						sTmpFunc +=
+							&#x27;for (oEl = oBase.previousSibling; oEl; oEl = oEl.previousSibling) { if (oEl.nodeType == 1) break; }&#x27; +
+							&#x27;if (!oEl || &#x27; + sCheckTag + &#x27;) { return aRet; }&#x27; +
+							sPush;
+						
+					}
+					
+					break;
+		
+				case &#x27;!~&#x27; :
+					
+					if (oExpr.quotID) {
+						
+						sTmpFunc +=
+							&#x27;var oEl = oDocument_dontShrink.getElementById(&#x27; + oExpr.quotID + &#x27;);&#x27; +
+							&#x27;var oRel;&#x27; +
+							&#x27;for (oRel = oBase.previousSibling; oRel; oRel = oRel.previousSibling) { &#x27; +
+								&#x27;if (oRel.nodeType != 1) { continue; }&#x27; +
+								&#x27;if (oRel == oEl) { break; }&#x27; +
+							&#x27;}&#x27; +
+							&#x27;if (!oRel || (&#x27; + sCheckTag + &#x27;)) return aRet;&#x27; +
+							sPush;
+						
+					} else {
+		
+						sTmpFunc +=
+							&#x27;for (oEl = oBase.previousSibling; oEl; oEl = oEl.previousSibling) {&#x27; +
+								&#x27;if (&#x27; + sCheckTag + &#x27;) { continue; }&#x27; +
+								&#x27;if (!markElement_dontShrink(oEl, &#x27; + i + &#x27;)) { break; }&#x27; +
+								sPush +
+							&#x27;}&#x27;;
+						
+					}
+					
+					break;
+				}
+		
+				sTmpFunc +=
+					(i == 0 ? &#x27;return aRet;&#x27; : &#x27;&#x27;) +
+				&#x27;})&#x27;;
+				
+				sFunc = sTmpFunc;
+				
+			}
+			
+			eval(&#x27;var fpCompiled = &#x27; + sFunc + &#x27;;&#x27;);
+			return fpCompiled;
+			
+		};
+		
+		&#x2F;*
+		 
+	쿼리를 match 함수로 변환
+	  
+		 *&#x2F;
+		var parseQuery = function(sQuery) {
+			
+			var sCacheKey = sQuery;
+			
+			var fpSelf = arguments.callee;
+			var fpFunction = fpSelf._cache[sCacheKey];
+			
+			if (!fpFunction) {
+				
+				sQuery = backupKeys(sQuery);
+				
+				var aParts = splitToParts(sQuery);
+				
+				fpFunction = fpSelf._cache[sCacheKey] = compileParts(aParts);
+				fpFunction.depth = aParts.length;
+				
+			}
+			
+			return fpFunction;
+			
+		};
+		
+		parseQuery._cache = {};
+		
+		&#x2F;*
+		 
+	test 쿼리를 match 함수로 변환
+	  
+		 *&#x2F;
+		var parseTestQuery = function(sQuery) {
+			
+			var fpSelf = arguments.callee;
+			
+			var aSplitQuery = backupKeys(sQuery).split(&#x2F;\s*,\s*&#x2F;);
+			var aResult = [];
+			
+			var nLen = aSplitQuery.length;
+			var aFunc = [];
+			
+			for (var i = 0; i &lt; nLen; i++) {
+
+				aFunc.push((function(sQuery) {
+					
+					var sCacheKey = sQuery;
+					var fpFunction = fpSelf._cache[sCacheKey];
+					
+					if (!fpFunction) {
+						
+						sQuery = backupKeys(sQuery);
+						var oExpr = getExpression(sQuery);
+						
+						eval(&#x27;fpFunction = function(oEl) { &#x27; + oExpr.defines + &#x27;return (&#x27; + oExpr.returnsID + oExpr.returnsTAG + oExpr.returns + &#x27;); };&#x27;);
+						
+					}
+					
+					return fpFunction;
+					
+				})(restoreKeys(aSplitQuery[i])));
+				
+			}
+			return aFunc;
+			
+		};
+		
+		parseTestQuery._cache = {};
+		
+		var distinct = function(aList) {
+		
+			var aDistinct = [];
+			var oDummy = {};
+			
+			for (var i = 0, oEl; oEl = aList[i]; i++) {
+				
+				var nUID = getUID(oEl);
+				if (oDummy[nUID]) continue;
+				
+				aDistinct.push(oEl);
+				oDummy[nUID] = true;
+			}
+		
+			return aDistinct;
+		
+		};
+		
+		var markElement_dontShrink = function(oEl, nDepth) {
+			
+			var nUID = getUID(oEl);
+			if (cssquery._marked[nDepth][nUID]) return false;
+			
+			cssquery._marked[nDepth][nUID] = true;
+			return true;
+
+		};
+		
+		var oResultCache = null;
+		var bUseResultCache = false;
+		var bExtremeMode = false;
+			
+		var old_cssquery = function(sQuery, oParent, oOptions) {
+			
+			if (typeof sQuery == &#x27;object&#x27;) {
+				
+				var oResult = {};
+				
+				for (var k in sQuery){
+					if(sQuery.hasOwnProperty(k))
+						oResult[k] = arguments.callee(sQuery[k], oParent, oOptions);
+				}
+				
+				return oResult;
+			}
+			
+			cost = 0;
+			
+			var executeTime = new Date().getTime();
+			var aRet;
+			
+			for (var r = 0, rp = debugOption.repeat; r &lt; rp; r++) {
+				
+				aRet = (function(sQuery, oParent, oOptions) {
+					
+					if(oOptions){
+						if(!oOptions.oneTimeOffCache){
+							oOptions.oneTimeOffCache = false;
+						}
+					}else{
+						oOptions = {oneTimeOffCache:false};
+					}
+					cssquery.safeHTML(oOptions.oneTimeOffCache);
+					
+					if (!oParent) oParent = document;
+						
+					&#x2F;*
+					 
+	ownerDocument 잡아주기
+	  
+					 *&#x2F;
+					oDocument_dontShrink = oParent.ownerDocument || oParent.document || oParent;
+					
+					&#x2F;*
+					 
+	브라우저 버젼이 IE5.5 이하
+	  
+					 *&#x2F;
+					if (&#x2F;\bMSIE\s([0-9]+(\.[0-9]+)*);&#x2F;.test(navigator.userAgent) &amp;&amp; parseFloat(RegExp.$1) &lt; 6) {
+						try { oDocument_dontShrink.location; } catch(e) { oDocument_dontShrink = document; }
+						
+						oDocument_dontShrink.firstChild = oDocument_dontShrink.getElementsByTagName(&#x27;html&#x27;)[0];
+						oDocument_dontShrink.firstChild._IE5_parentNode = oDocument_dontShrink;
+					}
+					
+					&#x2F;*
+					 
+	XMLDocument 인지 체크
+	  
+					 *&#x2F;
+					bXMLDocument = (typeof XMLDocument != &#x27;undefined&#x27;) ? (oDocument_dontShrink.constructor === XMLDocument) : (!oDocument_dontShrink.location);
+					getUID = bXMLDocument ? getUID4XML : getUID4HTML;
+			
+					clearKeys();
+					
+					&#x2F;*
+					 
+	쿼리를 쉼표로 나누기
+	  
+					 *&#x2F;
+					var aSplitQuery = backupKeys(sQuery).split(&#x2F;\s*,\s*&#x2F;);
+					var aResult = [];
+					
+					var nLen = aSplitQuery.length;
+					
+					for (var i = 0; i &lt; nLen; i++)
+						aSplitQuery[i] = restoreKeys(aSplitQuery[i]);
+					
+					&#x2F;*
+					 
+	쉼표로 나눠진 쿼리 루프
+	  
+					 *&#x2F;
+					for (var i = 0; i &lt; nLen; i++) {
+						
+						var sSingleQuery = aSplitQuery[i];
+						var aSingleQueryResult = null;
+						
+						var sResultCacheKey = sSingleQuery + (oOptions.single ? &#x27;_single&#x27; : &#x27;&#x27;);
+			
+						&#x2F;*
+						 
+	결과 캐쉬 뒤짐
+	  
+						 *&#x2F;
+						var aCache = bUseResultCache ? oResultCache[sResultCacheKey] : null;
+						if (aCache) {
+							
+							&#x2F;*
+							 
+	캐싱되어 있는게 있으면 parent 가 같은건지 검사한후 aSingleQueryResult 에 대입
+	  
+							 *&#x2F;
+							for (var j = 0, oCache; oCache = aCache[j]; j++) {
+								if (oCache.parent == oParent) {
+									aSingleQueryResult = oCache.result;
+									break;
+								}
+							}
+							
+						}
+						
+						if (!aSingleQueryResult) {
+							
+							var fpFunction = parseQuery(sSingleQuery);
+							&#x2F;&#x2F; alert(fpFunction);
+							
+							cssquery._marked = [];
+							for (var j = 0, nDepth = fpFunction.depth; j &lt; nDepth; j++)
+								cssquery._marked.push({});
+							
+							&#x2F;&#x2F; console.log(fpFunction.toSource());
+							aSingleQueryResult = distinct(fpFunction(oParent, oOptions));
+							
+							&#x2F;*
+							 
+	결과 캐쉬를 사용중이면 캐쉬에 저장
+	  
+							 *&#x2F;
+							if (bUseResultCache&amp;&amp;!oOptions.oneTimeOffCache) {
+								if (!(oResultCache[sResultCacheKey] instanceof Array)) oResultCache[sResultCacheKey] = [];
+								oResultCache[sResultCacheKey].push({ parent : oParent, result : aSingleQueryResult });
+							}
+							
+						}
+						
+						aResult = aResult.concat(aSingleQueryResult);
+						
+					}
+					unsetNodeIndexes();
+			
+					return aResult;
+					
+				})(sQuery, oParent, oOptions);
+				
+			}
+			
+			executeTime = new Date().getTime() - executeTime;
+
+			if (debugOption.callback) debugOption.callback(sQuery, cost, executeTime);
+			
+			return aRet;
+			
+		};
+		var cssquery;
+		if (document.querySelectorAll) {
+			function _isNonStandardQueryButNotException(sQuery){
+				return &#x2F;\[\s*(?:checked|selected|disabled)&#x2F;.test(sQuery)
+			}
+			function _commaRevise (sQuery,sChange) {
+				return sQuery.replace(&#x2F;\,&#x2F;gi,sChange);
+			}
+			
+			var protoSlice = Array.prototype.slice;
+			
+			var _toArray = function(aArray){
+				return protoSlice.apply(aArray);
+			}
+			
+			try{
+				protoSlice.apply(document.documentElement.childNodes);
+			}catch(e){
+				_toArray = function(aArray){
+					var returnArray = [];
+					var leng = aArray.length;
+					for ( var i = 0; i &lt; leng; i++ ) {
+						returnArray.push( aArray[i] );
+					}
+					return returnArray;
+				}
+			}
+			&#x2F;**
+			 
+			 *&#x2F;
+			cssquery = function(sQuery, oParent, oOptions){
+				oParent = oParent || document ;
+				try{
+					if (_isNonStandardQueryButNotException(sQuery)) {
+						throw Error(&quot;None Standard Query&quot;);
+					}else{
+						var sReviseQuery = sQuery;
+						var oReviseParent = oParent;
+						if (oParent.nodeType != 9) {
+							if(bExtremeMode){
+								if(!oParent.id) oParent.id = &quot;p&quot;+ new Date().getTime() + parseInt(Math.random() * 100000000,10);
+							}else{
+								throw Error(&quot;Parent Element has not ID.or It is not document.or None Extreme Mode.&quot;);
+							}
+							sReviseQuery = _commaRevise(&quot;#&quot;+oParent.id+&quot; &quot;+sQuery,&quot;, #&quot;+oParent.id);
+							oReviseParent = oParent.ownerDocument||oParent.document||document;
+						}
+						if (oOptions&amp;&amp;oOptions.single) {
+							return [oReviseParent.querySelector(sReviseQuery)];
+						}else{
+							return _toArray(oReviseParent.querySelectorAll(sReviseQuery));
+						}
+					}
+				}catch(e){
+					return old_cssquery(sQuery, oParent, oOptions);
+				}
+			}
+		}else{
+			cssquery = old_cssquery;
+		}
+		&#x2F;*
+		 
+	 * @function
+	 * @name CssQuery.test
+	 * @description test() 메서드는 특정 요소가 해당 CSS 선택자(CSS Selector)에 부합하는 요소인지 판단하여 Boolean 형태로 반환한다. CSS 선택자에 연결자는 사용할 수 없음에 유의한다. 선택자의 패턴에 대한 설명은 CssQuery() 함수와 See Also 항목을 참고한다.
+	 * @param {Element} element	검사하고자 하는 요소
+	 * @param {String} sCSSSelector	CSS 선택자. CSS 선택자로 사용할 수 있는 패턴은 표준 패턴과 비표준 패턴이 있다. 표준 패턴은 CSS Level3 명세서에 있는 패턴을 지원한다.
+	 * @return {Boolean} 조건에 부합하면 true, 부합하지 않으면 false를 반환한다.
+	 * @see CssQuery
+	 * @see &lt;a href=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;css3-selectors&#x2F;&quot;&gt;CSS Level3 명세서&lt;&#x2F;a&gt; - W3C
+	 * @example
+		&#x2F;&#x2F; oEl 이 div 태그 또는 p 태그, 또는 align 속성이 center로 지정된 요소인지 검사한다.
+		if (cssquery.test(oEl, &#x27;div, p, [align=center]&#x27;))
+		alert(&#x27;해당 조건 만족&#x27;);
+	  
+		 *&#x2F;
+		cssquery.test = function(oEl, sQuery) {
+
+			clearKeys();
+			
+			var aFunc = parseTestQuery(sQuery);
+			for (var i = 0, nLen = aFunc.length; i &lt; nLen; i++){
+				if (aFunc[i](oEl)) return true;
+			}
+				
+				
+			return false;
+			
+		};
+
+		&#x2F;*
+		 
+	 * @function
+	 * @name CssQuery.useCache
+	 * @description useCache() 메서드는 CssQuery() 함수(cssquery)를 사용할 때 캐시를 사용할 것인지 설정한다. 캐시를 사용하면 동일한 선택자로 탐색하는 경우 탐색하지 않고 기존 탐색 결과를 반환한다. 따라서 사용자가 변수 캐시를 신경쓰지 않고 편하고 빠르게 사용할 수 있는 장점이 있지만 신뢰성을 위해 DOM 구조가 동적으로 변하지 않을 때만 사용해야 한다.
+	 * @param {Boolean} [bFlag] 캐시 사용 여부를 지정한다. 이 파라미터를 생략하면 캐시 사용 상태만 반환한다.
+	 * @return {Boolean} 캐시 사용 상태를 반환한다.
+	 * @see &lt;a href=&quot;#.$$.clearCache&quot;&gt;CssQuery.clearCache&lt;&#x2F;a&gt;
+	  
+		 *&#x2F;
+		cssquery.useCache = function(bFlag) {
+		
+			if (typeof bFlag != &#x27;undefined&#x27;) {
+				bUseResultCache = bFlag;
+				cssquery.clearCache();
+			}
+			
+			return bUseResultCache;
+			
+		};
+		
+		&#x2F;*
+		 
+	 * @function
+	 * @name CssQuery.clearCache
+	 * @description clearCache() 메서드는 CssQuery() 함수(cssquery)에서 캐시를 사용할 때 캐시를 비울 때 사용한다. DOM 구조가 동적으로 바껴 기존의 캐시 데이터가 신뢰성이 없을 때 사용한다.
+	 * @return {void}
+	 * @see &lt;a href=&quot;#.CssQuery.useCache&quot;&gt;CssQuery.useCache&lt;&#x2F;a&gt;
+	  
+		 *&#x2F;
+		cssquery.clearCache = function() {
+			oResultCache = {};
+		};
+		
+		&#x2F;*
+		 
+	 * @function
+	 * @name CssQuery.getSingle
+	 * @description getSingle() 메서드는 CSS 선택자를 사용에서 조건을 만족하는 첫 번째 요소를 가져온다. 반환하는 값은 배열이 아닌 객채 또는 null이다. 조건을 만족하는 요소를 찾으면 바로 탐색 작업을 중단하기 때문에 결과가 하나라는 보장이 있을 때 빠른 속도로 결과를 가져올 수 있다.
+	 CssQuery() 함수(cssquery)에서 캐시를 사용할 때 캐시를 비울 때 사용한다. DOM 구조가 동적으로 바껴 기존의 캐시 데이터가 신뢰성이 없을 때 사용한다.
+	 * @param {String} sSelector CSS 선택자(CSS Selector). CSS 선택자로 사용할 수 있는 패턴은 표준 패턴과 비표준 패턴이 있다. 표준 패턴은 CSS3 Level3 명세서에 있는 패턴을 지원한다. 선택자의 패턴에 대한 설명은 CssQuery() 함수와 See Also 항목을 참고한다.
+	 * @param {Element} [oBaseElement] 탐색 대상이 되는 DOM 요소. 지정한 요소의 하위 노드에서만 객체를 탐색한다. 생략될 경우 문서를 대상으로 찾는다. 
+	 * @param {Object} [oOption] 옵션 객체에 onTimeOffCache 속성을 true로 설정하면 탐색할 때 캐시를 사용하지 않는다.
+	 * @return {Element} 선택된 요소. 결과가 없으면 null을 반환한다.
+	 * @see $Document#query	 
+	 * @see &lt;a href=&quot;#.CssQuery.useCache&quot;&gt;CssQuery.useCache&lt;&#x2F;a&gt;
+	 * @see $$
+	 * @see &lt;a href=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;css3-selectors&#x2F;&quot;&gt;CSS Level3 명세서&lt;&#x2F;a&gt; - W3C
+	  
+		 *&#x2F;
+		cssquery.getSingle = function(sQuery, oParent, oOptions) {
+
+			return cssquery(sQuery, oParent, { single : true ,oneTimeOffCache:oOptions?(!!oOptions.oneTimeOffCache):false})[0] || null;
+		};
+		
+		
+		&#x2F;*
+		 
+	 * @function
+	 * @name CssQuery.xpath
+	 * @description xpath() 메서드는 XPath 문법을 만족하는 요소를 가져온다. 지원하는 문법이 제한적이므로 특수한 경우에만 사용할 것을 권장한다.
+	 * @param {String} sXPath XPath 값.
+	 * @param {Element} [elBaseElement] 탐색 대상이 되는 DOM 요소. 지정한 요소의 하위 노드에서만 객체를 탐색한다. 생략될 경우 문서를 대상으로 찾는다. 
+	 * @return {Array} XPath 문법을 만족하는 요소를 원소로 하는 배열. 결과가 없으면 null을 반환한다.
+	 * @see $Document#xpathAll
+	 * @see &lt;a href=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;standards&#x2F;techs&#x2F;xpath#w3c_all&quot;&gt;XPath 문서&lt;&#x2F;a&gt; - W3C
+	  
+		 *&#x2F;
+		cssquery.xpath = function(sXPath, oParent) {
+			
+			var sXPath = sXPath.replace(&#x2F;\&#x2F;(\w+)(\[([0-9]+)\])?&#x2F;g, function(_1, sTag, _2, sTh) {
+				sTh = sTh || &#x27;1&#x27;;
+				return &#x27;&gt;&#x27; + sTag + &#x27;:nth-of-type(&#x27; + sTh + &#x27;)&#x27;;
+			});
+			
+			return old_cssquery(sXPath, oParent);
+			
+		};
+		
+		&#x2F;*
+		 
+	 * @function
+	 * @name CssQuery.debug
+	 * @description debug() 메서드는 CssQuery() 함수(cssquery)를 사용할 때 성능을 측정하기 위한 기능을 제공하는 함수이다. 파라미터로 입력한 콜백 함수를 사용하여 성능을 측정한다.
+	 * @param {Function} fCallback 선택자 실행에 소요된 비용과 시간을 점검하는 함수. 이 파라미터에 함수 대신 false를 입력하면 성능 측정 모드(debug)를 사용하지 않는다. 이 콜백 함수는 파라미터로 query, cost, executeTime을 갖는다.&lt;br&gt;
+	 &lt;ul&gt;
+		&lt;li&gt;query는 실행에 사용된 선택자이다.&lt;&#x2F;li&gt;
+		&lt;li&gt;index는 탐색에 사용된 비용이다(루프 횟수).&lt;&#x2F;li&gt;
+		&lt;li&gt;executeTime 탐색에 소요된 시간이다.&lt;&#x2F;li&gt;
+	 * @param {Number} [nRepeat] 하나의 선택자를 반복 수행할 횟수. 인위적으로 실행 속도를 늦추기 위해 사용할 수 있다.
+	 * @return {Void}
+	 * @example
+	cssquery.debug(function(sQuery, nCost, nExecuteTime) {
+		if (nCost &gt; 5000)
+			console.warn(&#x27;5000이 넘는 비용이? 확인 -&gt; &#x27; + sQuery + &#x27;&#x2F;&#x27; + nCost);
+		else if (nExecuteTime &gt; 200)
+			console.warn(&#x27;0.2초가 넘게 실행을? 확인 -&gt; &#x27; + sQuery + &#x27;&#x2F;&#x27; + nExecuteTime);
+	}, 20);
+
+	....
+
+	cssquery.debug(false);
+	  
+		 *&#x2F;
+		cssquery.debug = function(fpCallback, nRepeat) {
+			
+			debugOption.callback = fpCallback;
+			debugOption.repeat = nRepeat || 1;
+			
+		};
+		
+		&#x2F;*
+		 
+	 * @function
+	 * @name CssQuery.safeHTML
+	 * @description safeHTML() 메서드는 인터넷 익스플로러에서 innerHTML 속성을 사용할 때 _cssquery_UID 값이 나오지 않게 하는 함수이다. true로 설정하면 탐색하는 노드의 innerHTML 속성에 _cssquery_UID가 나오지 않게 할 수 있지만 탐색 속도는 느려질 수 있다.
+	 * @param {Boolean} bFlag _cssquery_UID의 표시 여부를 지정한다. true로 설정하면 _cssquery_UID가 나오지 않는다.
+	 * @return {Boolean} _cssquery_UID 표시 여부 상태를 반환한다. _cssquery_UID를 표시하는 상태이면 true를 반환하고 그렇지 않으면 false를 반환한다.
+	  
+		 *&#x2F;
+		cssquery.safeHTML = function(bFlag) {
+			
+			var bIE = &#x2F;MSIE&#x2F;.test(window.navigator.userAgent);
+			
+			if (arguments.length &gt; 0)
+				safeHTML = bFlag &amp;&amp; bIE;
+			
+			return safeHTML || !bIE;
+			
+		};
+		
+		&#x2F;*
+		 
+	 * @field
+	 * @name CssQuery.version
+	 * @description version 속성은 cssquery의 버전 정보를 담고 있는 문자열이다.
+	  
+		 *&#x2F;
+		cssquery.version = sVersion;
+		
+		&#x2F;*
+		 
+		 * IE에서 validUID,cache를 사용했을때 메모리 닉이 발생하여 삭제하는 모듈 추가.
+	  
+		 *&#x2F;
+		cssquery.release = function() {
+			if(&#x2F;MSIE&#x2F;.test(window.navigator.userAgent)){
+				
+				delete validUID;
+				validUID = {};
+				
+				if(bUseResultCache){
+					cssquery.clearCache();
+				}
+			}
+		};
+		&#x2F;*
+		 
+		 * cache가 삭제가 되는지 확인하기 위해 필요한 함수
+		 * @ignore
+	  
+		 *&#x2F;
+		cssquery._getCacheInfo = function(){
+			return {
+				uidCache : validUID,
+				eleCache : oResultCache 
+			}
+		}
+		&#x2F;*
+		 
+		 * 테스트를 위해 필요한 함수
+		 * @ignore
+	  
+		 *&#x2F;
+		cssquery._resetUID = function(){
+			UID = 0
+		}
+		&#x2F;*
+		 
+		 * querySelector가 있는 브라우져에서 extreme을 실행시키면 querySelector을 사용할수 있는 커버리지가 높아져 전체적으로 속도가 빨리진다.
+		 * 하지만 ID가 없는 엘리먼트를 기준 엘리먼트로 넣었을 때 기준 엘리먼트에 임의의 아이디가 들어간다.
+		 * @param {Boolean} bExtreme true
+	  
+		 *&#x2F;
+		cssquery.extreme = function(bExtreme){
+			if(arguments.length == 0){
+				bExtreme = true;
+			}
+			bExtremeMode = bExtreme;
+		}
+
+		return cssquery;
+		
+	})();
+	return CssQuery;
+});
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

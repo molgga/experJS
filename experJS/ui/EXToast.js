@@ -1,6 +1,8 @@
 define(function(require, exports){
+	var EXEventListener = require("../events/EXEventListener");
 	var EXTween = require("../transitions/EXTween");
 	var EXEasing = require("../transitions/EXEasing");
+	var EXElement = require("../utils/EXElement");
 	
 	/**
 	@class EXToast
@@ -42,10 +44,18 @@ define(function(require, exports){
 		</html>
 	*/
 	var singletonAlternate = null;
-	var previewMessage = "";
+	var defaultSecond = 3;
 
 	var ClassOf = {
 		ALTERNATE : "exUIKit_toast"
+		, TYPE_ERROR : "error"
+		, TYPE_SUCCESS : "success"
+	}
+
+	exports.TypeOf = {
+		SUCCESS : "success"
+		, ERROR : "error"
+		, WARNING : "warning"
 	}
 	
 	/**
@@ -54,6 +64,10 @@ define(function(require, exports){
 	@type {HTMLElement}
 	*/
 	exports.singletonAlternate = singletonAlternate;
+
+	exports.setDefaultSecond = function(sec){
+		defaultSecond = sec;
+	};
 	
 	/**
 	EXToast 를 초기화 합니다.
@@ -62,44 +76,51 @@ define(function(require, exports){
 	@return {void}
 	*/
 	exports.init = function(){
-		exports.makeToolTip();
+		if(window.EXEventListener != undefined){
+			EXEventListener = window.EXEventListener;
+		}
+		singletonAlternate = document.createElement("div");
+		singletonAlternate.className = ClassOf.ALTERNATE;
+
+		EXTween.killTweensOf(singletonAlternate);
+		document.body.appendChild(singletonAlternate);
+		EXTween.to( singletonAlternate , 0 , { autoOpacity:0 });
+
+		EXEventListener.add( singletonAlternate , "mouseover" , interactionAlternativeHandler);
+		EXEventListener.add( singletonAlternate , "mouseout" , interactionAlternativeHandler);
 	};
 	
-	/**
-	singletonAlternate 객체를 생성합니다.
-	@method makeToolTip
-	@return {void}
-	*/
-	exports.makeToolTip = function(){
-		if(singletonAlternate == null){
-			singletonAlternate = document.createElement("div");
-			singletonAlternate.className = ClassOf.ALTERNATE;
-
-			EXTween.killTweensOf(singletonAlternate);
-			document.body.appendChild(singletonAlternate);
-			EXTween.to( singletonAlternate , 0 , { autoOpacity:0 });
-		}
-	};
 	
 	/**
 	EXToast 를 지정된 시간동안 노출합니다.
 	@method message
-	@param msg {String} 노출될 문자(열)
+	@param text {String} 노출될 문자(열)
 	@param showSecond {number} 노출될 지속 시간
 	@return {void}
 	*/
-	exports.message = function( msg , showSecond ){
-		if(msg == ""){
+	exports.message = function( text , option ){
+		if(text == ""){
 			return false;
 		}
-		if(previewMessage == msg){
-			return false;
+		//if(previewMessage == msg){
+			//return false;
+		//}
+		var textMessage = text;
+
+		singletonAlternate.className = ClassOf.ALTERNATE;
+
+		var second = defaultSecond;
+		if(option != undefined){
+			if(option.second != undefined){
+				second = option.second;
+			}
+			if(option.type != undefined){
+				EXElement.addClass(singletonAlternate , option.type);
+				textMessage = exports.designOfType(option.type) + textMessage;
+			}
 		}
-		if(showSecond == undefined || showSecond.constructor != Number){
-			showSecond = 2;
-		}
-		singletonAlternate.innerHTML = msg;
-		previewMessage = msg;
+
+		singletonAlternate.innerHTML = textMessage;
 
 		EXTween.killTweensOf(singletonAlternate);
 		EXTween.to( singletonAlternate , 0 , { autoOpacity:0.01 });
@@ -107,13 +128,39 @@ define(function(require, exports){
 		var offsetHeight = singletonAlternate.offsetHeight;
 		EXTween.to( singletonAlternate , 0 , { autoOpacity:0 , marginLeft: -offsetWidth/2 });
 		EXTween.to( singletonAlternate , 0.5 , { autoOpacity:1 , ease:EXEasing.easeOutQuint});
-		EXTween.to( singletonAlternate , 0.5 , { delay: showSecond , autoOpacity:0 , ease:EXEasing.easeOutQuint , onComplete:function(){
-			singletonAlternate.innerHTML = "";
-			previewMessage = null;
-		}});
+		EXTween.to( singletonAlternate , 0.5 , { delay: second , autoOpacity:0 });
 		
 		return true;
 	};
+
+	exports.designOfType= function(type){
+		var headTitle = "";
+		switch(type){
+			case exports.TypeOf.SUCCESS : 
+				headTitle = "<strong class='head_title'>Success</strong> ";
+				break;
+			case exports.TypeOf.WARNING : 
+				headTitle = "<strong class='head_title'>Warning</strong> ";
+				break;
+			case exports.TypeOf.ERROR : 
+				headTitle = "<strong class='head_title'>Error</strong> ";
+				break;
+		}
+		return headTitle;
+	}
+
+	function interactionAlternativeHandler(evt){
+		switch(evt.type){
+			case "mouseover" :
+				EXTween.killTweensOf(singletonAlternate);
+				EXTween.to( singletonAlternate , 0.5 , { autoOpacity:1 });
+				break;
+			case "mouseout" :
+				EXTween.killTweensOf(singletonAlternate);
+		EXTween.to( singletonAlternate , 0.5 , { delay:0.5, autoOpacity:0 });
+				break;
+		}
+	}
 
 	exports.init();
 });

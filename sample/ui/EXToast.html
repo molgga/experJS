@@ -8,13 +8,18 @@
 <script type="text/javascript" src="../../experJS/experJS.js"></script>
 
 <style type="text/css">
-body { font-family:"돋움"; font-size:0.8em; }
+body { font-family:"돋움"; font-size:0.8em; background-color:#343434; }
+.exUIKit_toast.custom1 { color:#222222; background-color:#ffff00; }
 </style>
 
 </head>
 <body>
-	<input id="showMessage" type="text" />
-	<button id="showToastBtn">showToastBtn</button>
+	<button id="showToastBtn" onclick="EXToast.message('성공적인 문장!' , { type:'success' })">success</button>
+	<button id="showToastBtn" onclick="EXToast.message('경고스러운 문장!' , { type:'warning' })">warning</button>
+	<button id="showToastBtn" onclick="EXToast.message('에러같은 문장!' , { type:'error' })">error</button>
+	<br/>
+	<button id="showToastBtn" onclick="EXToast.message('Default! 그냥 메시지')">default</button>
+	<button id="showToastBtn" onclick="EXToast.message('custom 메시지' , { type:'custom1' })">custom</button>
 	
 	<script type="text/javascript">
 	(function(){
@@ -22,13 +27,6 @@ body { font-family:"돋움"; font-size:0.8em; }
 		EX.include("ui/EXToast");
 		EX.includeEnd();
 		EX.ready(function(){
-			EX.debug("EX.ready" , "callback");
-			var showToastBtn = document.getElementById("showToastBtn");
-			var showMessage = document.getElementById("showMessage");
-
-			showToastBtn.onclick = function(evt){
-				EXToast.message( showMessage.value );
-			}
 		});
 	})();
 	</script>

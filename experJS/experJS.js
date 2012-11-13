@@ -112,6 +112,7 @@ var EX = {};
 	@method include
 	@static
 	@param packageClass {String} include 할 class 의 경로 및 class name
+	@param compulsionName {String} 강제로 class 명을 변경 합니다.
 	@example
 		<!DOCTYPE html>
 		<html>
@@ -125,10 +126,13 @@ var EX = {};
 			EX.includeBegin("../../experJS");
 			EX.include("events/EXEventListener"); // class name EXEventListener
 			EX.include("transitions/EXTween"); // class name EXTween
+			EX.include("transitions/EXEasing" , "Easing"); // compulsion class name Easing
 			EX.includeEnd();
 			EX.ready(function(){
-				EX.debug("EX.ready" , "callback" , EXEventListener);
+				EX.debug("EX" , "ready");
+				EX.debug(EXEventListener);
 				EX.debug(EXTween);
+				EX.debug(Easing);
 			});
 		})();
 		</script>
@@ -159,16 +163,40 @@ var EX = {};
 	include 지정을 확정하고 include 하는 파일(들)의 로드를 시작합니다.
 	@method includeEnd
 	@static
-	@param global {Object}
+	@param scope {Object} EX 에 의해 로드되는 클래스(들)을 바인딩 할 오브젝트.(기본 window)
+	@example
+		<!DOCTYPE html>
+		<html>
+		<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<title></title>
+		<script type="text/javascript" src="../../experJS/experJS.js"></script>
+		<script type="text/javascript">
+		(function(){
+			var foo = {};
+			EX.includeBegin("../../experJS");
+			EX.include("transitions/EXTween");
+			EX.includeEnd(foo); // name
+			EX.ready(function(){
+				EX.debug("EX" , "ready");
+				EX.debug(foo.EXTween);
+			});
+		})();
+		</script>
+		</head>
+		<body>
+		</body>
+		</html>
 	*/
-	EX.includeEnd = function(global){
-		if(global == undefined) global = window;
+	EX.includeEnd = function(scope){
+		if(scope == undefined) scope = window;
 		try{
 			var len = includePackage.length;
 			require( includePackage , function(){
 				var len = arguments.length;
 				for(var i = 0 ; i < len ; i++){
-					global[includeClass[i]] = arguments[i];
+					scope[includeClass[i]] = arguments[i];
 				}
 				requireComplete();
 			});

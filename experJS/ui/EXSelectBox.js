@@ -28,31 +28,85 @@ define(function(require , exports){
 	EventModel.OPEN_SELECTBOX = "EventModel.OPEN_SELECTBOX"; // designSelectBox 가 open 되어야 할 때 dispatch 되는 이벤트명.
 	EventModel.CLOSE_SELECTBOX = "EventModel.CLOSE_SELECTBOX"; // designSelectBox 가 close 되어야 할 때 dispatch 되는 이벤트명.
 
+	var _designSelectBoxArr = null;
+
 	/**
-	select 태그(이하 originalSelectBox) 를 design 가능한 요소(이하 designSelectBox)로 변경(대체)합니다.
-	originalSelectBox 기능을 designSelectBox 그대로 구현하며,
-	originalSelectBox designSelectBox 동작을 연동합니다.
-	예를 들어 originalSelectBox 를 클릭해도 designSelectBox 가 클릭 처리 되어야 하며,
-	designSelectBox 를 클릭해도 originalSelectBox 가 클릭 되도록 처리됩니다.
-	
-	originalSelectBox 는 강제로 시각적 부분에서만 보이지 않도록 처리되므로,
-	back-end 쪽에서는 기본 form 의 사용법 그대로 접근, 사용할 수 있습니다.
-	
-	@class hcap.ui.DesignSelectBox
-	@public
-	@constructor
+	Component select 와 1:1로 대응하는 Design select 를 생성합니다. 
+	@class EXSelectBox
+	@static
 	*/
 
-	var _designSelectBoxArr = null;
 		
 	/**
-	DesignSelectBox 객체를 초기화 합니다.
+	EXSelectBox 객체를 초기화 합니다.
 	@method init
 	@public
+	@param originalSelectClassName {String} exper 에서 제공하고 파싱하는 클래스가 아닌 직접 지정 가능한 className
+	@example
+		<!DOCTYPE html>
+		<html>
+		<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<link type="text/css" rel="stylesheet" href="../../experCSS/exper.css" />
+		<script type="text/javascript" src="../../experJS/experJS.js"></script>
+		<script type="text/javascript">
+		(function(){
+			EX.includeBegin("../../experJS");
+			EX.include("ui/EXSelectBox");
+			EX.includeEnd();
+			EX.ready(function(){
+
+				EXSelectBox.init(); // EXSelectBox initialize
+
+			});
+		})();
+		</script>
+
+		<!--Test - original visible //-->
+		<style>
+		select.exUIKit_selectBox { visibility:visible; position:static; left:0; }
+		</style>
+
+		</head>
+		<body>
+			<select id="testSelectBox1" name="selectBox1" class="exUIKit_selectBox">
+				<option>가</option>
+				<option>나나</option>
+				<option>다다다</option>
+				<option>안녕하세요</option>
+				<option>이윤석 입니다.</option>
+			</select>
+			<select id="testSelectBox2" name="selectBox2" class="exUIKit_selectBox">
+				<option>AA</option>
+				<option>BBBB</option>
+				<option>CCCCCC</option>
+				<option>Hello javascript</option>
+				<option>molgga</option>
+			</select>
+			<select id="testSelectBox3" name="selectBox3" class="exUIKit_selectBox">
+				<option>123</option>
+				<option>456</option>
+				<option selected="selected">7890</option>
+			</select>
+			<select id="testSelectBox4" name="selectBox4" class="exUIKit_selectBox" disabled="disabled">
+				<option>11111111</option>
+				<option>22222222</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+			</select>
+		</body>
+		</html>
 	*/
-	exports.init = function(){
+	exports.init = function(originalSelectClassName){
 		if(window.EXEventListener != undefined){
 			EXEventListener = window.EXEventListener;
+		}
+		if(originalSelectClassName != undefined){
+			ClassOf.SELECTBOX = originalSelectClassName;
 		}
 		_designSelectBoxArr = [];
 		var selectArr = CssQuery("." + ClassOf.SELECTBOX);
@@ -63,7 +117,7 @@ define(function(require , exports){
 			originalSelectBox = selectArr[i];
 			if(originalSelectBox.is_exUIKit_selectBox == true) continue; //ajax 중첩 호출. 테스트.
 
-			selectBox = new SelectBox();
+			selectBox = new exports.SelectBox();
 			selectBox.init( originalSelectBox );
 			_designSelectBoxArr.push(selectBox);
 		}
@@ -73,8 +127,10 @@ define(function(require , exports){
 	};
 	
 	/**
+	지정된 select 객체를 다시 생성합니다.
 	@method remake
 	@public
+	@param originalSelectBox {HTMLSelectElement} 다시 생성할 select 객체
 	*/
 	exports.remake = function(originalSelectBox){
 		var len = _designSelectBoxArr.length;
@@ -89,16 +145,35 @@ define(function(require , exports){
 				selectBox.destroy();
 				selectBox = null;
 				_designSelectBoxArr.splice(i,1);
-				remakeSelectBox = new SelectBox();
+				remakeSelectBox = new exports.SelectBox();
 				remakeSelectBox.init( originalSelectBox );
 				_designSelectBoxArr.push(remakeSelectBox);
 				break;
 			}
 		}
 	};
+	
+	/**
+	Design Component 로 생성된 객체(들)를 배열 형태로 반환합니다.
+	@method getList
+	@public
+	@return {Array}
+	*/
+	exports.getList = function(){
+		return _designSelectBoxArr;
+	};
+	/**
+	Design Component 로 생성된 객체(들)의 총 갯수를 반환합니다.
+	@method getLength
+	@public
+	@return {integer}
+	*/
+	exports.getLength = function(){
+		return _designSelectBoxArr.length;
+	};
 
 	/**
-	DesignSelectBox 객체의 자원을 모두 해제하고 파기 합니다.
+	EXSelectBox 객체의 자원을 모두 해제하고 파기 합니다.
 	@method destroy
 	@public
 	*/
@@ -128,10 +203,10 @@ define(function(require , exports){
 	designSelectBox 에서 일어나는 전역 이벤틀 핸들링 합니다.
 	@method publicEventHandler
 	@private
-	@param evt {EventVW.Event} Event 객체.
+	@param evt {EXEvent} Event 객체.
 	*/
 	function publicEventHandler(evt){
-		//EX.debug("DesignSelectBox publicEventHandler " + evt.type);
+		//EX.debug("EXSelectBox publicEventHandler " + evt.type);
 		switch(evt.type){
 			case EventModel.OPEN_SELECTBOX :
 				// selectBox 를 열어야 할때 dispatch 되는 이벤트를 dispatch 하는 designSelectBox 가 자신을 참조값으로 보냅니다.
@@ -159,14 +234,12 @@ define(function(require , exports){
 	}
 
 	/**
-	selectBox 와 device(touch 기반)의 특성상 mouseover , out 에 의한 selectBox close 처리가 난해 합니다.
-	selectBox 가 open 된 상태에서 다른 selectBox 를 열게 될 때 등 document 문서내 interaction 이 일어날때 열려있던 selectBox 를 닫습니다.
 	@method documentEventHandler
 	@private
-	@param evt {EventVW.Event} Event 객체.
+	@param evt {EXEvent} Event 객체.
 	*/
 	function documentEventHandler(evt){
-		//EX.debug("DesignSelectBox documentEventHandler " + evt.type);
+		//EX.debug("EXSelectBox documentEventHandler " + evt.type);
 		EXEventListener.remove( document , "mousedown" , documentEventHandler);
 		if(Model.currentOpenSelectBox != null){
 			Model.currentOpenSelectBox.setOpen(false);
@@ -175,13 +248,11 @@ define(function(require , exports){
 	}
 
 	/**
-	originalSelectBox 한 개에 대응하는 designSelectBox 객체.
-	해당 객체가 생성될 때 SelectBoxOptionGroup 과 SelectBoxOption 객체(들)을 생성하게 됩니다.
-	@class hcap.ui.DesignSelectBox.SelectBox
+	@class EXSelectBox.SelectBox
 	@private
 	@constructor
 	*/
-	function SelectBox(){
+	exports.SelectBox = function(){
 		var _this = document.createElement("span");
 		var _originalSelectBox = null;
 		var _selectFocusBox = null;
@@ -215,7 +286,7 @@ define(function(require , exports){
 			_selectOptionGroupContainer.className = "optionContainer";
 			_selectOptionScrollView = document.createElement("div");
 			_selectOptionScrollView.className = "optionScrollView";
-			_selectOptionGroup = new SelectBoxOptionGroup();
+			_selectOptionGroup = new exports.SelectBoxOptionGroup();
 			_selectOptionGroup.init(_originalSelectBox);
 			
 			var originOffsetWidthPixel = _originalSelectBox.offsetWidth + Model.PADDING_RIGHT_WIDTH + "px";
@@ -257,10 +328,10 @@ define(function(require , exports){
 
 			_this.setDisabled(_originalSelectBox.disabled);
 
-			//EXEventListener.add( _this , "mousedown" , interactionDesignSelectBoxEventHandler , true);
-			EXEventListener.add( _selectFocusBox , "mousedown" , interactionDesignSelectBoxEventHandler);
-			EXEventListener.add( _this , "mouseover" , interactionDesignSelectBoxEventHandler);
-			EXEventListener.add( _this , "mouseout" , interactionDesignSelectBoxEventHandler);
+			//EXEventListener.add( _this , "mousedown" , interactionEXSelectBoxEventHandler , true);
+			EXEventListener.add( _selectFocusBox , "mousedown" , interactionEXSelectBoxEventHandler);
+			EXEventListener.add( _this , "mouseover" , interactionEXSelectBoxEventHandler);
+			EXEventListener.add( _this , "mouseout" , interactionEXSelectBoxEventHandler);
 			EXEventListener.add( _originalSelectBox , "change" , interactionOriginalEventHandler);
 			if(_originalSelectBox.addEventListener){
 				EXEventListener.add( _originalSelectBox , "DOMSubtreeModified" , domChangeEventHandler);
@@ -318,7 +389,7 @@ define(function(require , exports){
 		designSelectBox 의 interaction 을 핸들링 합니다.
 		@method interactionSelectOptionGroupEventHandler
 		@private
-		@param evt {EventVW.Event} Event 객체.
+		@param evt {EXEvent} Event 객체.
 		*/
 		function interactionSelectOptionGroupEventHandler(evt){
 			//EX.debug("SelectBox interactionSelectOptionGroupEventHandler" , evt.type);
@@ -331,12 +402,12 @@ define(function(require , exports){
 		
 		/**
 		designSelectBox 의 interaction 을 핸들링 합니다.
-		@method interactionDesignSelectBoxEventHandler
+		@method interactionEXSelectBoxEventHandler
 		@private
-		@param evt {EventVW.Event} Event 객체.
+		@param evt {EXEvent} Event 객체.
 		*/
-		function interactionDesignSelectBoxEventHandler(evt){
-			//EX.debug("SelectBox interactionDesignSelectBoxEventHandler " , evt.type);
+		function interactionEXSelectBoxEventHandler(evt){
+			//EX.debug("SelectBox interactionEXSelectBoxEventHandler " , evt.type);
 			switch(evt.type){
 				case "mouseover" :
 					_autoCloseTimer.stop();
@@ -361,7 +432,7 @@ define(function(require , exports){
 		originalSelectBox 의 interaction 을 핸들링 합니다.
 		@method interactionOriginalEventHandler
 		@private
-		@param evt {EventVW.Event} Event 객체.
+		@param evt {EXEvent} Event 객체.
 		*/
 		function interactionOriginalEventHandler(evt){
 			//EX.debug("SelectBox interactionOriginalEventHandler" , evt.type);
@@ -436,7 +507,7 @@ define(function(require , exports){
 					//parentNode.removeChild(_this);
 				}
 
-				EXEventListener.remove( _this , "mousedown" , interactionDesignSelectBoxEventHandler , true);
+				EXEventListener.remove( _this , "mousedown" , interactionEXSelectBoxEventHandler , true);
 			}catch(e){
 				//EX.debug("destroy SelectBox " + e);
 			}
@@ -450,11 +521,11 @@ define(function(require , exports){
 	originalSelectBox 의 optionGroup 역할을 하는 객체.
 	실제로는 originalSelectBox 에 group 태그는 존재하지 않지만,
 	option 의 scroll , open , close 등의 group 기능이 요구됨에 따라 정의된 객체입니다.
-	@class hcap.ui.DesignSelectBox.SelectBoxOptionGroup
+	@class EXSelectBox.SelectBoxOptionGroup
 	@private
 	@constructor
 	*/
-	function SelectBoxOptionGroup(){
+	exports.SelectBoxOptionGroup = function(){
 		var _this = document.createElement("ul");
 		var _isOpen = false;
 		var _currentSelectOption = null;
@@ -476,7 +547,7 @@ define(function(require , exports){
 			var selectOption = null;
 			for(var i = 0 ; i < len ; i++){
 				optionObj = optionArr[i];
-				selectOption = new SelectBoxOption();
+				selectOption = new exports.SelectBoxOption();
 				selectOption.init(optionObj);
 				
 				_this.appendChild(selectOption);
@@ -553,7 +624,7 @@ define(function(require , exports){
 		해당 객체의 interaction 이벤트를 핸들링 합니다.
 		@method interactionOptionGroupEventHandler
 		@private
-		@param evt {EventVW.Event} Event 객체.
+		@param evt {EXEvent} Event 객체.
 		*/
 		function interactionOptionGroupEventHandler(evt){
 			//EX.debug("SelectBoxOptionGroup interactionOptionGroupEventHandler" , evt.type);
@@ -570,7 +641,7 @@ define(function(require , exports){
 		optionGroup 에 속한 option 객체의 interaction 이벤트를 핸들링 합니다.
 		@method interactionOptionEventHandler
 		@private
-		@param evt {EventVW.Event} Event 객체.
+		@param evt {EXEvent} Event 객체.
 		*/
 		function interactionOptionEventHandler(evt){
 			//EX.debug("SelectBoxOptionGroup interactionOptionEventHandler" , evt.type);
@@ -608,11 +679,11 @@ define(function(require , exports){
 	
 	/**
 	originalSelectBox 의 option 역할을 하는 객체.
-	@class hcap.ui.DesignSelectBox.SelectBoxOption
+	@class EXSelectBox.SelectBoxOption
 	@private
 	@constructor
 	*/
-	function SelectBoxOption(){
+	exports.SelectBoxOption = function(){
 		var _this = document.createElement("li");
 		var _isSelected = false;
 		var _value = "";

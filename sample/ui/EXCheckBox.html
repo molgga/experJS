@@ -14,35 +14,15 @@
 	EX.ready(function(){
 		
 		EXCheckBox.init();
-		
-		/*
-		IE 9 이하 모두 disabled 를 알아낼수 있는 이벤트가 없다.
-		onpropertychange 는 checked 속성이 변경 될때만 전파된다. (IE9는 이것도 안됨)
-		IE9의 경우 이벤트 리스너로 EventModel3 인 DOMSubtreeModified 로 이벤트를 잡아 낼 수 있는 방법이 있을것으로 예상했으나,
-		이것 역시 전파되는 기준을 모르겠다. cheched 속성을 바꿔도 전파가 안되고, disabled 속성은 false 로 값을 바꿀때만 전파된다.(true 로 변경하는건 전파가 안됨)
-		setAttribute, removeAttribute 도 동일하게 안된다. 일관성 있네 개똥같은기-_-
 
-		진짜 체크박스의 disabled 속성을 바꿀때 design 체크박스의 형태를 disabled 처리 할 방법이 없다는 얘기가 되는데,
-		이건 모양만 바꿀 수 없고 동작은 문제없이 잘된다.(모양은 안바껴도 diabled 상태에서 체크 안됨)	
-		var check1 = document.getElementById("check1");
-		setTimeout( function(){
-			check1.disabled = false;
-			//check1.setAttribute("disabled" , "true" , 0);
-		} , 2000);
-
-		setTimeout( function(){
-			//check1.disabled = false;
-			//check1.removeAttribute("disabled", 0);
-		} , 4000);
-
-		setTimeout( function(){
-			//check1.disabled = true;
-			//check1.setAttribute("disabled" , "true" , 0);
-		} , 6000);
-		*/
 	});
 })();
 </script>
+
+<!--Test - original visible //-->
+<style type="text/css">
+.exUIKit_checkBox.original { position:static; left:auto; visibility:visible; }
+</style>
 
 </head>
 <body>

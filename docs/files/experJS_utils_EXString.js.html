@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>experJS\utils\EXString.js</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.7.0&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/define.html">define</a></li>
+            
+                <li><a href="..&#x2F;classes/EX.html">EX</a></li>
+            
+                <li><a href="..&#x2F;classes/EXBrowser.html">EXBrowser</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCheckBox.html">EXCheckBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCheckBox.CheckBox.html">EXCheckBox.CheckBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCompare.html">EXCompare</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCookie.html">EXCookie</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCustomEvent.html">EXCustomEvent</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEasing.html">EXEasing</a></li>
+            
+                <li><a href="..&#x2F;classes/EXElement.html">EXElement</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEvent.html">EXEvent</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEventListener.html">EXEventListener</a></li>
+            
+                <li><a href="..&#x2F;classes/EXJsonLoader.html">EXJsonLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXLoader.html">EXLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXMath.html">EXMath</a></li>
+            
+                <li><a href="..&#x2F;classes/EXRadioButton.html">EXRadioButton</a></li>
+            
+                <li><a href="..&#x2F;classes/EXRadioButton.RadioButton.html">EXRadioButton.RadioButton</a></li>
+            
+                <li><a href="..&#x2F;classes/EXScrollViewY.html">EXScrollViewY</a></li>
+            
+                <li><a href="..&#x2F;classes/EXScrollViewY.UI_Bar.html">EXScrollViewY.UI_Bar</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.html">EXSelectBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBox.html">EXSelectBox.SelectBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBoxOption.html">EXSelectBox.SelectBoxOption</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBoxOptionGroup.html">EXSelectBox.SelectBoxOptionGroup</a></li>
+            
+                <li><a href="..&#x2F;classes/EXString.html">EXString</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTextLoader.html">EXTextLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTimer.html">EXTimer</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTiming.html">EXTiming</a></li>
+            
+                <li><a href="..&#x2F;classes/EXToast.html">EXToast</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTransform.html">EXTransform</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTween.html">EXTween</a></li>
+            
+                <li><a href="..&#x2F;classes/EXURLRequest.html">EXURLRequest</a></li>
+            
+                <li><a href="..&#x2F;classes/EXValidator.html">EXValidator</a></li>
+            
+                <li><a href="..&#x2F;classes/EXXmlLoader.html">EXXmlLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/require.html">require</a></li>
+            
+                <li><a href="..&#x2F;classes/requirejs.html">requirejs</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: experJS\utils\EXString.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function(require , exports){
+	&#x2F;**
+	@class EXString
+	@static
+	*&#x2F;
+	&#x2F;**
+	문자열의 공백을 모두 제거합니다.
+	@method removeWhiteSpace
+	@static
+	@param str {String} 제거할 문자열.
+	@return {String}
+	*&#x2F;
+	exports.removeWhiteSpace = function(str){
+		var strReg = &#x2F;\s+&#x2F;g;
+		if(str) str = str.replace(strReg , &quot;&quot;);
+		return str;
+	};
+
+	&#x2F;**
+	문자열의 좌,우 공백을 제거합니다.
+	@method trim
+	@static
+	@param str {String} 좌,우 공백을 제거할 문자열.
+	@return {String}
+	*&#x2F;
+	exports.trim = function(str){
+		var strReg = &#x2F;(^\s*)|(\s*$)&#x2F;gi;
+		if(str) str = str.replace(strReg,&quot;&quot;);
+		return str;
+	};
+
+	&#x2F;**
+	문자열의 좌측 공백을 제거합니다.
+	@method leftTrim
+	@static
+	@param str {String} 좌측 공백을 제거할 문자열.
+	@return {String}
+	*&#x2F;
+	exports.leftTrim = function(str){
+		while(str.substring(0,1) == &quot; &quot;){
+			str = str.substring(1);
+		}
+		return str;
+	};
+
+	&#x2F;**
+	문자열의 우측 공백을 제거합니다.
+	@method rightTrim
+	@static
+	@param str {String} 우측 공백을 제거할 문자열.
+	@return {String}
+	*&#x2F;
+	exports.rightTrim = function(str){
+		var len = str.length;
+		while((str.substring(len-1,len)==&quot; &quot;)){
+			str = str.substring(0, len-1);
+			len = str.length;
+		}
+		return str;
+	};
+
+	&#x2F;**
+	parameter 의 str 에 지정된 문자열을 대상으로 find 문자(열)을 rpl 문자(열)로 모두 변경합니다.
+	@method replaceAll
+	@static
+	@param str {String} 변경 대상이 될 문자열.
+	@param find {String} 변경할 문자(열).
+	@param rpl {String} 변경될 문자(열).
+	@return {String}
+	*&#x2F;
+	exports.replaceAll = function(str , find , rpl){
+		return str.split(find).join(rpl);
+	};
+	
+	&#x2F;**
+	문자열의 태그가 포함되어 있을시 태그에 해당하는 문자열을 제거합니다.
+	@method removeTag
+	@static
+	@param tagString {String} 태그를 제거할 문자열.
+	@param [trim = false] {boolean} 변경 중 양쪽 공백 제거.
+	@param [removeTab = false] {boolean} 변경 중 탭(\t) 문자 제거.
+	@return {String}
+	*&#x2F;
+	exports.removeTag = function(tagString , trim , removeTab){
+		var replaceText = tagString.replace(&#x2F;(&lt;([^&gt;]+)&gt;)&#x2F;ig, &quot;&quot;);
+		if(trim == true) replaceText = exports.trim(replaceText);
+		if(removeTab == true) replaceText = exports.replaceAll(replaceText,&quot;\t&quot;,&quot;&quot;);
+		return replaceText;
+	};
+
+	
+	&#x2F;**
+	문자열의 태그가 포함되어 있을시 태그에 해당하는 문자열을 제거합니다.
+	@method replaceTypeToPrice
+	@static
+	@param number {number} 변경할 대상이 되는 숫자.
+	@param [addStr = &quot;,&quot;] {String} 구분자 문자.
+	@return {String}
+	*&#x2F;
+	exports.replaceTypeToPrice = function(number, addStr){
+		if(addStr == undefined) addStr = &quot;,&quot;;
+		if(typeof(number) == &quot;number&quot;){
+			var price = number.toString().split(&quot;.&quot;);
+			var isDemicalPoint = false;
+			if(price.length &gt; 1){
+				isDemicalPoint = true;
+			}
+			var arr = price[0].toString().split(&quot;&quot;); 
+			var tlen = arr.length; 
+			var clen = Math.ceil(tlen &#x2F; 3);
+			var i;
+			for (i=1; i&lt;clen; i++) arr.splice(tlen - i * 3, 0, addStr);
+			
+			var resultValue = arr.join(&quot;&quot;);
+			if(isDemicalPoint == true){
+				resultValue = resultValue +&quot;.&quot;+ price[1];
+			}
+			return resultValue;
+		}else{
+			return &quot;isNaN&quot;; 
+		}
+	};
+
+	&#x2F;**
+	지정된 문자열의 첫 글자를 대문자로 변경하여 반환합니다.
+	@method toUpperCaseHead
+	@param str {String}
+	@return {String}
+	*&#x2F;
+	exports.toUpperCaseHead = function(str){
+		var head = str.substring(0,1).toUpperCase();
+		var tail = str.substring(1,str.length);
+		return head + tail;
+	}
+
+	&#x2F;**
+	문자열의 문자를 구분으로 분할하여 배열로 반환합니다.
+	@method convertCharToArray
+	@param str {String} 원본 문자열.
+	@return {Array}
+	*&#x2F;
+	exports.convertCharToArray = function(str){
+		var arr = [];
+		var len = str.length;
+		for(var i = 0 ; i &lt; len ; i++){
+			arr.push(str.substring(i,i+1));
+		}
+		return arr;
+	}
+
+	&#x2F;**
+	문자열의 단어를 구분으로 분할하여 배열로 반환합니다.
+	@method convertWordToArray
+	@param str {String} 원본 문자열.
+	@return {Array}
+	*&#x2F;
+	exports.convertWordToArray = function(str){
+		var strReg = &#x2F;\s*\S*&#x2F;g;
+		var regSer = strReg.exec(str)[0];
+		var regArr = [];
+		while(regSer){
+			if(regSer == &quot;&quot;) break;
+			regArr.push(regSer);
+			regSer = exports.trim(strReg.exec(str)[0]);
+		}
+		return regArr;
+	}
+
+	&#x2F;**
+	문자열을 지정된 인덱스에 삽입합니다.
+	@method insert
+	@param str {String} 원본 문자열.
+	@param addStr {integer} 삽입할 문자열.
+	@param [index=0] {integer} addStr을 삽입할 인덱스.
+	@return {String}
+	*&#x2F;
+	exports.insert = function(str , addStr , index){
+		var head = null;
+		var tail = null;
+		if(index != undefined){
+			head = str.substring(0, index);
+			tail = str.substring(index , str.length);
+		}else{
+			head = &quot;&quot;;
+			tail = str;
+		}
+		return head+addStr+tail;
+	}
+
+	&#x2F;**
+	문자열을 지정된 인덱스만큼 제거합니다.
+	@method remove
+	@param str {String} 원본 문자열.
+	@param indexStart {integer} 제거할 시작 인덱스.
+	@param indexEnd {integer} 제거할 마지막 인덱스.(시작 인덱스의 상대적)
+	@return {String}
+	*&#x2F;
+	exports.remove = function(str , indexStart , indexEnd){
+		var head = null;
+		var tail = null;
+		head = str.substring(0 , indexStart);
+		tail = str.substring(indexStart+indexEnd , str.length);
+		return head + tail;
+	}
+
+	&#x2F;**
+	문자열을 지정된 숫자만큼 잘라내어 반환합니다.
+	@method abbreviate
+	@param str {String} 잘라낼 문자열.
+	@param maxLength {integer} 잘라낼 최대 길이.
+	@return {String}
+	*&#x2F;
+	exports.abbreviate = function(str , maxLength){
+		return str.substring(0, maxLength);
+	}
+	
+	&#x2F;**
+	str 문자열에 포함되는 문자(열)이 모두 포함이 되는지 검사합니다.
+	@method containsHas
+	@param str {String} 검사할 문자열.
+	@param aguments {...String} 포함이 되는지 검사할 문자열.
+	@return {boolean}
+	*&#x2F;
+	exports.containsHas = function(str){
+		var isContain = false;
+		var len = arguments.length;
+		if(len &gt; 1){
+			var reg = null;
+			for(var i = 1 ; i &lt; len ; i++){
+				reg = new RegExp(arguments[i]);
+				if(reg.test(str) == false){
+					isContain = false;
+					break;
+				}else{
+					isContain = true;
+				}
+			}
+		}else{
+			isContain = false;
+		}
+		return isContain;
+	}
+
+	&#x2F;**
+	str 문자열에 포함되는 문자(열)이 하나라도 포함이 되는지 검사합니다.
+	@method containsAny
+	@param str {String} 검사할 문자열.
+	@param aguments {...String} 포함이 되는지 검사할 문자열.
+	@return {boolean}
+	*&#x2F;
+	exports.containsAny = function(str){
+		var isContain = false;
+		var len = arguments.length;
+		if(len &gt; 1){
+			var reg = null;
+			for(var i = 1 ; i &lt; len ; i++){
+				reg = new RegExp(arguments[i]);
+				if(reg.test(str) == true){
+					isContain = true;
+					break;
+				}
+			}
+		}else{
+			isContain = false;
+		}
+		return isContain;
+	}
+	
+	&#x2F;**
+	대문자는 소문자로 소문자는 대문자로 변경합니다.
+	@method swapCase
+	@param str {String} 변경할 문자열.
+	@return {String}
+	*&#x2F;
+	exports.swapCase = function(str){
+		var charArr = exports.convertCharToArray(str);
+		var len = charArr.length;
+		var charCode = 0;
+		var concat = &quot;&quot;;
+		for(var i = 0 ; i &lt; len ; i++){
+			charCode = charArr[i].charCodeAt();
+			if(65 &lt;= charCode&amp;&amp; charCode &lt;= 90){
+				concat = concat + String.fromCharCode(charCode+32);
+			}else if(97 &lt;= charCode&amp;&amp; charCode &lt;= 122){
+				concat = concat + String.fromCharCode(charCode-32);
+			}else{
+				concat = concat + charArr[i];
+			}
+		}
+		return concat;
+	}
+
+	&#x2F;**
+	문자 타입이 숫자인지 확인합니다.
+	@method checkCharNum
+	@param character {String} 검사할 문자.
+	@return {boolean}
+	*&#x2F;
+	exports.checkCharNum = function(character){
+		var pattern = &#x2F;^[0-9]$&#x2F;;
+		return pattern.test(character);
+	}
+
+	&#x2F;**
+	문자 타입이 영문인지 확인합니다.
+	@method checkCharEng
+	@param character {String} 검사할 문자.
+	@return {boolean}
+	*&#x2F;
+	exports.checkCharEng = function(character){
+		var pattern = &#x2F;^[a-zA-Z]$&#x2F;;
+		return pattern.test(character);
+	}
+	
+	&#x2F;**
+	문자 타입이 영문 or 숫자인지 확인합니다.
+	@method checkCharNumEng
+	@param character {String} 검사할 문자.
+	@return {boolean}
+	*&#x2F;
+	exports.checkCharNumEng = function(character){
+		var pattern = &#x2F;^[a-zA-Z0-9]$&#x2F;;
+		return pattern.test(character);
+	}
+
+	&#x2F;**
+	문자열이 숫자만 포함하는지 확인합니다.
+	@method checkStringNum
+	@param str {String} 검사할 문자열.
+	@return {boolean}
+	*&#x2F;
+	exports.checkStringNum = function(str){
+		var pattern = &#x2F;^[0-9]*$&#x2F;;
+		return pattern.test(str);
+	}
+
+	&#x2F;**
+	문자열이 영문만 포함하는지 확인합니다.
+	@method checkStringEng
+	@param str {String} 검사할 문자열.
+	@return {boolean}
+	*&#x2F;
+	exports.checkStringEng = function(str){
+		var pattern = &#x2F;^[a-zA-Z]*$&#x2F;;
+		return pattern.test(str);
+	}
+
+	&#x2F;**
+	문자열이 영문 or 숫자만 포함하는지 확인합니다.
+	@method checkStringNumEng
+	@param str {String} 검사할 문자열.
+	@return {boolean}
+	*&#x2F;
+	exports.checkStringNumEng = function(str){
+		var pattern = &#x2F;^[a-zA-Z0-9]*$&#x2F;;
+		return pattern.test(str);
+	}
+
+	exports.checkStringByte = function(str){
+	}
+
+	&#x2F;**
+	json 형식의 문자열을 json 데이터로 변환합니다.
+	@method toJson
+	@param jsonString {String} json 형태로 변환할 문자열.
+	@return {JSON}
+	*&#x2F;
+	exports.toJson = function(jsonString){
+		if(typeof(JSON) != undefined){
+			return JSON.parse(jsonString);
+		}else{
+			return eval(&quot;(&quot;+ jsonString +&quot;)&quot;);
+		}
+	}
+
+
+	&#x2F;**
+	메일 주소를 검사하여 메일주소가 유효한지 검사합니다.
+	&lt;br&#x2F;&gt;(메일의 수신 여부를 검사하는게 아니라 메일 주소형식을 검사합니다!)
+	@method isEmail
+	@static
+	@param mailString {String} 메일 형식을 검사할 문자열.
+	@return {boolean}
+	*&#x2F;
+	exports.isEmail = function(mailString){
+		var regExp = &#x2F;^(\w|_|-)+(\w|_|-)*\@{1}(\w|_|-)+(\w|_|-)*(\.{1}\w+\w*)+$&#x2F;;
+		return regExp.test(mailString);
+	};
+
+	&#x2F;**
+	단순히 검사할 문자열에 anchor(#)이 있는지 확인합니다.
+	@method hasAnchor
+	@static
+	@param str {String} anchor(#) 문자가 있는지 검사할 문자열.
+	@return {boolan}
+	*&#x2F;
+	exports.hasAnchor = function(str){
+		var regAnchor = &#x2F;\b#.*\b&#x2F;;
+		return regAnchor.test(str);
+	};
+
+	&#x2F;**
+	문자열의 anchor(#)를 추출하여 반환합니다.
+	@method getAnchor
+	@static
+	@param str {String} anchor(#)를 반환 받을 문자열.
+	@return {String}
+	*&#x2F;
+	exports.getAnchor = function(str){
+		var parseAnchor = null;
+		var regAnchor = &#x2F;\b#.*\b&#x2F;;
+		var regParams = &#x2F;(?=\&#x2F;|\?)&#x2F;;
+		var regAnchorStr = regAnchor.exec(str);
+		if(regAnchorStr != null){
+			parseAnchor = regAnchorStr[0];
+		}
+		return parseAnchor;
+	};
+
+	&#x2F;**
+	문장 내에 기본 영문자와 숫자, 기본 심볼 문자만이 존재하는지의 여부를 반환합니다.
+	&lt;br&#x2F;&gt;허용되는 문자: !&quot;#$%&amp;&#x27;()*+,-.&#x2F;0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_&#x60;abcdefghijklmnopqrstuvwxyz{|}~
+	@method getFlagEnglishStr
+	@static
+	@param str {String} 검사할 문자열
+	@return {String}
+	*&#x2F;
+	exports.getFlagEnglishStr = function(str) {
+		var flag = true;
+		var splitArr = str.split(&quot;&quot;);
+		var strArr = [];
+		var _str;
+		var unicode;
+		for(var i=0, max=splitArr.length; i&lt;max; ++i) {
+			_str = splitArr[i];
+			unicode = _str.charCodeAt();
+			if(unicode &lt; 32 || unicode &gt; 126) { &#x2F;&#x2F; !&quot;#$%&amp;&#x27;()*+,-.&#x2F;0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_&#x60;abcdefghijklmnopqrstuvwxyz{|}~
+				flag = false;
+				break;
+			} 
+		}
+		return flag;
+	};
+
+	&#x2F;**
+	String의 length가 특정한 숫자보다 길 경우, String을 특정한 숫자까지만 표기합니다. String의 마지막 글자 이후 cutAddStr String의 추가가 가능합니다.
+	@method cutStrByIndex
+	@static
+	@param str {String} 검사할 문자열
+	@param cutStringIndex {integer} 표기할 글자 수
+	@param cutAddStr {String} 추가할 문자열
+	@return {String}
+	*&#x2F;
+	exports.cutStrByIndex = function(str, cutStringIndex, cutAddStr) {
+		var tempStr = str;
+		if (str.length &gt; cutStringIndex) tempStr = str.substr(0, cutStringIndex) + cutAddStr;
+		return tempStr;
+	};
+
+
+
+
+	var INITIAL_JAMO_KOR = [&quot;ㄱ&quot;,&quot;ㄲ&quot;,&quot;ㄴ&quot;,&quot;ㄷ&quot;,&quot;ㄸ&quot;,&quot;ㄹ&quot;,&quot;ㅁ&quot;,&quot;ㅂ&quot;,&quot;ㅃ&quot;,&quot;ㅅ&quot;,&quot;ㅆ&quot;,&quot;ㅇ&quot;,&quot;ㅈ&quot;,&quot;ㅉ&quot;,&quot;ㅊ&quot;,&quot;ㅋ&quot;,&quot;ㅌ&quot;,&quot;ㅍ&quot;,&quot;ㅎ&quot;];
+	var MEDIAL_JAMO_KOR = [&quot;ㅏ&quot;,&quot;ㅐ&quot;,&quot;ㅑ&quot;,&quot;ㅒ&quot;,&quot;ㅓ&quot;,&quot;ㅔ&quot;,&quot;ㅕ&quot;,&quot;ㅖ&quot;,&quot;ㅗ&quot;,&quot;ㅘ&quot;,&quot;ㅙ&quot;,&quot;ㅚ&quot;,&quot;ㅛ&quot;,&quot;ㅜ&quot;,&quot;ㅝ&quot;,&quot;ㅞ&quot;,&quot;ㅟ&quot;,&quot;ㅠ&quot;,&quot;ㅡ&quot;,&quot;ㅢ&quot;,&quot;ㅣ&quot;];
+	var FINAL_JAMO_KOR = [&quot; &quot;,&quot;ㄱ&quot;,&quot;ㄲ&quot;,&quot;ㄳ&quot;,&quot;ㄴ&quot;,&quot;ㄵ&quot;,&quot;ㄶ&quot;,&quot;ㄷ&quot;,&quot;ㄹ&quot;,&quot;ㄺ&quot;,&quot;ㄻ&quot;,&quot;ㄼ&quot;,&quot;ㄽ&quot;,&quot;ㄾ&quot;,&quot;ㄿ&quot;,&quot;ㅀ&quot;,&quot;ㅁ&quot;,&quot;ㅂ&quot;,&quot;ㅄ&quot;,&quot;ㅅ&quot;,&quot;ㅆ&quot;,&quot;ㅇ&quot;,&quot;ㅈ&quot;,&quot;ㅊ&quot;,&quot;ㅋ&quot;,&quot;ㅌ&quot;,&quot;ㅍ&quot;,&quot;ㅎ&quot;];
+	
+	&#x2F;**
+	문장 내의 각 한글 character를 초,성,성으로 분해하여 담은 Array(character가 한글이 아닐 경우에는 Array에 바로 담습니다)들을 별도의 Array에 순차적으로 담아 2차원 배열(Array) 형태로 반환합니다.
+	@method breakSetenceStr
+	@static
+	@param str {String} 분리할 문자열
+	@return {String}
+	*&#x2F;
+	exports.breakSetenceStr = function(str) {
+		var splitArr = str.split(&quot;&quot;);
+		var strArr = [];
+		var _str;
+		for(var i=0, max=splitArr.length; i&lt;max; ++i) {
+			_str = splitArr[i];
+			strArr.push(exports.breakCharacterStr(_str));
+		}
+		return strArr;
+	};
+	
+	&#x2F;**
+	한글 character를 초,중,종성으로 분해하여 Array에 담아 반환(character가 한글이 아닐 경우 Array에 담아 단순 반환) 합니다.
+	@method breakCharacterStr
+	@static
+	@param oneCharacterStr {String} 분리할 문자.
+	@return {String}
+	*&#x2F;
+	exports.breakCharacterStr = function(oneCharacterStr) {
+		var valueArr = [];
+		var unicode = oneCharacterStr.charCodeAt();
+		var initialValue; &#x2F;&#x2F;Initial Jamo Number
+		var MedialValue; &#x2F;&#x2F;Initial Jamo Number + Medial Jamo Number
+
+		if(unicode &gt;= 44032 &amp;&amp; unicode &lt;= 55203) { &#x2F;&#x2F;hangul (Unicode 44032 ~ 55203) 
+			initialValue = Math.floor((unicode - 44032) &#x2F; 588); &#x2F;&#x2F;Initial Jamo index
+			valueArr.push(String(INITIAL_JAMO_KOR[initialValue]));
+			
+			var initialJamoUnicode = initialValue * 588 + 44032; &#x2F;&#x2F; Initial Jamo + ㅏ(Medial Jamo[0]) + no Final Jamo
+			MedialValue = Math.floor( (unicode - initialJamoUnicode) &#x2F; 28 ) * 28 + initialJamoUnicode;
+			
+			var medialJamoUnicodeIndex = Math.floor( (unicode - initialJamoUnicode) &#x2F; 28 );
+			
+			&#x2F;&#x2F;ㅘ, ㅙ, ㅚ (9, 10, 11) -&gt; add ㅗ (8)
+			if(medialJamoUnicodeIndex &gt;= 9 &amp;&amp; medialJamoUnicodeIndex &lt;= 11) valueArr.push(String.fromCharCode(initialJamoUnicode + 8 * 28)); &#x2F;&#x2F;valueArr.push(MEDIAL_JAMO_KOR[8]);
+			
+			&#x2F;&#x2F;ㅝ, ㅞ, ㅟ (14, 15, 16) -&gt; add ㅜ(13)
+			if(medialJamoUnicodeIndex &gt;= 14 &amp;&amp; medialJamoUnicodeIndex &lt;= 16) valueArr.push(String.fromCharCode(initialJamoUnicode + 13 * 28));&#x2F;&#x2F;valueArr.push(MEDIAL_JAMO_KOR[13]);
+			
+			&#x2F;&#x2F;ㅢ (19) -&gt; add ㅡ(18)
+			if(medialJamoUnicodeIndex == 19) valueArr.push(String.fromCharCode(initialJamoUnicode + 18 * 28)); &#x2F;&#x2F;valueArr.push(MEDIAL_JAMO_KOR[18]);
+			
+			valueArr.push(String.fromCharCode(MedialValue));
+			
+			&#x2F;&#x2F;add Final Jamo
+			var finalJamoUnicodeIndex = unicode - MedialValue; &#x2F;&#x2F;int
+			if(finalJamoUnicodeIndex != 0) {
+				&#x2F;&#x2F;ㄲ, ㄳ (2, 3) -&gt; add ㄱ(1)
+				if(finalJamoUnicodeIndex &gt;= 2 &amp;&amp; finalJamoUnicodeIndex &lt;= 3) valueArr.push(String.fromCharCode(MedialValue + 1));
+				
+				&#x2F;&#x2F;ㄵ, ㄶ(5, 6) -&gt; add ㄴ(4)
+				if(finalJamoUnicodeIndex &gt;= 5 &amp;&amp; finalJamoUnicodeIndex &lt;= 6) valueArr.push(String.fromCharCode(MedialValue + 4));
+				
+				&#x2F;&#x2F;ㄺ, ㄻ, ㄼ, ㄽ, ㄾ, ㄿ, ㅀ (9, 10, 11, 12, 13, 14, 15) -&gt; add ㄹ(8)
+				if(finalJamoUnicodeIndex &gt;= 9 &amp;&amp; finalJamoUnicodeIndex &lt;= 15) valueArr.push(String.fromCharCode(MedialValue + 8));
+				
+				&#x2F;&#x2F;ㅄ (18) -&gt; add ㅂ(17)
+				if(finalJamoUnicodeIndex == 18) valueArr.push(String.fromCharCode(MedialValue + 17));
+
+				&#x2F;&#x2F;ㅆ (20) -&gt; add ㅅ(19)
+				if(finalJamoUnicodeIndex == 20) valueArr.push(String.fromCharCode(MedialValue + 19));
+				
+				valueArr.push(oneCharacterStr);
+			}
+		}else if(unicode &gt;= 32 &amp;&amp; unicode &lt;= 126) { &#x2F;&#x2F; !&quot;#$%&amp;&#x27;()*+,-.&#x2F;0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_&#x60;abcdefghijklmnopqrstuvwxyz{|}~
+			if(unicode == 32){ &#x2F;&#x2F;&quot; &quot;
+				valueArr.push(&quot; &quot;);
+			}else if(unicode == 92){ &#x2F;&#x2F;\
+				valueArr.push(String.fromCharCode(unicode));
+			}else{
+				valueArr.push(String.fromCharCode(unicode));
+			}
+		}else{
+			valueArr.push(String.fromCharCode(unicode));
+		}
+		return valueArr;
+	};
+});
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

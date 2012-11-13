@@ -1,0 +1,1802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>EXTween</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.7.0&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/define.html">define</a></li>
+            
+                <li><a href="..&#x2F;classes/EX.html">EX</a></li>
+            
+                <li><a href="..&#x2F;classes/EXBrowser.html">EXBrowser</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCheckBox.html">EXCheckBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCheckBox.CheckBox.html">EXCheckBox.CheckBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCompare.html">EXCompare</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCookie.html">EXCookie</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCustomEvent.html">EXCustomEvent</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEasing.html">EXEasing</a></li>
+            
+                <li><a href="..&#x2F;classes/EXElement.html">EXElement</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEvent.html">EXEvent</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEventListener.html">EXEventListener</a></li>
+            
+                <li><a href="..&#x2F;classes/EXJsonLoader.html">EXJsonLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXLoader.html">EXLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXMath.html">EXMath</a></li>
+            
+                <li><a href="..&#x2F;classes/EXRadioButton.html">EXRadioButton</a></li>
+            
+                <li><a href="..&#x2F;classes/EXRadioButton.RadioButton.html">EXRadioButton.RadioButton</a></li>
+            
+                <li><a href="..&#x2F;classes/EXScrollViewY.html">EXScrollViewY</a></li>
+            
+                <li><a href="..&#x2F;classes/EXScrollViewY.UI_Bar.html">EXScrollViewY.UI_Bar</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.html">EXSelectBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBox.html">EXSelectBox.SelectBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBoxOption.html">EXSelectBox.SelectBoxOption</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBoxOptionGroup.html">EXSelectBox.SelectBoxOptionGroup</a></li>
+            
+                <li><a href="..&#x2F;classes/EXString.html">EXString</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTextLoader.html">EXTextLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTimer.html">EXTimer</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTiming.html">EXTiming</a></li>
+            
+                <li><a href="..&#x2F;classes/EXToast.html">EXToast</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTransform.html">EXTransform</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTween.html">EXTween</a></li>
+            
+                <li><a href="..&#x2F;classes/EXURLRequest.html">EXURLRequest</a></li>
+            
+                <li><a href="..&#x2F;classes/EXValidator.html">EXValidator</a></li>
+            
+                <li><a href="..&#x2F;classes/EXXmlLoader.html">EXXmlLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/require.html">require</a></li>
+            
+                <li><a href="..&#x2F;classes/requirejs.html">requirejs</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1>EXTween Class</h1>
+<div class="box meta">
+    
+
+    
+
+    
+        <div class="foundat">
+            Defined in: <a href="..&#x2F;files&#x2F;experJS_transitions_EXTween.js.html#l2"><code>experJS\transitions\EXTween.js:2</code></a>
+        </div>
+    
+
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    <p>HTMLElement, Numeric properties 의 tweening 을 위한 Tweener 입니다.
+<br/>사용법은 Flash ActionScript 로 유명한 <a href="http://www.greensock.com" target="_blank">greensock</a>의 TweenMax 와 거의 흡사합니다.
+<br/>(단, 비슷한건 Flash ActionScript 에서 사용하던 방식과 method name 정도 입니다.)
+<br/>
+<br/>모션 스크립트를 위해선 <strong>to</strong> 메소드를 먼저 보시는 것을 권장합니다.
+<br/></p>
+</div>
+
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_delayedCall">delayedCall</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_killAll">killAll</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_killDelayedCalls">killDelayedCalls</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_killTweensOf">killTweensOf</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setDebugMode">setDebugMode</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setDefaultEasing">setDefaultEasing</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setGlobalInterval">setGlobalInterval</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setGlobalIntervalRender">setGlobalIntervalRender</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_to">to</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_delayedCall" class="method item">
+    <h3 class="name"><code>delayedCall</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>delayNum</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>callback</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>params</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;experJS_transitions_EXTween.js.html#l934"><code>experJS\transitions\EXTween.js:934</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>setTimeout 을 좀 더 쉽게 사용할 수 있능 기능을 제공합니다.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">delayNum</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>wait in the value to callback.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">callback</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>A function that should be called when the the callback has delay completed.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">params</code>
+                        <span class="type">Array</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>pass the callback function.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code"><code class="prettyprint">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script type="text/javascript" src="../../experJS/experJS.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+(function(){
+    EX.includeBegin("../../experJS");
+    EX.include("transitions/EXTween");
+    EX.include("transitions/EXEasing");
+    EX.includeEnd();
+    EX.ready(function(){
+        var testBox1 = document.getElementById("testBox1");
+        EXTween.setDebugMode(true); // debug console.log
+        EXTween.delayedCall(1 , function(){
+            alert("delayedCall 1");
+        });
+        EXTween.delayedCall(2 , testFunc1);
+        EXTween.delayedCall(3 , testFunc2 , ["Hello" , "EXTween"]);
+
+        function testFunc1(){
+            alert("delayedCall 2");
+        }
+        function testFunc2(param1 , param2){
+            alert(param1 + " " + param2);
+        }
+    });
+})();
+&lt;/script&gt;
+&lt;style type="text/css"&gt;
+    html , body { padding:0; margin:0; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_killAll" class="method item">
+    <h3 class="name"><code>killAll</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;experJS_transitions_EXTween.js.html#l1126"><code>experJS\transitions\EXTween.js:1126</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>EXTween 의 등록된(to, deleayedCall) 모든 tweening 동작을 제거합니다.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code"><code class="prettyprint">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script type="text/javascript" src="../../experJS/experJS.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+(function(){
+    EX.includeBegin("../../experJS");
+    EX.include("transitions/EXTween");
+    EX.include("transitions/EXEasing");
+    EX.includeEnd();
+    EX.ready(function(){
+        var testBox1 = document.getElementById("testBox1");
+        var testBox2 = document.getElementById("testBox2");
+        var testBox3 = document.getElementById("testBox3");
+
+        EXTween.setDebugMode(true); // debug console.log
+
+        EXTween.to( testBox1 , 10 , { width:500 });
+        EXTween.to( testBox1 , 6 , { height:400 });
+        EXTween.to( testBox1 , 4 , { backgroundColor:0xffff00 });
+
+        EXTween.to( testBox2 , 2.5 , { width:200 , onUpdate:function(){
+            testBox2.innerHTML = "width : " + Math.ceil(testBox2.offsetWidth);
+        }});
+        EXTween.to( testBox2 , 2.5 , { height:10 });
+        EXTween.to( testBox2 , 1.5 , { backgroundColor:0x000000 });
+
+        EXTween.to( testBox3 , 1 , { delay:1 , width:10 });
+        EXTween.to( testBox3 , 1 , { delay:2 , height:10 });
+        EXTween.to( testBox3 , 1 , { delay:3 , backgroundColor:0x000000 });
+
+        EXTween.delayedCall(3 , function(){
+            alert("delayedCall");
+        });
+
+        EXTween.delayedCall(1 , function(){
+            EXTween.killAll(); // all kill!!!
+        });
+    });
+})();
+&lt;/script&gt;
+&lt;style type="text/css"&gt;
+    html , body { padding:0; margin:0; }
+    .box { position:absolute; width:100px; height:100px; color:#ffffff; }
+    #testBox1 { background-color:#ff0000; }
+    #testBox2 { top:100px; left:400px; background-color:#00ff00; }
+    #testBox3 { top:300px; left:200px; background-color:#0000ff; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="testBox1" class="box"&gt;&lt;/div&gt;
+    &lt;div id="testBox2" class="box"&gt;&lt;/div&gt;
+    &lt;div id="testBox3" class="box"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_killDelayedCalls" class="method item">
+    <h3 class="name"><code>killDelayedCalls</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>func</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;experJS_transitions_EXTween.js.html#l1002"><code>experJS\transitions\EXTween.js:1002</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>EXTween.delayedCall 에 등록되고 대기중인 함수를 제거합니다.
+<br/>(등록된 함수와 제거될 함수는 동일해야 합니다.)</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">func</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>EXTween.delayedCall 에 등록된 함수.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code"><code class="prettyprint">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script type="text/javascript" src="../../experJS/experJS.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+(function(){
+    EX.includeBegin("../../experJS");
+    EX.include("transitions/EXTween");
+    EX.include("transitions/EXEasing");
+    EX.includeEnd();
+    EX.ready(function(){
+        EXTween.setDebugMode(true); // debug console.log
+
+        function testFunc1(){
+            alert("delayedCall 2");
+        }
+
+        function testFunc2(param1 , param2){
+            alert(param1 + " " + param2);
+        }
+
+        var exm = {};
+        exm.testFunc = function(){
+            alert("called??");
+        }
+
+        //There is no way to kill the anonymous function.
+        EXTween.delayedCall(1 , function(){
+            alert("delayedCall 1");
+        });
+
+        EXTween.delayedCall(2 , testFunc1);
+        EXTween.delayedCall(3 , testFunc2 , ["Hello" , "EXTween"]);
+        EXTween.delayedCall(4 , exm.testFunc);
+
+        EXTween.killDelayedCalls(testFunc1); // kill
+        EXTween.killDelayedCalls(exm.testFunc); // kill
+    });
+})();
+&lt;/script&gt;
+&lt;style type="text/css"&gt;
+    html , body { padding:0; margin:0; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_killTweensOf" class="method item">
+    <h3 class="name"><code>killTweensOf</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>tweenObject</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;experJS_transitions_EXTween.js.html#l1071"><code>experJS\transitions\EXTween.js:1071</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>지정된 Object 의 EXTween.to 에 등록되고 대기중인 객체의 EXTween 동작을 모두 제거합니다.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">tweenObject</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>EXTween.to 에 지정된 Object.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code"><code class="prettyprint">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script type="text/javascript" src="../../experJS/experJS.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+(function(){
+    EX.includeBegin("../../experJS");
+    EX.include("transitions/EXTween");
+    EX.include("transitions/EXEasing");
+    EX.includeEnd();
+    EX.ready(function(){
+        var testBox1 = document.getElementById("testBox1");
+
+        EXTween.setDebugMode(true); // debug console.log
+
+        EXTween.to( testBox1 , 10 , { width:500 });
+        EXTween.to( testBox1 , 6 , { height:400 });
+        EXTween.to( testBox1 , 4 , { backgroundColor:0xffff00 });
+        EXTween.delayedCall(2 , tweenKill );
+        function tweenKill(){
+            EXTween.killTweensOf(testBox1);
+        }
+    });
+})();
+&lt;/script&gt;
+&lt;style type="text/css"&gt;
+    html , body { padding:0; margin:0; }
+    #testBox1 { position:absolute; width:100px; height:100px; border:0px solid #000000; background-color:#ff0000; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="testBox1"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_setDebugMode" class="method item">
+    <h3 class="name"><code>setDebugMode</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>bool</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;experJS_transitions_EXTween.js.html#l56"><code>experJS\transitions\EXTween.js:56</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>EXTween 의 일련의 동작을 console.log 를 통해 출력합니다.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">bool</code>
+                        <span class="type">Boolean</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>debug mode setting</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code"><code class="prettyprint">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style type="text/css"&gt;
+    #testBox1 { width:100px; height:100px; background-color:#ff0000; }
+&lt;/style&gt;
+&lt;script type="text/javascript" src="../../vw/transitions/EXTween_1.0.0.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="testBox1"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;script type="text/javascript"&gt;
+(function(){
+    var testBox1 = document.getElementById("testBox1");
+    EXTween.setDebugMode(true); // console.log 로 EXTween 동작을 출력합니다.
+    EXTween.to(testBox1 , 1 , { width:400 });
+    EXTween.to(testBox1 , 1 , { delay:1 , height:300 , backgroundColor:0xffff00 });
+    EXTween.to(testBox1 , 1 , { delay:2 , width:100 , height:100 , onUpdate:tweenUpdate1 });
+    EXTween.to(testBox1 , 1 , { delay:2.5 , width:40 , height:20 , backgroundColor:0xcccccc ,  onComplete:tweenComplete1 });
+
+    function tweenUpdate1(){
+        testBox1.innerHTML = Math.ceil(testBox1.offsetWidth);
+    }
+    function tweenComplete1(){
+        console.log("tweenComplete1");
+    }
+})();
+&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_setDefaultEasing" class="method item">
+    <h3 class="name"><code>setDefaultEasing</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>easing</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;experJS_transitions_EXTween.js.html#l172"><code>experJS\transitions\EXTween.js:172</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>EXTween 의 기본 ease 속성을 지정합니다.
+<br/>기본값은 EXEasing.easeOutQuad 이며, EXEasing 에서 지원하는 함수를 지정 가능합니다.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">easing</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>EXEasing easing function.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code"><code class="prettyprint">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script type="text/javascript" src="../../experJS/experJS.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+(function(){
+    EX.includeBegin("../../experJS");
+    EX.include("transitions/EXTween");
+    EX.include("transitions/EXEasing");
+    EX.includeEnd();
+    EX.ready(function(){
+        var testBox1 = document.getElementById("testBox1");
+        EXTween.setDefaultEasing( EXEasing.easeInOutBack ); // default EXTween.easing.easeOutQuad
+        EXTween.to(testBox1 , 1 , { width:400 });
+    });
+})();
+&lt;/script&gt;
+&lt;style type="text/css"&gt;
+    #testBox1 { width:100px; height:100px; background-color:#ff0000; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="testBox1"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_setGlobalInterval" class="method item">
+    <h3 class="name"><code>setGlobalInterval</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>val</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;experJS_transitions_EXTween.js.html#l133"><code>experJS\transitions\EXTween.js:133</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>EXTween 의 전체 tween interval speed 를 지정합니다.
+<br/>기본값은 1이며, 지정되는 값이 커질수록 interval 횟수가 늘어납니다.(계산을 더 상세하게 합니다.)</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">val</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>set tweening interval speed.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code"><code class="prettyprint">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script type="text/javascript" src="../../experJS/experJS.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+(function(){
+    EX.includeBegin("../../experJS");
+    EX.include("transitions/EXTween");
+    EX.includeEnd();
+    EX.ready(function(){
+        var testBox1 = document.getElementById("testBox1");
+        EXTween.setGlobalInterval(0.1); // default 1 - if you increase value then slowly render tween.
+        EXTween.to(testBox1 , 1 , { width:400 });
+    });
+})();
+&lt;/script&gt;
+&lt;style type="text/css"&gt;
+    #testBox1 { width:100px; height:100px; background-color:#ff0000; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="testBox1"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_setGlobalIntervalRender" class="method item">
+    <h3 class="name"><code>setGlobalIntervalRender</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>val</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;experJS_transitions_EXTween.js.html#l99"><code>experJS\transitions\EXTween.js:99</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>EXTween 의 전체 tween rendering speed 를 지정합니다.
+<br/>기본값은 12 이며, 지정되는 값이 커질수록 rendering 속도가 늦어지게 됩니다.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">val</code>
+                        <span class="type">Integer</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>set tweening render speed.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code"><code class="prettyprint">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style type="text/css"&gt;
+    #testBox1 { width:100px; height:100px; background-color:#ff0000; }
+&lt;/style&gt;
+&lt;script type="text/javascript" src="../../vw/transitions/EXTween_1.0.0.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="testBox1"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;script type="text/javascript"&gt;
+(function(){
+    var testBox1 = document.getElementById("testBox1");
+    EXTween.setGlobalIntervalRender(36); // default 12 - if you increase value then slowly render tween.
+    EXTween.to(testBox1 , 1 , { width:400 });
+})();
+&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_to" class="method item">
+    <h3 class="name"><code>to</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>tweenObject</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>speed</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>tweenProperty</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;experJS_transitions_EXTween.js.html#l211"><code>experJS\transitions\EXTween.js:211</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>EXTween 에서 주로 사용하게 되는 method로 Tween 을 사용합니다.
+<br/>지원 속성과 예제를 참고하시기 바랍니다.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">tweenObject</code>
+                        <span class="type">HTMLElement | Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>tween target object.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">speed</code>
+                        <span class="type">Nubmber</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>tween speed.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">tweenProperty</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Style property of HTMLElement and number property of Object.
+    <div>
+        <h6 style="color:#66bbcc;">[[ Support property ]]</h6>
+        <strong>style property of HTMLElement</strong>
+        <ul>
+            <li>top , left , right , bottom</li>
+            <li>width , height</li>
+            <li>marginTop , marginBottom , marginLeft , marginRight</li>
+            <li>fontSize , fontWeight , color</li>
+            <li>paddingTop , paddingBottom , paddingLeft , paddingRight</li>
+            <li>backgroundColor , backgroundPositionX , backgroundPositionY</li>
+            <li>borderTopWidth , borderBottomWidth , borderLeftWidth , borderRightWidth</li>
+            <li>borderTopColor , borderBottomColor , borderLeftColor , borderRightColor</li>
+            <li>opacity</li>
+        </ul>
+        <strong>Javascript property of HTMLElement</strong>
+        <ul>
+            <li>scrollTop , scrollLeft</li>
+        </ul>
+        <strong>number type property of Object</strong>
+        <ul>
+            <li>Anything property. But only data type to number.</li>
+        </ul>
+        <strong>Supporting special property</strong>
+        <ul>
+            <li>delay : {Number} tween 을 시작전 대기 시간을 지정합니다.</li>
+            <li>ease : {Function} tween 의 easing 방식을 지정합니다. EXEasing.* 을 참고하세요.</li>
+            <li>toInt : {boolean} 소수점 계산을 무시하고 정수 계산합니다.</li>
+            <li>autoOpacity : {Number} opacity 가 0 에 도달할 경우 자동으로 visibility,display 속성을 hidden 합니다. 또는 visibility,display 속성이 hidden 상태일 때 opacity 가 0 보다 크게 tween 될 경우 자동으로 visible 처리합니다.</li>
+            <li>onInit : {Function} tween 이 초기화 될때 호출 되는 콜백 함수를 지정합니다.(delay 속성에 지정된 대기 시간이 적용 되지 않습니다.)</li>
+            <li>onInitParams : {Array} onInit 에 지정된 콜백 함수에 전달할 파라미터를 배열 형태로 지정합니다.</li>
+            <li>onStart : {Function} tween 이 시작될때 호출 되는 콜백 함수를 지정합니다.(delay 속성에 지정된 대기 시간이 적용 됩니다.)</li>
+            <li>onStartParams : {Array} onStart 에 지정된 콜백 함수에 전달할 파라미터를 배열 형태로 지정합니다.</li>
+            <li>onUpdate : {Function} tweening 이 일어나는 동안 계속해서 호출될 콜백 함수를 지정합니다.</li>
+            <li>onUpdateParams : {Array} onUpdate 에 지정된 콜백 함수에 전달할 파라미터를 배열 형태로 지정합니다.</li>
+            <li>onComplete : {Function} tween 이 완료되는 시점에 호출될 콜백 함수를 지정합니다.</li>
+            <li>onCompleteParams : {Array} onComplete 에 지정된 콜백 함수에 전달할 파라미터를 배열 형태로 지정합니다.</li>
+        </ul>
+    </div></p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code"><code class="prettyprint">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script type="text/javascript" src="../../experJS/experJS.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+(function(){
+    EX.includeBegin("../../experJS");
+    EX.include("transitions/EXTween");
+    EX.include("transitions/EXEasing");
+    EX.includeEnd();
+    EX.ready(function(){
+        var testBox1 = document.getElementById("testBox1");
+
+        EXTween.setDebugMode(true); // debug console.log
+
+        EXTween.to( testBox1 , 1 , { opacity:0.3 , width:300 , height:300 , ease:EXEasing.easeOutQuint });
+        EXTween.to( testBox1 , 1 , { delay:1 , width:50 , height:50 , ease:EXEasing.easeInOutBack});
+        EXTween.to( testBox1 , 1 , { delay:2.5 , top:200 , ease:EXEasing.easeOutBounce });
+        EXTween.to( testBox1 , 1 , { delay:4 , left:200 , ease:EXEasing.easeOutBack });
+        EXTween.to( testBox1 , 0.8 , { delay:5 , width:100 , height:300 , top:100 , ease:EXEasing.easeOutExpo });
+        EXTween.to( testBox1 , 0.5 , { delay:6 , backgroundColor:0xffff00 });
+        EXTween.to( testBox1 , 0.5 , { delay:7 , opacity:1 , backgroundColor:0xeeeeee });
+
+        EXTween.delayedCall(8 , delayedComplete2);
+        EXTween.delayedCall(12 , delayedComplete3);
+        EXTween.delayedCall(20 , delayedComplete4);
+
+        function delayedComplete2(){
+            EXTween.to( testBox1 , 0.5 , { borderLeftWidth:10 , borderRightWidth:10 });
+            EXTween.to( testBox1 , 0.5 , { delay:1 , borderTopWidth:10 , borderBottomWidth:10 });
+            EXTween.to( testBox1 , 0.5 , { delay:2 , borderLeftColor:0xff0000 , borderRightColor:0x00cc00 });
+            EXTween.to( testBox1 , 0.5 , { delay:3 , borderLeftWidth:0 , borderRightWidth:0 , borderTopWidth:0 , borderBottomWidth:0 });
+        }
+
+        function delayedComplete3(){
+            EXTween.to( testBox1 , 0.5 , { width:400 , height:80 , left:10 , top:10 });
+
+            var numObject = new NumberObject();
+            EXTween.to( numObject , 1.5 , { delay:1 , x:1000 , onUpdate:function(){
+                    testBox1.innerHTML = "&lt;strong&gt; number &lt;/strong&gt;tween X : " + numObject.x;
+                }, ease:EXEasing.easeOutExpo });
+
+            EXTween.to( numObject , 1.5 , { delay:4 , y:-2000 , toInt:true 
+                , onUpdate:function(){
+                    testBox1.innerHTML = "&lt;strong&gt; integer &lt;/strong&gt;tween Y : " + numObject.y;
+                }
+                , onComplete:function( param1 , param2 ){
+                    testBox1.innerHTML = param1 + " - " + param2 + "!!";
+                }
+                , onCompleteParams: ["tween" , "complete"]
+                , ease:EXEasing.easeInOutQuint });
+
+            function NumberObject(){
+                var numObj = {};
+                numObj.x = 0;
+                numObj.y = 2000;
+                return numObj
+            }
+        }
+
+        function delayedComplete4(){
+            EXTween.to( testBox1 , 0.5 , { fontSize:40 , ease:EXEasing.easeOutQuart });
+            EXTween.to( testBox1 , 0.5 , { delay:1 , color:0xff0000 , ease:EXEasing.easeOutQuart });
+            EXTween.to( testBox1 , 0.5 , { delay:2 , fontSize:12 , color:0x000000 , ease:EXEasing.easeOutQuart });
+            EXTween.to( testBox1 , 0.5 , { delay:3 , paddingTop:20 });
+            EXTween.to( testBox1 , 0.5 , { delay:4 , paddingLeft:20 , onComplete:function(){
+                testBox1.style.background = "#bbbbbb url(../../data/img/visual_cat.gif) 0 0 no-repeat";
+                alert("background-position");
+            }});
+
+            EXTween.to( testBox1 , 0.5 , { delay:6 , backgroundPositionX:50 , ease:EXEasing.easeOutQuint });
+            EXTween.to( testBox1 , 0.5 , { delay:7 , backgroundPositionX:-100 , ease:EXEasing.easeOutQuint });
+            EXTween.to( testBox1 , 0.5 , { delay:8 , backgroundPositionY:30 , ease:EXEasing.easeOutQuint });
+            EXTween.to( testBox1 , 0.5 , { delay:9 , backgroundPositionY:-100 , ease:EXEasing.easeOutQuint });
+            EXTween.to( testBox1 , 0.5 , { delay:10 , autoOpacity:0 , onComplete:function(){
+                alert("Hello EXTween ~ :)");
+            }});
+        }
+    });
+})();
+&lt;/script&gt;
+&lt;style type="text/css"&gt;
+    html , body { padding:0; margin:0; }
+    .bgBox { position:absolute; width:300px; height:300px; background-color:#00ff00; }
+    .bgBox.sm1 { top:230px; left:120px; }
+    .bgBox.sm2 { top:110px; left:320px; height:100px; background-color:#0000ff; }
+    #testBox1 { position:absolute; width:100px; height:100px; border:0px solid #000000; background-color:#ff0000; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="bgBox sm1"&gt;&lt;/div&gt;
+    &lt;div class="bgBox sm2"&gt;&lt;/div&gt;
+    &lt;div id="testBox1"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+        </div>
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

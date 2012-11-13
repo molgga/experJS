@@ -1,0 +1,43 @@
+YUI.add("yuidoc-meta", function(Y) {
+   Y.YUIDoc = { meta: {
+    "classes": [
+        "EX",
+        "EXBrowser",
+        "EXCheckBox",
+        "EXCheckBox.CheckBox",
+        "EXCompare",
+        "EXCookie",
+        "EXCustomEvent",
+        "EXEasing",
+        "EXElement",
+        "EXEvent",
+        "EXEventListener",
+        "EXJsonLoader",
+        "EXLoader",
+        "EXMath",
+        "EXRadioButton",
+        "EXRadioButton.RadioButton",
+        "EXScrollViewY",
+        "EXScrollViewY.UI_Bar",
+        "EXSelectBox",
+        "EXSelectBox.SelectBox",
+        "EXSelectBox.SelectBoxOption",
+        "EXSelectBox.SelectBoxOptionGroup",
+        "EXString",
+        "EXTextLoader",
+        "EXTimer",
+        "EXTiming",
+        "EXToast",
+        "EXTransform",
+        "EXTween",
+        "EXURLRequest",
+        "EXValidator",
+        "EXXmlLoader",
+        "define",
+        "require",
+        "requirejs"
+    ],
+    "modules": [],
+    "allModules": []
+} };
+});

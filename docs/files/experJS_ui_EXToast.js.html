@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>experJS\ui\EXToast.js</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.7.0&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/define.html">define</a></li>
+            
+                <li><a href="..&#x2F;classes/EX.html">EX</a></li>
+            
+                <li><a href="..&#x2F;classes/EXBrowser.html">EXBrowser</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCheckBox.html">EXCheckBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCheckBox.CheckBox.html">EXCheckBox.CheckBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCompare.html">EXCompare</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCookie.html">EXCookie</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCustomEvent.html">EXCustomEvent</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEasing.html">EXEasing</a></li>
+            
+                <li><a href="..&#x2F;classes/EXElement.html">EXElement</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEvent.html">EXEvent</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEventListener.html">EXEventListener</a></li>
+            
+                <li><a href="..&#x2F;classes/EXJsonLoader.html">EXJsonLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXLoader.html">EXLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXMath.html">EXMath</a></li>
+            
+                <li><a href="..&#x2F;classes/EXRadioButton.html">EXRadioButton</a></li>
+            
+                <li><a href="..&#x2F;classes/EXRadioButton.RadioButton.html">EXRadioButton.RadioButton</a></li>
+            
+                <li><a href="..&#x2F;classes/EXScrollViewY.html">EXScrollViewY</a></li>
+            
+                <li><a href="..&#x2F;classes/EXScrollViewY.UI_Bar.html">EXScrollViewY.UI_Bar</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.html">EXSelectBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBox.html">EXSelectBox.SelectBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBoxOption.html">EXSelectBox.SelectBoxOption</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBoxOptionGroup.html">EXSelectBox.SelectBoxOptionGroup</a></li>
+            
+                <li><a href="..&#x2F;classes/EXString.html">EXString</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTextLoader.html">EXTextLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTimer.html">EXTimer</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTiming.html">EXTiming</a></li>
+            
+                <li><a href="..&#x2F;classes/EXToast.html">EXToast</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTransform.html">EXTransform</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTween.html">EXTween</a></li>
+            
+                <li><a href="..&#x2F;classes/EXURLRequest.html">EXURLRequest</a></li>
+            
+                <li><a href="..&#x2F;classes/EXValidator.html">EXValidator</a></li>
+            
+                <li><a href="..&#x2F;classes/EXXmlLoader.html">EXXmlLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/require.html">require</a></li>
+            
+                <li><a href="..&#x2F;classes/requirejs.html">requirejs</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: experJS\ui\EXToast.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function(require, exports){
+	var EXTween = require(&quot;..&#x2F;transitions&#x2F;EXTween&quot;);
+	var EXEasing = require(&quot;..&#x2F;transitions&#x2F;EXEasing&quot;);
+	
+	&#x2F;**
+	@class EXToast
+	@constructor
+	@example
+		&lt;!DOCTYPE html&gt;
+		&lt;html&gt;
+		&lt;head&gt;
+		&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text&#x2F;html; charset=utf-8&quot; &#x2F;&gt;
+		&lt;meta http-equiv=&quot;Content-Style-Type&quot; content=&quot;text&#x2F;css&quot; &#x2F;&gt;
+		&lt;title&gt;&lt;&#x2F;title&gt;
+		&lt;script type=&quot;text&#x2F;javascript&quot; src=&quot;..&#x2F;..&#x2F;experJS&#x2F;experJS.js&quot;&gt;&lt;&#x2F;script&gt;
+		&lt;script type=&quot;text&#x2F;javascript&quot;&gt;
+		(function(){
+			EX.includeBegin(&quot;..&#x2F;..&#x2F;experJS&quot;);
+			EX.include(&quot;ui&#x2F;EXToast&quot;);
+			EX.includeEnd();
+			EX.ready(function(){
+				EX.debug(&quot;EX.ready&quot; , &quot;callback&quot;);
+				var showToastBtn = document.getElementById(&quot;showToastBtn&quot;);
+				var showMessage = document.getElementById(&quot;showMessage&quot;);
+
+				showToastBtn.onclick = function(evt){
+					EXToast.message( showMessage.value );
+				}
+			});
+		})();
+		&lt;&#x2F;script&gt;
+
+		&lt;style type=&quot;text&#x2F;css&quot;&gt;
+		body { font-family:&quot;돋움&quot;; font-size:0.8em; }
+		&lt;&#x2F;style&gt;
+
+		&lt;&#x2F;head&gt;
+		&lt;body&gt;
+			&lt;input id=&quot;showMessage&quot; type=&quot;text&quot; &#x2F;&gt;
+			&lt;button id=&quot;showToastBtn&quot;&gt;showToastBtn&lt;&#x2F;button&gt;
+		&lt;&#x2F;body&gt;
+		&lt;&#x2F;html&gt;
+	*&#x2F;
+	var singletonAlternate = null;
+	var previewMessage = &quot;&quot;;
+
+	var ClassOf = {
+		ALTERNATE : &quot;exUIKit_toast&quot;
+	}
+	
+	&#x2F;**
+	EXToast 의 싱글톤 말풍선(view) 객체 입니다.
+	@property singletonAlternate
+	@type {HTMLElement}
+	*&#x2F;
+	exports.singletonAlternate = singletonAlternate;
+	
+	&#x2F;**
+	EXToast 를 초기화 합니다.
+	&lt;br&#x2F;&gt;EXToast 는 문서 로드시 자체 init 합니다.
+	@method init
+	@return {void}
+	*&#x2F;
+	exports.init = function(){
+		exports.makeToolTip();
+	};
+	
+	&#x2F;**
+	singletonAlternate 객체를 생성합니다.
+	@method makeToolTip
+	@return {void}
+	*&#x2F;
+	exports.makeToolTip = function(){
+		if(singletonAlternate == null){
+			singletonAlternate = document.createElement(&quot;div&quot;);
+			singletonAlternate.className = ClassOf.ALTERNATE;
+
+			EXTween.killTweensOf(singletonAlternate);
+			document.body.appendChild(singletonAlternate);
+			EXTween.to( singletonAlternate , 0 , { autoOpacity:0 });
+		}
+	};
+	
+	&#x2F;**
+	EXToast 를 지정된 시간동안 노출합니다.
+	@method message
+	@param msg {String} 노출될 문자(열)
+	@param showSecond {number} 노출될 지속 시간
+	@return {void}
+	*&#x2F;
+	exports.message = function( msg , showSecond ){
+		if(msg == &quot;&quot;){
+			return false;
+		}
+		if(previewMessage == msg){
+			return false;
+		}
+		if(showSecond == undefined || showSecond.constructor != Number){
+			showSecond = 2;
+		}
+		singletonAlternate.innerHTML = msg;
+		previewMessage = msg;
+
+		EXTween.killTweensOf(singletonAlternate);
+		EXTween.to( singletonAlternate , 0 , { autoOpacity:0.01 });
+		var offsetWidth = singletonAlternate.offsetWidth;
+		var offsetHeight = singletonAlternate.offsetHeight;
+		EXTween.to( singletonAlternate , 0 , { autoOpacity:0 , marginLeft: -offsetWidth&#x2F;2 });
+		EXTween.to( singletonAlternate , 0.5 , { autoOpacity:1 , ease:EXEasing.easeOutQuint});
+		EXTween.to( singletonAlternate , 0.5 , { delay: showSecond , autoOpacity:0 , ease:EXEasing.easeOutQuint , onComplete:function(){
+			singletonAlternate.innerHTML = &quot;&quot;;
+			previewMessage = null;
+		}});
+		
+		return true;
+	};
+
+	exports.init();
+});
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

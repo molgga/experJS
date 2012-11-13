@@ -16,32 +16,78 @@ define(function(require , exports){
 	var EventModel = {};
 	EventModel.RADIO_CHECKED = "EventModel.RADIO_CHECKED"; //designRadio 버튼을 클릭(checked) 했을때 dispatch 될 이벤트명.
 
+	var _designRadioButtonArr = null;
 
 	/**
-	input type radio(이하 originalRadio) 버튼을 design 가능한 요소(이하 designRadio)로 변경(대체)합니다.
-	originalRadio 의 기능을 designRadio 에 그대로 구현하며,
-	originalRadio 와 designRadio 동작을 연동합니다.
-	예를 들어 originalRadio 를 클릭해도 designRadio 가 클릭 처리 되어야 하며,
-	designRadio 를 클릭해도 originalRadio 가 클릭 되도록 처리 됩니다.
-
-	originalRadio 는 강제로 시각적 부분에서만 보이지 않도록 처리되므로,
-	back-end 쪽에서는 기본 form 의 사용법 그대로 접근, 사용할 수 있습니다.
-
-	@class hcap.ui.DesignRadioButton
-	@public
-	@constructor
+	Component radio 와 1:1로 대응하는 Design radio 를 생성합니다. 
+	@class EXRadioButton
+	@static
 	*/
 	
-	var _designRadioButtonArr = null;
 	
 	/**
-	hcap.ui.DesignRadioButton 를 초기화 합니다.
+	EXRadioButton 를 초기화 합니다.
 	@method init
 	@public
+	@param originalRadioGroupClassName {String} exper 에서 제공하고 파싱하는 클래스가 아닌 직접 지정 가능한 className
+	@example
+		<!DOCTYPE html>
+		<html>
+		<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<link type="text/css" rel="stylesheet" href="../../experCSS/exper.css" />
+		<script type="text/javascript" src="../../experJS/experJS.js"></script>
+		<script type="text/javascript">
+		(function(){
+			EX.includeBegin("../../experJS");
+			EX.include("events/EXEventListener");
+			EX.include("ui/EXRadioButton");
+			EX.includeEnd();
+			EX.ready(function(){
+				EXRadioButton.init();
+
+			});
+		})();
+		</script>
+
+		<!--Test - original visible //-->
+		<style type="text/css">
+		.exUIKit_radioGroup.original { position:static; left:auto; visibility:visible; }
+		</style>
+
+		</head>
+		<body>
+			<div>
+				<input id="radio11" class="exUIKit_radioGroup" type="radio" name="radio111" />
+				<label for="radio11">radio1</label>
+
+				<input id="radio12" class="exUIKit_radioGroup" type="radio" name="radio111" />
+				<label for="radio12">radio1</label>
+
+				<input id="radio13" class="exUIKit_radioGroup" type="radio" name="radio111" disabled="disabled" />
+				<label for="radio13">radio1</label>
+			</div>
+
+			<br/><br/><br/>
+
+			<div>
+				<input id="radio21" class="exUIKit_radioGroup" type="radio" name="radio222" />
+				<label for="radio21">radio2</label>
+			</div>
+			<div>
+				<input id="radio22" class="exUIKit_radioGroup" type="radio" name="radio222" />
+				<label for="radio22">radio2</label>
+			</div>
+		</body>
+		</html>
 	*/
-	exports.init = function(){
+	exports.init = function(originalRadioGroupClassName){
 		if(window.EXEventListener != undefined){
 			EXEventListener = window.EXEventListener;
+		}
+		if(originalRadioGroupClassName != undefined){
+			ClassOf.RADIO_GROUP = originalRadioGroupClassName;
 		}
 		_designRadioButtonArr = [];
 		var radioButtonArr = CssQuery( "." + ClassOf.RADIO_GROUP );
@@ -53,13 +99,61 @@ define(function(require , exports){
 
 			if(originalRadioButton.is_experCSS_designUI_radioGroup == true) continue; //ajax 중첩 호출. 테스트.
 
-			designRadioButton = new RadioButton();
+			designRadioButton = new exports.RadioButton();
 			designRadioButton.init( originalRadioButton );
 			_designRadioButtonArr.push(designRadioButton);
 		}
 		EXEventListener.add( EventModel , EventModel.RADIO_CHECKED , publicEventHandler );
 	}
 
+	/**
+	지정된 radioButton 객체를 다시 생성합니다.
+	@method remake
+	@public
+	@param originalRadioButton {HTMLInputElement} 다시 생성할 radioButton 객체
+	*/
+	exports.remake = function(originalRadioButton){
+		var len = _designRadioButtonArr.length;
+		var designRadioButton = null;
+		var remakeRadioButton = null;
+		for(var i = 0 ; i < len ; i++){
+			designRadioButton = _designRadioButtonArr[i];
+			if(designRadioButton.getOriginalCheckBox() == originalRadioButton){
+				designRadioButton.destroy();
+				designRadioButton = null;
+				_designRadioButtonArr.splice(i,1);
+				remakeRadioButton = new exports.RadioButton();
+				remakeRadioButton.init( originalRadioButton );
+				_designRadioButtonArr.push(remakeRadioButton);
+				break;
+			}
+		}
+	};
+
+	/**
+	Design Component 로 생성된 객체(들)를 배열 형태로 반환합니다.
+	@method getList
+	@public
+	@return {Array}
+	*/
+	exports.getList = function(){
+		return _designRadioButtonArr;
+	};
+	/**
+	Design Component 로 생성된 객체(들)의 총 갯수를 반환합니다.
+	@method getLength
+	@public
+	@return {integer}
+	*/
+	exports.getLength = function(){
+		return _designRadioButtonArr.length;
+	};
+
+	/**
+	EXRadioButton 객체를 파기합니다.
+	@method destroy
+	@public
+	*/
 	exports.destroy = function(){
 		try{
 			var len = _designRadioButtonArr.length;
@@ -79,10 +173,10 @@ define(function(require , exports){
 	}
 	
 	/**
-	DesignRadioButton 의 전역 이벤트를 핸들링 합니다.
+	EXRadioButton 의 전역 이벤트를 핸들링 합니다.
 	@method publicEventHandler
 	@private
-	@param evt {EventVW.Event} 이벤트 객체.
+	@param evt {EXEvent} 이벤트 객체.
 	*/
 	function publicEventHandler(evt){
 		switch(evt.type){
@@ -95,10 +189,10 @@ define(function(require , exports){
 	}
 	
 	/**
-	DesignRadioButton group checked, unchecked 를 합니다.
+	EXRadioButton group checked, unchecked 를 합니다.
 	@method radioGroupChecked
 	@private
-	@param designRadio {DesignRadioButton} designRadio 객체.
+	@param designRadio {EXRadioButton} designRadio 객체.
 	@param radioName {String} designRadio 의 group name.
 	*/
 	function radioGroupChecked( designRadio , radioName ){
@@ -126,11 +220,11 @@ define(function(require , exports){
 
 	/**
 	RadioButton 객체.
-	@class hcap.ui.DesignRadioButton.RadioButton
+	@class EXRadioButton.RadioButton
 	@private
 	@constructor
 	*/
-	function RadioButton(){
+	exports.RadioButton = function(){
 		var _this = document.createElement("span");
 		var _originalRadioButton = null;
 		var _radioButton = null;
@@ -147,6 +241,16 @@ define(function(require , exports){
 		*/
 		_this.getRadioName = function(){
 			return _radioName;
+		}
+
+		/**
+		EXRadioButton 에 의해 생성된(참조한) radioButton의 originalRadioButton 를 반환합니다.
+		@method getOriginalRadioButton
+		@public
+		@return {HTMLInputElement} originalRadioButton 를 반환합니다.
+		*/
+		_this.getOriginalRadioButton = function(){
+			return _originalRadioButton;
 		}
 
 		/**
@@ -196,7 +300,7 @@ define(function(require , exports){
 
 		@method interactionDesignRadioBtnEventHandler
 		@private
-		@param evt {EventVW.Event} 이벤트 객체.
+		@param evt {EXEvent} 이벤트 객체.
 		*/
 		function interactionDesignRadioBtnEventHandler(evt){
 			switch(evt.type){
@@ -211,7 +315,7 @@ define(function(require , exports){
 		originalRadio 의 interaction 을 핸들링 합니다.
 		@method interactionOriginalRadioBtnEventHandler
 		@private
-		@param evt {EventVW.Event} 이벤트 객체.
+		@param evt {EXEvent} 이벤트 객체.
 		*/
 		function interactionOriginalRadioBtnEventHandler(evt){
 			switch(evt.type){

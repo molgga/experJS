@@ -25,10 +25,10 @@ define(function(require, exports){
 	var _isIE9 = false;
 	
 	/**
-	@class ScrollViewY
+	@class EXScrollViewY
 	@constructor
 	*/
-	var ScrollViewY = function(){
+	var EXScrollViewY = function(){
 		var _this = this;
 
 		var SMOOTH_SCROLLING = 0.2;
@@ -48,19 +48,19 @@ define(function(require, exports){
 
 		/**
 		@property uiScrollBar
-		@type {ScrollViewY.UI_Bar}
+		@type {EXScrollViewY.UI_Bar}
 		*/
 		_this.uiScrollBar = null;
 
 		/**
-		ScrollViewY 인스턴스를 초기화 합니다.
+		EXScrollViewY 인스턴스를 초기화 합니다.
 		@method init
 		@param scrollContainer {HTMLElement}
 		@param scrollContent {HTMLElement}
 		@return {void}
 		*/
 		_this.init = function( scrollContainer , scrollContent ){
-			//EX.debug("ScrollViewY" , "init");
+			//EX.debug("EXScrollViewY" , "init");
 			if(EXEventListener.isTouchAble() == false) EXEventListener.setTouchAble(true);
 			_scrollContainer = scrollContainer;
 			_scrollContent = scrollContent;
@@ -76,7 +76,7 @@ define(function(require, exports){
 			_scrollContent.style.top = "0px";
 			_scrollContent.style.left = "0px";
 
-			_this.uiScrollBar = new ScrollViewY.UI_Bar();
+			_this.uiScrollBar = new EXScrollViewY.UI_Bar();
 			_this.uiScrollBar.init( _scrollContainer , _maxScrollY);
 
 			_scrollContainer.appendChild(_this.uiScrollBar.getBarContainer());
@@ -107,7 +107,7 @@ define(function(require, exports){
 		};
 
 		function scrollContainerEventHandler(evt){
-			//EX.debug("ScrollViewY scrollContainerEventHandler" , evt.type);
+			//EX.debug("EXScrollViewY scrollContainerEventHandler" , evt.type);
 			switch(evt.type){
 				case "touchstart" :
 					EXBrowser.setDragSelectAble(false);
@@ -158,7 +158,7 @@ define(function(require, exports){
 		@return {void}
 		*/
 		_this.delegateWheelEvent = function(delegateWheelObject){
-			//EX.debug("ScrollViewY delegateWheelEvent");
+			//EX.debug("EXScrollViewY delegateWheelEvent");
 			if(_delegateWheelObject != null){
 				EXEventListener.remove( delegateWheelObject , "mousewheel" , scrollContainerEventHandler );
 				EXEventListener.remove( _delegateWheelObject , "touchstart" , scrollContainerEventHandler );
@@ -176,14 +176,14 @@ define(function(require, exports){
 		};
 
 		/**
-		delegate 가 iframe 일 경우 크로스 브라우징 처리를 ScrollViewY 클래스 내부에서 해줍니다.
+		delegate 가 iframe 일 경우 크로스 브라우징 처리를 EXScrollViewY 클래스 내부에서 해줍니다.
 		@method delegateWheelEventForIframe
 		@param iframe {DOM}
 		@return {void}
 		*/
 		var _delegateIframe = null;
 		_this.delegateWheelEventForIframe = function(iframe){
-			//EX.debug("ScrollViewY delegateWheelEventForIframe");
+			//EX.debug("EXScrollViewY delegateWheelEventForIframe");
 			_delegateIframe = iframe;
 			var delegate = null;
 			var delegateDocument = null;
@@ -207,7 +207,7 @@ define(function(require, exports){
 		@return {void}
 		*/
 		_this.calculateWheelScrolling = function(delta , booster , maxScroll){
-			//EX.debug("ScrollViewY calculateWheelScrolling");
+			//EX.debug("EXScrollViewY calculateWheelScrolling");
 			var scroll = WHEEL_SPACE;
 			if(delta < 0){
 				scroll = -WHEEL_SPACE;
@@ -232,7 +232,7 @@ define(function(require, exports){
 		@return {void}
 		*/
 		_this.calculateScrollingY = function(calculate , smooth){
-			//EX.debug("ScrollViewY calculateScrollingY");
+			//EX.debug("EXScrollViewY calculateScrollingY");
 			var currentPositionTop = parseFloat( _scrollContent.style.top );
 			var targetPositionTop = currentPositionTop + calculate;
 			if(targetPositionTop >= _maxScrollY && targetPositionTop <= 0){
@@ -260,7 +260,7 @@ define(function(require, exports){
 		@return {void}
 		*/
 		_this.smoothScrollIntervaling = function(){
-			//EX.debug("ScrollViewY smoothScrollIntervaling");
+			//EX.debug("EXScrollViewY smoothScrollIntervaling");
 			//console.log(_this.uiScrollBar);
 			var targetY = parseFloat( _scrollContent.style.top );
 			if(_scrollTargetY != targetY){
@@ -284,7 +284,7 @@ define(function(require, exports){
 		@return {void}
 		*/
 		_this.setScrollInterval = function(bool){
-			//EX.debug("ScrollViewY setScrollInterval");
+			//EX.debug("EXScrollViewY setScrollInterval");
 			if(bool == true){
 				if(_scrollInterval != null){
 					clearInterval(_scrollInterval);
@@ -300,12 +300,12 @@ define(function(require, exports){
 		}
 
 		/**
-		ScrollViewY 인스턴스를 파기 합니다.
+		EXScrollViewY 인스턴스를 파기 합니다.
 		@method destroy
 		@return {void}
 		*/
 		_this.destroy = function(){
-			//EX.debug("ScrollViewY" , "destroy");
+			//EX.debug("EXScrollViewY" , "destroy");
 			try{
 				//_this.setScrollInterval(false);
 
@@ -339,17 +339,17 @@ define(function(require, exports){
 					_this.uiScrollBar = null;
 				}
 			}catch(e){
-				EX.debug("######## ScrollViewY" , "destroy" , e);
+				EX.debug("######## EXScrollViewY" , "destroy" , e);
 			}
 		};
 	};
 	
 	/**
-	ScrollViewY 에 사용되는 스크롤 Bar UI
-	@class ScrollViewY.UI_Bar
+	EXScrollViewY 에 사용되는 스크롤 Bar UI
+	@class EXScrollViewY.UI_Bar
 	@constructor
 	*/
-	ScrollViewY.UI_Bar = function(){
+	EXScrollViewY.UI_Bar = function(){
 		var _scrollBar = this;
 		var _uiBarContainer = null;
 		var _uiBar = null;
@@ -388,14 +388,14 @@ define(function(require, exports){
 		_scrollBar.isMouseOver = false;
 
 		/**
-		ScrollViewY.UI_Bar 인스턴스를 초기화 합니다.
+		EXScrollViewY.UI_Bar 인스턴스를 초기화 합니다.
 		@method init
 		@param scrollContainer {HTMLElement}
 		@param maxY {number}
 		@return {void}
 		*/
 		_scrollBar.init = function(scrollContainer , maxY ){
-			//EX.debug("ScrollViewY.UI_Bar" , "init");
+			//EX.debug("EXScrollViewY.UI_Bar" , "init");
 			_scrollContainer = scrollContainer;
 			_tempMaxY = maxY;
 
@@ -445,7 +445,7 @@ define(function(require, exports){
 		};
 
 		function interactionContainerMouseEventHandler(evt){
-			//EX.debug("ScrollViewY.UI_Bar" , "interactionContainerMouseEventHandler");
+			//EX.debug("EXScrollViewY.UI_Bar" , "interactionContainerMouseEventHandler");
 			if(_scrollBar.isMouseDown == false){
 				var half = _scrollContainerOffsetHeight - _uiBarHeight;
 				var mouseY = evt.pageY - EXElement.getElementGlobalPositionY(_uiBarContainer);
@@ -455,7 +455,7 @@ define(function(require, exports){
 		}
 
 		function interactionArrowMouseEventHandler(evt){
-			//EX.debug("ScrollViewY.UI_Bar" , "interactionArrowMouseEventHandler");
+			//EX.debug("EXScrollViewY.UI_Bar" , "interactionArrowMouseEventHandler");
 			var arrow = evt.currentTarget;
 			switch(evt.type){
 				case "mousedown" :
@@ -473,10 +473,11 @@ define(function(require, exports){
 		}
 
 		function interactionBarMouseEventHandler(evt){
-			EX.debug("ScrollViewY.UI_Bar" , "interactionBarMouseEventHandler" , evt.type);
+			//EX.debug("EXScrollViewY.UI_Bar" , "interactionBarMouseEventHandler" , evt.type);
 			switch(evt.type){
 				case "mouseup" :
-					EXElement.removeClass(_uiBar , ClassOf.UI_BAR_ACTIVATE );
+					//EXElement.removeClass(_uiBar , ClassOf.UI_BAR_ACTIVATE );
+					EXElement.removeClass(_uiBarContainer , ClassOf.UI_BAR_ACTIVATE );
 					_scrollBar.isMouseDown = false;
 					EXEventListener.remove( _scrollContainer , "mouseup" , interactionBarMouseEventHandler);
 					EXEventListener.remove( _uiBarContainer , "mousemove" , interactionBarMouseEventHandler);
@@ -488,7 +489,8 @@ define(function(require, exports){
 					EXBrowser.setDragSelectAble(true);
 					break;
 				case "mousedown" :
-					EXElement.addClass(_uiBar , ClassOf.UI_BAR_ACTIVATE );
+					//EXElement.addClass(_uiBar , ClassOf.UI_BAR_ACTIVATE );
+					EXElement.addClass(_uiBarContainer , ClassOf.UI_BAR_ACTIVATE );
 					_scrollBar.isMouseDown = true;
 					_scrollingClientY = evt.clientY;
 					_scrollingClinetPercentY = _scrollingPositionY/_maxScrollY;
@@ -516,13 +518,13 @@ define(function(require, exports){
 		}
 
 		/**
-		ScrollViewY 에 움직여야 할 scroll 값을 요청합니다.
+		EXScrollViewY 에 움직여야 할 scroll 값을 요청합니다.
 		@method requestScrollPercent
 		@param movePercent {integer}
 		@return {void}
 		*/
 		_scrollBar.requestScrollPercent = function(movePercent){
-			//EX.debug("ScrollViewY.UI_Bar" , "requestScrollPercent");
+			//EX.debug("EXScrollViewY.UI_Bar" , "requestScrollPercent");
 			//var movePercent = (layerY-_uiBarHeight/2)/(_scrollContainerOffsetHeight-_uiBarHeight);
 			if(movePercent < 0) movePercent = 0;
 			if(movePercent > 1) movePercent = 1;
@@ -530,13 +532,13 @@ define(function(require, exports){
 		}
 
 		/**
-		ScrollViewY 에 의해 움직여야할 percent 값을 지정 받습니다.
+		EXScrollViewY 에 의해 움직여야할 percent 값을 지정 받습니다.
 		@method setScrollPercent
 		@param percent {number}
 		@return {void}
 		*/
 		_scrollBar.setScrollPercent = function(percent){
-			//EX.debug("ScrollViewY.UI_Bar" , "setScrollPercent");
+			//EX.debug("EXScrollViewY.UI_Bar" , "setScrollPercent");
 			var targetY = Math.floor(percent*_maxScrollY) + _minScrollY;
 			_uiBar.style.top = targetY+"px";
 			//console.log(_uiBar.style.top);
@@ -623,11 +625,11 @@ define(function(require, exports){
 					_uiArrowDown = null;
 				}
 			}catch(e){
-				EX.debug("ScrollViewY.UI_Bar" , "destroy" , e);
+				EX.debug("EXScrollViewY.UI_Bar" , "destroy" , e);
 			}
 		};
 		return _scrollBar;
 	}
 
-	return ScrollViewY;
+	return EXScrollViewY;
 });

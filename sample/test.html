@@ -2,47 +2,60 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
 <title></title>
-<script type="text/javascript" src="../experJS/experJS.js"></script>
+<link type="text/css" rel="stylesheet" href="../../experCSS/exper.css" />
+<script type="text/javascript" src="../../experJS/experJS.js"></script>
 <script type="text/javascript">
 (function(){
-	EX.includeBegin("../experJS");
-	EX.include("ui/EXValidator");
+	EX.includeBegin("../../experJS");
+	EX.include("events/EXEventListener");
+	EX.include("ui/EXSelectBox");
+	EX.include("utils/EXMath");
+	EX.include("utils/EXString");
 	EX.includeEnd();
 	EX.ready(function(){
-		EX.debug("EX.ready" , "callback");
-		var messageChange = true;
-		if(messageChange == true){
-			EXValidator.message.ENG_ONLY							= "영문 <span class=\"exValidateA\">입력만 가능합니다.</span>";
-			EXValidator.message.ENG_LOW_ONLY				= "영문 소문자 <span class=\"exValidateA\">입력만 가능합니다.</span>";
-			EXValidator.message.ENG_UPER_ONLY				= "영문 대문자 <span class=\"exValidateA\">입력만 가능합니다.</span>";
-			EXValidator.message.NUM_ONLY							= "숫자 <span class=\"exValidateA\">입력만 가능합니다.</span>";
-			EXValidator.message.ENG_NUM_ONLY				= "영문 또는 숫자 <span class=\"exValidateA\">입력만 가능합니다.</span>";
-			EXValidator.message.ENG_LOW_NUM_ONLY		= "영문 소문자 또는 숫자 <span class=\"exValidateA\">입력만 가능합니다.</span>";
-			EXValidator.message.ENG_UPER_NUM_ONLY		= "영문 대문자 또는 숫자 <span class=\"exValidateA\">입력만 가능합니다.</span>";
-		}
-		EXValidator.initInputType();
+
+		EXSelectBox.init(); // EXSelectBox initialize
+
 	});
 })();
 </script>
 
-<style type="text/css">
-body { font-family:"돋움"; font-size:0.8em; }
-.exValidateA { color:#bbbbbb; }
+<!--Test - original visible //-->
+<style>
+select.exUIKit_selectBox { visibility:visible; position:static; left:0; }
 </style>
 
 </head>
 <body>
-	test1
-	<div>
-		<br/><input experjs="inputType:eng" type="text" /> <span>eng</span>
-		<br/><input experjs="inputType:engLow" type="text" /> <span>engLow</span>
-		<br/><input experjs="inputType:engUper" type="text" /> <span>engUper</span>
-		<br/><input experjs="inputType:eng,num" type="text" /> <span>eng,num</span>
-		<br/><input experjs="inputType:engLow,num" type="text" /> <span>engLow,num</span>
-		<br/><input experjs="inputType:engUper,num" type="text" /> <span>engUper,num</span>
-		<br/><input experjs="inputType:num" type="text" /> <span>num</span>
-	</div>
+			<select id="testSelectBox1" name="selectBox1" class="exUIKit_selectBox">
+				<option>가</option>
+				<option>나나</option>
+				<option>다다다</option>
+				<option>안녕하세요</option>
+				<option>이윤석 입니다.</option>
+			</select>
+			<select id="testSelectBox2" name="selectBox2" class="exUIKit_selectBox">
+				<option>AA</option>
+				<option>BBBB</option>
+				<option>CCCCCC</option>
+				<option>Hello javascript</option>
+				<option>molgga</option>
+			</select>
+			<select id="testSelectBox3" name="selectBox3" class="exUIKit_selectBox">
+				<option>123</option>
+				<option>456</option>
+				<option selected="selected">7890</option>
+			</select>
+			<select id="testSelectBox4" name="selectBox4" class="exUIKit_selectBox" disabled="disabled">
+				<option>11111111</option>
+				<option>22222222</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+			</select>
+
 </body>
 </html>

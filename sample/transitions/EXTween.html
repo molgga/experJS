@@ -15,6 +15,7 @@
 	EX.include("utils/EXCompare");
 	EX.include("utils/EXString");
 	EX.include("utils/EXElement");
+	EX.include("utils/EXMath");
 	EX.include("ui/EXSelectBox");
 	EX.include("ui/EXCheckBox");
 	EX.include("ui/EXScrollView");
@@ -29,6 +30,8 @@
 			CHANGE_DURATION		: "EventModel.CHANGE_DURATION"
 			, CHANGE_PROPERTY	: "EventModel.CHANGE_PROPERTY"
 			, CHANGE_EASING	: "EventModel.CHANGE_EASING"
+			, USE_EVENT_PROPERTY	: "EventModel.USE_EVENT_PROPERTY"
+			, CHANGE_EVENT_PROPERTY	: "EventModel.CHANGE_EVENT_PROPERTY"
 		};
 
 		function TweenController(){
@@ -42,11 +45,13 @@
 			var _domViewProperty = null;
 			var _domViewPropertyScrollView = null;
 			var _domExecuteTween = null;
+			var _domExecuteRandom = null;
 			var _domExecuteClear = null;
 			var _tweenObject = null;
 			var _tweenProperty = null;
 			var _tweenDuration = 1;
 			var _tweenEasing = null;
+			var _tweenEvent = null;
 
 
 			_this.init = function(){
@@ -63,13 +68,17 @@
 				_domViewPropertyScrollView = CssQuery.getSingle("#viewPropertyScrollView");
 
 				_domExecuteTween = CssQuery.getSingle("#domExecuteTween");
+				_domExecuteRandom = CssQuery.getSingle("#domExecuteRandom");
 				_domExecuteClear = CssQuery.getSingle("#domExecuteClear");
 				_tweenObject = CssQuery.getSingle("#tweenObject");
 				EXEventListener.add( EventModel , EventModel.CHANGE_DURATION , catchedPublicEventHandler);
 				EXEventListener.add( EventModel , EventModel.CHANGE_PROPERTY , catchedPublicEventHandler);
 				EXEventListener.add( EventModel , EventModel.CHANGE_EASING , catchedPublicEventHandler);
+				EXEventListener.add( EventModel , EventModel.USE_EVENT_PROPERTY , catchedPublicEventHandler);
+				EXEventListener.add( EventModel , EventModel.CHANGE_EVENT_PROPERTY , catchedPublicEventHandler);
 				EXEventListener.add( _domExecuteTween , "click" , interactionExecuteTweenHandler);
 				EXEventListener.add( _domExecuteClear , "click" , interactionExecuteClearHandler);
+				EXEventListener.add( _domExecuteRandom , "click" , interactionExecuteRandomHandler);
 				
 				_durationHandler = new DurationHandler();
 				_propertyHandler = new PropertyHandler();
@@ -118,6 +127,24 @@
 							_sourceCodeView.insert(sourceCode);
 						}
 						break;
+
+					case EventModel.USE_EVENT_PROPERTY :
+						if( evt.dataObject.checked == false){
+							_tweenEvent = null;
+						}
+						var sourceCode = getTweenSourceCode();
+						if(sourceCode != null){
+							_sourceCodeView.insert(sourceCode);
+						}
+						break;
+
+					case EventModel.CHANGE_EVENT_PROPERTY :
+						_tweenEvent = evt.dataObject.value;
+						var sourceCode = getTweenSourceCode();
+						if(sourceCode != null){
+							_sourceCodeView.insert(sourceCode);
+						}
+						break;
 				}
 			}
 			function getTweenSourceCode(){
@@ -126,6 +153,9 @@
 				var property = ""
 				for(key in _tweenProperty){
 					property = property + key + ":" + _tweenProperty[key] +" , ";
+				}
+				if(_tweenEvent != null){
+					property = property + _tweenEvent + ": function(){ console.log('"+_tweenEvent+"'); } , ";
 				}
 				if(property != ""){
 					property = property.substring(0 , property.length-2);
@@ -137,6 +167,7 @@
 			function interactionExecuteTweenHandler(evt){
 				var sourceCode = _sourceCodeView.getCode();
 				if(sourceCode != null){
+					EXTween.killTweensOf(_tweenObject);
 					eval(sourceCode);
 				}
 			}
@@ -165,12 +196,48 @@
 				_tweenDuration = 1;
 				_tweenEasing = "EXEasing.easeInOutExpo";
 
+				
+				_tweenObject = CssQuery.getSingle("#tweenObject");
+				var parentTweenObject = _tweenObject.parentNode;
+				parentTweenObject.removeChild(_tweenObject);
+				_tweenObject = null;
+				_tweenObject = document.createElement("div");
+				_tweenObject.id = "tweenObject";
+				_tweenObject.innerHTML = "tween object";
+				parentTweenObject.appendChild(_tweenObject);
+
 				var sourceCode = getTweenSourceCode();
-				console.log(sourceCode);
 				if(sourceCode != null){
 					_sourceCodeView.insert(sourceCode);
 				}
 			}
+			
+			function interactionExecuteRandomHandler(evt){
+				interactionExecuteClearHandler(null);
+				_tweenDuration = 0;
+				interactionExecuteTweenHandler(null);
+				
+				var i , key , keyValue;
+				for( key in _tweenProperty){
+					delete _tweenProperty[key];
+				}
+
+				var propLength = EXMath.getRandomToInt(1, 5);
+				for( i = 0 ; i < propLength ; i += 1){
+					keyValue = _propertyHandler.getRandomProperty();
+					_tweenProperty[keyValue.key] = keyValue.value;
+				}
+				_tweenDuration = EXMath.getRandomToNumber(0.5 , 2.5).toFixed(2);
+				
+				_tweenEasing = _propertyHandler.getRandomEasing();
+
+				var sourceCode = getTweenSourceCode();
+				if(sourceCode != null){
+					_sourceCodeView.insert(sourceCode);
+				}
+				interactionExecuteTweenHandler(null);
+			}
+
 			function resizeHandler(evt){
 				if(_propertyScrollView != null){
 					_propertyScrollView.destroy();
@@ -188,6 +255,9 @@
 			var _domUseColorProperty = null;
 			var _domColorSelectBox = null;
 			var _domColorValue = null;
+			
+			var _domUseEventProperty = null;
+			var _domEventSelectBox = null;
 
 			var _domDebugMode = null;
 			var _domGlobalInterval = null;
@@ -202,16 +272,17 @@
 				_domColorSelectBox = CssQuery.getSingle("#domColorSelectBox");
 				_domColorValue = CssQuery.getSingle("#domColorValue");
 
+				_domUseEventProperty = CssQuery.getSingle("#domUseEventProperty");
+				_domEventSelectBox = CssQuery.getSingle("#domEventSelectBox");
+
 				_domDebugMode = CssQuery.getSingle("#domDebugMode");
 				_domGlobalInterval = CssQuery.getSingle("#domGlobalInterval");
 				_domGlobalIntervalRender = CssQuery.getSingle("#domGlobalIntervalRender");
 
-				//EXEventListener.add( _domPropSelectBox , "change" , interactionPropetyChangeHandler);
 				EXEventListener.add( _domEasingSelectBox , "change" , interactionEasingChangeHandler);
 				EXEventListener.add( _domPropValue , "blur" , interactionPropetyChangeHandler);
 				if(typeof(console) == "undefined"){
 					_domDebugMode.disabled = "disabled";
-					//EXCheckBox.remake(_domDebugMode);
 				}else{
 					EXEventListener.add( _domDebugMode , "click" , interactionCheckDebugModeHandler);
 				}
@@ -220,12 +291,16 @@
 				EXEventListener.add( _domGlobalIntervalRender , "blur" , changeIntervalRenderSpeed );
 				
 				EXEventListener.add( _domUseColorProperty , "click" , interactionColorUseCheckHandler );
-				//EXEventListener.add( _domColorSelectBox , "change" , interactionColorPropertyHandler );
 				EXEventListener.add( _domColorValue , "blur" , interactionColorPropertyHandler );
 
-				//interactionEasingChangeHandler(null);
-				//interactionPropetyChangeHandler(null);
-				//interactionColorPropertyHandler(null);
+				EXEventListener.add( _domUseEventProperty , "click" , interactionEventPropertyUseCheckHandler);
+				EXEventListener.add( _domEventSelectBox , "change" , interactionEventPropertyChangeHandler);
+			};
+			_this.getRandomProperty = function(){
+				return { key: _domPropSelectBox.options[EXMath.getRandomToInt(0,_domPropSelectBox.options.length-1)].value , value : EXMath.getRandomToInt(10 , 500) };
+			};
+			_this.getRandomEasing= function(){
+				return _domEasingSelectBox.options[EXMath.getRandomToInt(0,_domEasingSelectBox.options.length-1)].value;
 			};
 			function changeIntervalTweenSpeed(evt){
 				var value = parseFloat(_domGlobalInterval.value);
@@ -242,6 +317,18 @@
 				EXTween.setDebugMode(checked);
 			}
 
+			function interactionEventPropertyUseCheckHandler(evt){
+				var checked = _domUseEventProperty.checked;
+				if(checked == true){
+					_domEventSelectBox.disabled = false;
+				}else{
+					_domEventSelectBox.disabled = true;
+				}
+				EXEventListener.dispatch( EventModel , new EXCustomEvent(EventModel.USE_EVENT_PROPERTY , { checked: checked }));
+			}
+			function interactionEventPropertyChangeHandler(evt){
+				EXEventListener.dispatch( EventModel , new EXCustomEvent(EventModel.CHANGE_EVENT_PROPERTY , { value: _domEventSelectBox.value }));
+			}
 			function interactionColorUseCheckHandler(evt){
 				var checked = _domUseColorProperty.checked;
 				if(checked == true){
@@ -363,9 +450,13 @@
 			};
 			_this.insert = function(sourceCode){
 				_domSourceCode.value = sourceCode;
-				EXTween.killTweensOf(_domViewCode);
-				EXTween.to(_domSourceCode , 0 , { color:0xee8e05 });
-				EXTween.to(_domSourceCode , 0.3 , { delay:0.5 , color:0xbbbbbb });
+				//EXTween.killTweensOf(_domViewCode);
+				//EXTween.to(_domSourceCode , 0 , { color:0xee8e05 });
+				//EXTween.to(_domSourceCode , 0.3 , { delay:0.5 , color:0xbbbbbb });
+				EXElement.addClass(_domSourceCode , "active");
+				setTimeout(function(){
+					EXElement.removeClass(_domSourceCode , "active");
+				} , 1000);
 			};
 			_this.getCode = function(){
 				return _domSourceCode.value;
@@ -388,8 +479,9 @@
 	#viewProperty dl > dt { padding-bottom:5px; margin-bottom:5px; font-size:0.75em; line-height:0.75em; font-weight:bold; color:#777777; }
 	#viewProperty dl > dd {  }
 	#viewProperty dl > dd input { height:24px; vertical-align:top; text-align:center; }
-	#viewProperty .execute button { padding:5px 10px 6px 10px; border:none; color:#ffffff; font-size:0.8em; font-weight:bold; background-color:#696969; cursor:pointer; }
+	#viewProperty .execute button { padding:5px 10px 6px 10px; margin-bottom:5px; border:none; color:#ffffff; font-size:0.8em; font-weight:bold; background-color:#696969; cursor:pointer; }
 	#viewProperty .execute button.tween { background-color:#3399ff; }
+	#viewProperty .execute button.random { background-color:#3399ff; }
 	#viewProperty .execute button.clear { }
 	#viewProperty .execute button:hover { background-color:#ee8e05; }
 	#viewProperty .method {  }
@@ -401,7 +493,7 @@
 	#viewProperty .method div.value span { padding:10px; vertical-align:middle; cursor:pointer; }
 	#viewPropertyScrollView { width:100%; }
 	#viewProperty .exUIKit_scrollView { z-index:3; }
-	#viewCopyright { position:absolute; bottom:0; padding:10px; font-size:0.7em; color:#494949; }
+	#viewCopyright { position:absolute; right:0; padding:10px; text-align:right; font-size:0.7em; color:#494949; }
 	#viewCopyright a { color:#595959; text-decoration:none; }
 
 	#viewTween { float:left; position:relative; z-index:10; }
@@ -412,6 +504,7 @@
 	#viewCode { position:absolute; left:301px; right:0; bottom:0; height:60px; border-top:1px solid #222222; background-color:#262626; z-index:30; }
 	#domSourceCode { width:100%; color:#dddddd; font-family:"verdana" , "Helvetica", Sans-serif; outline:none; border:none; background:none; }
 	#domSourceCode.focus { color:#ee8e05 !important; }
+	#domSourceCode.active { color:#ee8e05 }
 	
 	.exUIKit_toast { z-index:99; 
 		bottom:50%; border:1px solid #dc8282; color:#c02d2d; font-weight:bold;
@@ -468,6 +561,17 @@
 						<option>borderRightColor</option>
 					</select>
 					<input id="domColorValue" type="text" value="ff0000" maxlength="6" title="color property value" disabled="disabled"/>
+				</dd>
+			</dl>
+			<dl class="event">
+				<dt>event property <input id="domUseEventProperty" type="checkbox" class="exUIKit_checkBox"/></dt>
+				<dd>
+					<select id="domEventSelectBox" class="exUIKit_selectBox" title="event property name" disabled="disabled">
+						<option>onInit</option>
+						<option>onStart</option>
+						<option>onUpdate</option>
+						<option>onComplete</option>
+					</select>
 				</dd>
 			</dl>
 			<dl class="easing">
@@ -535,13 +639,10 @@
 				<dd>
 					<button id="domExecuteTween" class="tween">Tween</button>
 					<button id="domExecuteClear" class="clear">Clear</button>
+					<br/>
+					<button id="domExecuteRandom" class="random">Tween(random test)</button>
 				</dd>
 			</dl>
-		</div>
-		<div id="viewCopyright">
-			copyright 2012 (c) leeyoonseok.
-			<br/>open source : <a href="https://github.com/molgga/experJS" target="blank" title="My open soruce Project : experJS">https://github.com/molgga/experJS</a>
-			<br/><a href="mailto:molgga84@gmail.com" target="blank">molgga84@gmail.com</a> or <a href="http://molgga.com" target="blank" title="Private portfolio">http://molgga.com</a>
 		</div>
 	</div>
 
@@ -555,5 +656,10 @@
 		</div>
 	</div>
 
+	<div id="viewCopyright">
+		copyright 2012 (c) leeyoonseok.
+		<br/>open source : <a href="https://github.com/molgga/experJS" target="blank" title="My open soruce Project : experJS">https://github.com/molgga/experJS</a>
+		<br/><a href="mailto:molgga84@gmail.com" target="blank">molgga84@gmail.com</a> or <a href="http://molgga.com" target="blank" title="Private portfolio">http://molgga.com</a>
+	</div>
 </body>
 </html>

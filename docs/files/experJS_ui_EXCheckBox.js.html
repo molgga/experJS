@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>experJS\ui\EXCheckBox.js</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.7.0&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/define.html">define</a></li>
+            
+                <li><a href="..&#x2F;classes/EX.html">EX</a></li>
+            
+                <li><a href="..&#x2F;classes/EXBrowser.html">EXBrowser</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCheckBox.html">EXCheckBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCheckBox.CheckBox.html">EXCheckBox.CheckBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCompare.html">EXCompare</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCookie.html">EXCookie</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCustomEvent.html">EXCustomEvent</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEasing.html">EXEasing</a></li>
+            
+                <li><a href="..&#x2F;classes/EXElement.html">EXElement</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEvent.html">EXEvent</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEventListener.html">EXEventListener</a></li>
+            
+                <li><a href="..&#x2F;classes/EXJsonLoader.html">EXJsonLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXLoader.html">EXLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXMath.html">EXMath</a></li>
+            
+                <li><a href="..&#x2F;classes/EXRadioButton.html">EXRadioButton</a></li>
+            
+                <li><a href="..&#x2F;classes/EXRadioButton.RadioButton.html">EXRadioButton.RadioButton</a></li>
+            
+                <li><a href="..&#x2F;classes/EXScrollViewY.html">EXScrollViewY</a></li>
+            
+                <li><a href="..&#x2F;classes/EXScrollViewY.UI_Bar.html">EXScrollViewY.UI_Bar</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.html">EXSelectBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBox.html">EXSelectBox.SelectBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBoxOption.html">EXSelectBox.SelectBoxOption</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBoxOptionGroup.html">EXSelectBox.SelectBoxOptionGroup</a></li>
+            
+                <li><a href="..&#x2F;classes/EXString.html">EXString</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTextLoader.html">EXTextLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTimer.html">EXTimer</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTiming.html">EXTiming</a></li>
+            
+                <li><a href="..&#x2F;classes/EXToast.html">EXToast</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTransform.html">EXTransform</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTween.html">EXTween</a></li>
+            
+                <li><a href="..&#x2F;classes/EXURLRequest.html">EXURLRequest</a></li>
+            
+                <li><a href="..&#x2F;classes/EXValidator.html">EXValidator</a></li>
+            
+                <li><a href="..&#x2F;classes/EXXmlLoader.html">EXXmlLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/require.html">require</a></li>
+            
+                <li><a href="..&#x2F;classes/requirejs.html">requirejs</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: experJS\ui\EXCheckBox.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function(require , exports){
+	var CssQuery = require(&quot;..&#x2F;vender&#x2F;CssQuery&quot;);
+	var EXElement = require(&quot;..&#x2F;utils&#x2F;EXElement&quot;);
+	var EXEventListener = require(&quot;..&#x2F;events&#x2F;EXEventListener&quot;);
+
+	var ClassOf = {
+		CHECKBOX : &quot;exUIKit_checkBox&quot;
+		, ORIGINAL_CHECKBOX_ADD : &quot;original&quot;
+		, DESIGN_CHECKBOX : &quot;checkBtn&quot;
+		, DESIGN_CHECKBOX_VIEW : &quot;checkBox&quot;
+		, DESIGN_CHECKBOX_VIEW_CHECKED : &quot;checked&quot;
+		, DESIGN_CHECKBOX_VIEW_DISABLED : &quot;disabled&quot;
+	};
+	var _designCheckBoxArr = null;
+
+	&#x2F;**
+	Component checkbox 와 1:1로 대응하는 Design checkbox 를 생성합니다. 
+	@class EXCheckBox
+	@static
+	*&#x2F;
+		
+	&#x2F;**
+	EXCheckBox 를 초기화 합니다.
+	@method init
+	@param originalCheckBoxClassName {String} exper 에서 제공하고 파싱하는 클래스가 아닌 직접 지정 가능한 className
+	@example
+		&lt;!DOCTYPE html&gt;
+		&lt;html&gt;
+		&lt;head&gt;
+		&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text&#x2F;html; charset=utf-8&quot; &#x2F;&gt;
+		&lt;title&gt;&lt;&#x2F;title&gt;
+		&lt;link type=&quot;text&#x2F;css&quot; rel=&quot;stylesheet&quot; href=&quot;..&#x2F;..&#x2F;experCSS&#x2F;exper.css&quot; &#x2F;&gt;
+		&lt;script type=&quot;text&#x2F;javascript&quot; src=&quot;..&#x2F;..&#x2F;experJS&#x2F;experJS.js&quot;&gt;&lt;&#x2F;script&gt;
+		&lt;script type=&quot;text&#x2F;javascript&quot;&gt;
+		(function(){
+			EX.includeBegin(&quot;..&#x2F;..&#x2F;experJS&quot;);
+			EX.include(&quot;events&#x2F;EXEventListener&quot;);
+			EX.include(&quot;ui&#x2F;EXCheckBox&quot;);
+			EX.includeEnd();
+			EX.ready(function(){
+				
+				EXCheckBox.init();
+				
+			});
+		})();
+		&lt;&#x2F;script&gt;
+
+		&lt;!--Test - original visible &#x2F;&#x2F;--&gt;
+		&lt;style type=&quot;text&#x2F;css&quot;&gt;
+		.exUIKit_checkBox.original { position:static; left:auto; visibility:visible; }
+		&lt;&#x2F;style&gt;
+
+		&lt;&#x2F;head&gt;
+		&lt;body&gt;
+			&lt;div&gt;
+				&lt;input id=&quot;check1&quot; class=&quot;exUIKit_checkBox&quot; disabled=&quot;disabled&quot; type=&quot;checkbox&quot; &#x2F;&gt;
+				&lt;label for=&quot;check1&quot;&gt;checkBox1&lt;&#x2F;label&gt;
+			&lt;&#x2F;div&gt;
+			&lt;div&gt;
+				&lt;input id=&quot;check2&quot; class=&quot;exUIKit_checkBox&quot; type=&quot;checkbox&quot; &#x2F;&gt;
+				&lt;label for=&quot;check2&quot;&gt;checkBox2&lt;&#x2F;label&gt;
+			&lt;&#x2F;div&gt;
+			&lt;div&gt;
+				&lt;input id=&quot;check3&quot; class=&quot;exUIKit_checkBox&quot; type=&quot;checkbox&quot; &#x2F;&gt;
+				&lt;label for=&quot;check3&quot;&gt;checkBox3&lt;&#x2F;label&gt;
+			&lt;&#x2F;div&gt;
+		&lt;&#x2F;body&gt;
+		&lt;&#x2F;html&gt;
+	*&#x2F;
+	exports.init = function(originalCheckBoxClassName){
+		if(window.EXEventListener != undefined){
+			EXEventListener = window.EXEventListener;
+		}
+		if(originalCheckBoxClassName != undefined){
+			ClassOf.CHECKBOX = originalCheckBoxClassName;
+		}
+		_designCheckBoxArr = [];
+		var checkBoxArr = CssQuery( &quot;.&quot; + ClassOf.CHECKBOX );
+		var len = checkBoxArr.length;
+		var designCheckBox = null;
+		var orignCheckBox = null;
+		for(var i = 0 ; i &lt; len ; i++){
+			orignCheckBox = checkBoxArr[i];
+
+			if(orignCheckBox.is_experCSS_designUI_checkBox == true) continue; &#x2F;&#x2F;ajax 중첩 호출. 테스트.
+
+			designCheckBox = new exports.CheckBox();
+			designCheckBox.init(orignCheckBox);
+			_designCheckBoxArr.push(designCheckBox);
+		}
+	}
+
+	&#x2F;**
+	지정된 checkbox 객체를 다시 생성합니다.
+	@method remake
+	@public
+	@param originalCheckBox {HTMLInputElement} 다시 생성할 checkbox 객체
+	*&#x2F;
+	exports.remake = function(originalCheckBox){
+		var len = _designCheckBoxArr.length;
+		var designCheckBox = null;
+		var remakeCheckBox = null;
+		for(var i = 0 ; i &lt; len ; i++){
+			designCheckBox = _designCheckBoxArr[i];
+			if(designCheckBox.getOriginalCheckBox() == originalCheckBox){
+				designCheckBox.destroy();
+				designCheckBox = null;
+				_designCheckBoxArr.splice(i,1);
+				remakeCheckBox = new exports.CheckBox();
+				remakeCheckBox.init( originalCheckBox );
+				_designCheckBoxArr.push(remakeCheckBox);
+				break;
+			}
+		}
+	};
+
+	&#x2F;**
+	Design Component 로 생성된 객체(들)를 배열 형태로 반환합니다.
+	@method getList
+	@public
+	@return {Array}
+	*&#x2F;
+	exports.getList = function(){
+		return _designCheckBoxArr;
+	};
+	&#x2F;**
+	Design Component 로 생성된 객체(들)의 총 갯수를 반환합니다.
+	@method getLength
+	@public
+	@return {integer}
+	*&#x2F;
+	exports.getLength = function(){
+		return _designCheckBoxArr.length;
+	};
+
+	&#x2F;**
+	EXCheckBox 객체를 파기합니다.
+	@method destroy
+	@public
+	*&#x2F;
+	exports.destroy = function(){
+		try{
+			var len = _designCheckBoxArr.length;
+			var designCheckBox = null;
+			for(var i = 0 ; i &lt; len ; i++){
+				designCheckBox = _designCheckBoxArr.shift();
+				if(designCheckBox != null){
+					designCheckBox.destroy();
+					designCheckBox = null;
+				}
+			}
+		}catch(e){
+		}finally{
+			_designCheckBoxArr = null;
+		}
+	}
+
+
+	&#x2F;**
+	EXCheckBox.CheckBox 객체
+	originalCheckBox 한 개에 대응하는 designCheckBox 를 만들어 냅니다.
+	@class EXCheckBox.CheckBox
+	@private
+	@constructor
+	*&#x2F;
+	exports.CheckBox = function(){
+		var _this = document.createElement(&quot;span&quot;);
+		var _originalCheckBox = null;
+		var _checkedBox = null;
+
+		var _isDisabled = false;
+		var _isChecked = false;
+		
+		&#x2F;**
+		EXCheckBox 에 의해 생성된(참조한) checkbox의 originalCheckBox 를 반환합니다.
+		@method getOriginalCheckBox
+		@public
+		@return {HTMLInputElement} originalCheckBox 를 반환합니다.
+		*&#x2F;
+		_this.getOriginalCheckBox = function(){
+			return _originalCheckBox;
+		}
+		
+		&#x2F;**
+		해당 객체를 초기화 합니다.
+		@method init
+		@public
+		@param originalCheckBox {HTMLElement} 참조할 originalCheckBox.
+		*&#x2F;
+		_this.init = function(originalCheckBox){
+			_originalCheckBox = originalCheckBox;
+			_originalCheckBox.is_experCSS_designUI_checkBox = true;
+			_isChecked = (_originalCheckBox.checked == true) ? true : false;
+			_checkedBox = document.createElement(&quot;span&quot;);
+			
+			&#x2F;&#x2F;_this.className = ClassOf.DESIGN_CHECKBOX;
+			EXElement.addClass(_this , ClassOf.CHECKBOX);
+			EXElement.addClass(_this , ClassOf.DESIGN_CHECKBOX);
+			_checkedBox.className = ClassOf.DESIGN_CHECKBOX_VIEW;
+			EXElement.addClass(_originalCheckBox , ClassOf.ORIGINAL_CHECKBOX_ADD);
+
+			_this.appendChild(_checkedBox);
+			var parentNode = _originalCheckBox.parentNode;
+			parentNode.replaceChild( _this , _originalCheckBox );
+			parentNode.appendChild( _originalCheckBox );
+
+			EXEventListener.add( _this , &quot;click&quot; , interactionEXCheckBoxEventHandler);
+			EXEventListener.add( _originalCheckBox , &quot;click&quot; , interactionOriginalCheckBoxEventHandler);
+			if(_originalCheckBox.addEventListener){
+				EXEventListener.add( _originalCheckBox , &quot;DOMSubtreeModified&quot; , eventDomChange );
+			}else if(_originalCheckBox.attachEvent){
+				_originalCheckBox.attachEvent(&quot;onpropertychange&quot; , eventDomChange);
+			}
+
+			_this.setDisabled(_originalCheckBox.disabled);
+			if(_isChecked == true) _this.setDesignChecked(true);
+		}
+
+		&#x2F;**
+		designCheckBox 의 checked 기능.
+		@method setDesignChecked
+		@public
+		@param check {boolean} check , uncheck 에 따라 css 클래스를 부여하여 view 처리를 합니다.
+		*&#x2F;
+		_this.setDesignChecked = function(check){
+			if(check == true){
+				EXElement.addClass( _checkedBox , ClassOf.DESIGN_CHECKBOX_VIEW_CHECKED);
+			}else{
+				EXElement.removeClass( _checkedBox , ClassOf.DESIGN_CHECKBOX_VIEW_CHECKED);
+			}
+		}
+
+		&#x2F;**
+		designCheckBox 의 interaction 을 핸들링 합니다.
+		click 시 실제 동작은 originalCheckBox 를 click 시킴으로써
+		designCheckBox 와 originalCheckBox 의 click 시 일어나는 동작을 같은 동일하게 할 수 있도록 합니다.
+		designCheckBox 의 click 이벤트는 실제로는 interactionOriginalCheckBoxEventHandler 메소드로 전이 되는것과 같습니다.
+		@method interactionEXCheckBoxEventHandler
+		@private
+		@param evt {EXEvent} 이벤트 객체.
+		*&#x2F;
+		function interactionEXCheckBoxEventHandler(evt){
+			switch(evt.type){
+				case &quot;click&quot; :
+					_originalCheckBox.click();
+					break;
+			}
+		}
+
+		&#x2F;**
+		originalCheckBox 의 interaction 을 핸들링 합니다.
+		@method interactionOriginalCheckBoxEventHandler
+		@private
+		@param evt {EXEvent} 이벤트 객체.
+		*&#x2F;
+		function interactionOriginalCheckBoxEventHandler(evt){
+			switch(evt.type){
+				case &quot;click&quot; :
+					setToggleChecked();
+					break;
+			}
+		}
+		&#x2F;**
+				case &quot;DOMSubtreeModified&quot; :
+					&#x2F;&#x2F;_originalCheckBox 의 disabled 와 같은 속성이 변경되거나 부여될 때 이벤트
+					break;
+		@method
+		@private
+		@param 
+		*&#x2F;
+		function eventDomChange(evt){
+			_this.setDisabled( _originalCheckBox.disabled );
+		}
+
+		&#x2F;**
+		_originalCheckBox 를 disabled , enabled 처리를 합니다.
+		@method setDisabled
+		@public
+		@param value {boolean}
+		*&#x2F;
+		_this.setDisabled = function(value){
+			if(value == true){
+				EXElement.addClass( _this , ClassOf.DESIGN_CHECKBOX_VIEW_DISABLED );
+			}else{
+				EXElement.removeClass( _this , ClassOf.DESIGN_CHECKBOX_VIEW_DISABLED  );
+			}
+			_isDisabled = value;
+		}
+		&#x2F;**
+		_originalCheckBox 를 checked 처리를 합니다.
+		@method setChecked
+		@public
+		@param value {boolean}
+		*&#x2F;
+		_this.setChecked = function(value){
+			if(value == true){
+				EXElement.addClass( _checkedBox , ClassOf.DESIGN_CHECKBOX_VIEW_CHECKED );
+			}else{
+				EXElement.removeClass( _checkedBox , ClassOf.DESIGN_CHECKBOX_VIEW_CHECKED );
+			}
+			_isChecked = value;
+		}
+
+		&#x2F;**
+		designCheckBox 와 originalCheckBox 의 checked 상태를 변경합니다.
+		@method setToggleChecked
+		@private
+		@return {boolean}
+		*&#x2F;
+		function setToggleChecked(){
+			if(_isChecked == false){
+				EXElement.addClass( _checkedBox , ClassOf.DESIGN_CHECKBOX_VIEW_CHECKED);
+			}else{
+				EXElement.removeClass( _checkedBox , ClassOf.DESIGN_CHECKBOX_VIEW_CHECKED);
+			}
+			_isChecked = !_isChecked;
+			_originalCheckBox.checked = _isChecked;
+			return _isChecked;
+		}
+
+		&#x2F;**
+		@method destroy
+		@public
+		*&#x2F;
+		_this.destroy = function(){
+			try{
+				EXEventListener.remove( _this , &quot;click&quot; , interactionEXCheckBoxEventHandler);
+				if(_originalCheckBox != null){
+					EXEventListener.remove( _originalCheckBox , &quot;click&quot; , interactionOriginalCheckBoxEventHandler);
+					if(_originalCheckBox.addEventListener){
+						EXEventListener.remove( _originalCheckBox , &quot;DOMSubtreeModified&quot; , eventDomChange );
+					}else if(_originalCheckBox.attachEvent){
+						_originalCheckBox.detachEvent(&quot;onpropertychange&quot; , eventDomChange);
+					}
+					_originalCheckBox.is_experCSS_designUI_checkBox = false;
+					EXElement.removeClass(_originalCheckBox , ClassOf.ORIGINAL_CHECKBOX_ADD);
+				}
+
+				&#x2F;&#x2F;_this.className = ClassOf.DESIGN_CHECKBOX;
+				EXElement.removeClass(_this , ClassOf.CHECKBOX);
+				EXElement.removeClass(_this , ClassOf.DESIGN_CHECKBOX);
+
+				var parentNode = _originalCheckBox.parentNode;
+				parentNode.replaceChild( _originalCheckBox , _this);
+				&#x2F;&#x2F;parentNode.removeChild( _this );
+			}catch(e){
+			}
+		}
+		return _this;
+	} &#x2F;&#x2F; end CheckBox
+});
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

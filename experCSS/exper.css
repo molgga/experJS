@@ -13,21 +13,28 @@
 .exUIKit_layerDom_layer .container .framei { margin:0; padding:0; width:100%; height:100%; border:none; }
 
 
-.exUIKit_scrollView { position:absolute; top:0; right:0; width:5px; cursor:pointer; background-color:#eeeeee; }
+.exUIKit_scrollView { position:absolute; top:0; right:0; width:5px; cursor:pointer; background-color:#eeeeee; -webkit-transition:width 0.1s; }
 .exUIKit_scrollView.needless { display:none; }
 .exUIKit_scrollView.disable { display:none; }
-.exUIKit_scrollView:hover .uiBar { background-color:#ff0000; }
 .exUIKit_scrollView .uiBar { position:absolute; right:0px; width:100%; background-color:#707070; }
-.exUIKit_scrollView .uiBar.activate { background-color:#ff0000; }
+.exUIKit_scrollView.activate { width:15px; }
+.exUIKit_scrollView.activate .uiBar { background-color:#ff0000; }
+.exUIKit_scrollView:hover { width:15px; }
+.exUIKit_scrollView:hover .uiBar { background-color:#ff0000; }
 .exUIKit_scrollView .uiArrow { position:absolute; top:0; left:0; }
 .exUIKit_scrollView .uiArrow.up { }
 .exUIKit_scrollView .uiArrow.down { top:auto; bottom:0; }
 
 .exUIKit_toast { 
-	position:fixed; bottom:20px; left:50%; padding:2px 10px 4px 10px; 
-	text-align:center; line-height:1.6em; font-size:1em; color:#ffffff; 
-	background-color:#444444; 0px 5px 8px rgba(0,0,0,0.3); 
+	font-family:"Malgun Gothic" , "Arial" , "verdana" , "Helvetica" , sans-serif;
+	position:fixed; bottom:20px; left:50%; padding:7px 14px 8px 14px;
+	line-height:1.4em; font-size:1em; color:#ffffff; background-color:#444444; 
+	box-shadow: 0px 5px 8px rgba(0,0,0,0.2); text-shadow:0px 1px 1px rgba(0,0,0, 0.1);
 }
+.exUIKit_toast .head_title {  }
+.exUIKit_toast.error { background-color:#dd2a44; }
+.exUIKit_toast.warning { background-color:#e17d07; }
+.exUIKit_toast.success { background-color:#3e98e5; }
 
 /*
 .exUIKit_checkBox {}

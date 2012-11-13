@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>experJS\events\EXEvent.js</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.7.0&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/define.html">define</a></li>
+            
+                <li><a href="..&#x2F;classes/EX.html">EX</a></li>
+            
+                <li><a href="..&#x2F;classes/EXBrowser.html">EXBrowser</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCheckBox.html">EXCheckBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCheckBox.CheckBox.html">EXCheckBox.CheckBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCompare.html">EXCompare</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCookie.html">EXCookie</a></li>
+            
+                <li><a href="..&#x2F;classes/EXCustomEvent.html">EXCustomEvent</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEasing.html">EXEasing</a></li>
+            
+                <li><a href="..&#x2F;classes/EXElement.html">EXElement</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEvent.html">EXEvent</a></li>
+            
+                <li><a href="..&#x2F;classes/EXEventListener.html">EXEventListener</a></li>
+            
+                <li><a href="..&#x2F;classes/EXJsonLoader.html">EXJsonLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXLoader.html">EXLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXMath.html">EXMath</a></li>
+            
+                <li><a href="..&#x2F;classes/EXRadioButton.html">EXRadioButton</a></li>
+            
+                <li><a href="..&#x2F;classes/EXRadioButton.RadioButton.html">EXRadioButton.RadioButton</a></li>
+            
+                <li><a href="..&#x2F;classes/EXScrollViewY.html">EXScrollViewY</a></li>
+            
+                <li><a href="..&#x2F;classes/EXScrollViewY.UI_Bar.html">EXScrollViewY.UI_Bar</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.html">EXSelectBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBox.html">EXSelectBox.SelectBox</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBoxOption.html">EXSelectBox.SelectBoxOption</a></li>
+            
+                <li><a href="..&#x2F;classes/EXSelectBox.SelectBoxOptionGroup.html">EXSelectBox.SelectBoxOptionGroup</a></li>
+            
+                <li><a href="..&#x2F;classes/EXString.html">EXString</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTextLoader.html">EXTextLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTimer.html">EXTimer</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTiming.html">EXTiming</a></li>
+            
+                <li><a href="..&#x2F;classes/EXToast.html">EXToast</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTransform.html">EXTransform</a></li>
+            
+                <li><a href="..&#x2F;classes/EXTween.html">EXTween</a></li>
+            
+                <li><a href="..&#x2F;classes/EXURLRequest.html">EXURLRequest</a></li>
+            
+                <li><a href="..&#x2F;classes/EXValidator.html">EXValidator</a></li>
+            
+                <li><a href="..&#x2F;classes/EXXmlLoader.html">EXXmlLoader</a></li>
+            
+                <li><a href="..&#x2F;classes/require.html">require</a></li>
+            
+                <li><a href="..&#x2F;classes/requirejs.html">requirejs</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: experJS\events\EXEvent.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function(require , exports){
+	var _isIE = ((navigator.appName == &quot;Microsoft Internet Explorer&quot;) ? true : false);
+
+	&#x2F;**
+	native 이벤트 객체를 EXEvent 에 맞게 가공합니다.
+	@class EXEvent
+	@constructor
+	@param evt {Event || EventObject} 이벤트 객체.
+	*&#x2F;
+	var EXEvent = function(evt){
+		var p;
+		for(p in evt){ this[p] = evt[p]; }
+
+		&#x2F;**
+		mouse wheel 의 delta 값을 반환합니다.
+		@property delta
+		@type {Integer}
+		@example
+			&lt;!DOCTYPE html&gt;
+			&lt;html&gt;
+			&lt;head&gt;
+			&lt;style type=&quot;text&#x2F;css&quot;&gt;
+				html , body { padding:0; margin:0; }
+				#testBox1 { position:absolute; width:200px; height:200px; border:0px solid #000000; background-color:#ffff00; }
+			&lt;&#x2F;style&gt;
+			&lt;script type=&quot;text&#x2F;javascript&quot; src=&quot;..&#x2F;..&#x2F;vw&#x2F;events&#x2F;EventVW_0.9.0.js&quot;&gt;&lt;&#x2F;script&gt;
+			&lt;&#x2F;head&gt;
+			&lt;body&gt;
+				&lt;div id=&quot;testBox1&quot;&gt;Mouse Wheel&lt;&#x2F;div&gt;
+			&lt;&#x2F;body&gt;
+			&lt;script type=&quot;text&#x2F;javascript&quot;&gt;
+			(function(){
+				var testBox1 = document.getElementById(&quot;testBox1&quot;);
+				
+				EventVW.addListener( testBox1 , &quot;mousewheel&quot; , wheelEventHandler);
+				function wheelEventHandler(evt){
+					alert(evt.delta);
+				}
+			})();
+			&lt;&#x2F;script&gt;
+			&lt;&#x2F;html&gt;
+		*&#x2F;
+		this.delta = 0;
+		
+		&#x2F;**
+		touchstart 부터 touchmove(touchend) 까지 X축의 움직인 거리를 반환합니다. 
+		&lt;br&#x2F;&gt;(See also : EventVW.setTouchAble)
+		@property touchMoveX
+		@type {Integer}
+		*&#x2F;
+		this.touchMoveX = 0;
+		
+		&#x2F;**
+		touchstart 부터 touchmove(touchend) 까지 Y축의 움직인 거리를 반환합니다. 
+		&lt;br&#x2F;&gt;(See also : EventVW.setTouchAble)
+		@property touchMoveY
+		@type {Integer}
+		*&#x2F;
+		this.touchMoveY = 0;
+		
+		&#x2F;**
+		touchend 시 X축 swipe 방향을 반환합니다. (-1: 오른쪽에서 왼쪽으로 swipe , 0: x축 움직임 없음으로 판단 , 1:왼쪽에서 오른쪽으로 swipe ) 
+		&lt;br&#x2F;&gt;(See also : EventVW.setTouchAble , EventVW.setTouchDistanceX)
+		@property touchDirectionX
+		@type {Integer}
+		*&#x2F;
+		this.touchDirectionX = 0;
+		
+		&#x2F;**
+		touchend 시 Y축 swipe 방향을 반환합니다. (-1: 아래쪽에서 위쪽으로 swipe , 0: y축 움직임 없음으로 판단 , 1:위쪽에서 아래쪽으로 swipe ) 
+		&lt;br&#x2F;&gt;(See also : EventVW.setTouchAble , EventVW.setTouchDistanceY)
+		@property touchDirectionY
+		@type {Integer}
+		*&#x2F;
+		this.touchDirectionY = 0;
+		if(_isIE == true &amp;&amp; !evt.currentTarget){
+			this.currentTarget = evt.srcElement || window;
+		}
+		
+		&#x2F;**
+		이벤트 전파를 정지합니다.
+		@method stopPropagation
+		@type {Function}
+		@example
+			&lt;!DOCTYPE html&gt;
+			&lt;html&gt;
+			&lt;head&gt;
+			&lt;style type=&quot;text&#x2F;css&quot;&gt;
+				html , body { padding:0; margin:0; }
+				.box { position:absolute; top:80px; left:50px; width:400px; height:200px; color:#ffffff; }
+				#box1 { background-color:#ff0000; }
+				#box2 { background-color:#83b535; }
+				#box3 { background-color:#0000ff; }
+				#box4 { background-color:#ab6ed2; }
+			&lt;&#x2F;style&gt;
+			&lt;script type=&quot;text&#x2F;javascript&quot; src=&quot;..&#x2F;..&#x2F;vw&#x2F;events&#x2F;EventVW_0.9.0.js&quot;&gt;&lt;&#x2F;script&gt;
+			&lt;&#x2F;head&gt;
+			&lt;body&gt;
+				&lt;button id=&quot;btnDispatch&quot; style=&quot;padding:5px; font-weight:800;&quot;&gt;dispatchEvent!!&lt;&#x2F;button&gt;
+				
+				&lt;button onclick=&quot;example.toggleStopPropagation()&quot; style=&quot;padding:5px; font-weight:800;&quot;&gt;toggleStopPropagation&lt;&#x2F;button&gt;
+
+				&lt;div id=&quot;box1&quot; class=&quot;box&quot;&gt;grandfather box1
+					&lt;div id=&quot;box2&quot; class=&quot;box&quot;&gt;father box2
+						&lt;div id=&quot;box3&quot; class=&quot;box&quot;&gt;me box3
+							&lt;div id=&quot;box4&quot; class=&quot;box&quot;&gt;sun box4&lt;&#x2F;div&gt;
+						&lt;&#x2F;div&gt;
+					&lt;&#x2F;div&gt;
+				&lt;&#x2F;div&gt;
+				
+			&lt;script type=&quot;text&#x2F;javascript&quot;&gt;
+			var example = {};
+			(function(){
+				var TEST_CUSTOM_EVENT = &quot;TEST_CUSTOM_EVENT&quot;;
+
+				var isStopPropagation = false;
+
+				var boxArr = [];
+				var box = null;
+				for(var i = 0 ; i &lt; 4 ; i++){
+					box = document.getElementById(&quot;box&quot;+(i+1));
+					EventVW.addListener(box , TEST_CUSTOM_EVENT , eventHandler);
+					boxArr.push(box);
+				}
+				
+				var btnDispatch = document.getElementById(&quot;btnDispatch&quot;);
+				EventVW.addListener( btnDispatch , &quot;click&quot; , function(evt){
+					EventVW.dispatchEvent(boxArr[3] , new EventVW.CustomEvent(TEST_CUSTOM_EVENT ));
+				});
+
+				function eventHandler(evt){
+					switch(evt.type){
+						case TEST_CUSTOM_EVENT :
+							if(evt.dispatchTarget) alert(evt.dispatchTarget.id);
+							if(isStopPropagation == true) evt.stopPropagation(); &#x2F;&#x2F; 이벤트 전파 정지
+							break;
+					}
+				}
+
+				example.toggleStopPropagation = function(){
+					isStopPropagation = !isStopPropagation;
+					alert(&quot;stopPropagation : &quot; + isStopPropagation);
+				}
+				example.toggleStopPropagation();
+			})();
+			&lt;&#x2F;script&gt;
+			&lt;&#x2F;body&gt;
+			&lt;&#x2F;html&gt;
+		@return {void}
+		*&#x2F;
+		&#x2F;&#x2F;if( !this.stopPropagation ) this.stopPropagation = function(){ this.cancelBubble = true; };
+		this.stopPropagation = function(){ 
+			if(evt.stopPropagation) evt.stopPropagation();
+			this.cancelBubble = true; 
+		};
+
+		&#x2F;**
+		기본 event 동작을 막습니다.
+		@method preventDefault
+		@type {Function}
+		@example
+			&lt;!DOCTYPE html&gt;
+			&lt;html&gt;
+			&lt;head&gt;
+			&lt;style type=&quot;text&#x2F;css&quot;&gt;
+				html , body { padding:0; margin:0; }
+				.box { position:absolute; top:50px; left:50px; width:400px; height:200px; color:#ffffff; }
+				#box1 { background-color:#ff0000; }
+				#box2 { background-color:#83b535; }
+				#box3 { background-color:#0000ff; }
+				#box4 { background-color:#ab6ed2; }
+			&lt;&#x2F;style&gt;
+			&lt;script type=&quot;text&#x2F;javascript&quot; src=&quot;..&#x2F;..&#x2F;vw&#x2F;events&#x2F;EventVW_0.9.0.js&quot;&gt;&lt;&#x2F;script&gt;
+			&lt;&#x2F;head&gt;
+			&lt;body&gt;
+				&lt;br&#x2F;&gt;&lt;br&#x2F;&gt;
+				&lt;a id=&quot;btn&quot; href=&quot;http:&#x2F;&#x2F;js.v-w.kr&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;LINK CLICK!!&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;
+				&lt;br&#x2F;&gt;&lt;br&#x2F;&gt;
+				&lt;button onclick=&quot;example.togglePreventDefault()&quot;&gt;togglePreventDefault&lt;&#x2F;button&gt;
+				
+			&lt;script type=&quot;text&#x2F;javascript&quot;&gt;
+			var example = {};
+			(function(){
+				var btn = document.getElementById(&quot;btn&quot;);
+				var isPreventDefault = false;
+
+				EventVW.addListener(btn , &quot;click&quot; , function(evt){
+					if(isPreventDefault == true) evt.preventDefault(); &#x2F;&#x2F; 기본 event 속성을 막습니다.
+				});
+				
+				example.togglePreventDefault = function(evt){
+					isPreventDefault = !isPreventDefault;
+					alert(&quot;event preventDefault : &quot; + isPreventDefault);
+				}
+				example.togglePreventDefault();
+			})();
+			&lt;&#x2F;script&gt;
+			&lt;&#x2F;body&gt;
+			&lt;&#x2F;html&gt;
+		@return {void}
+		*&#x2F;
+		this.preventDefault = function(){ 
+			if(evt.preventDefault) evt.preventDefault();
+			this.returnValue = false; 
+		};
+
+
+		&#x2F;**
+		loader 와 관련된 로드된 byte 값.
+		@property bytesLoaded
+		@default null
+		@type {Integer}
+		*&#x2F;
+		this.bytesLoaded = 0;
+
+		&#x2F;**
+		loader 와 관련된 로드될 byte 의 총 값.
+		@property bytesTotal
+		@default null
+		@type {Integer}
+		*&#x2F;
+		this.bytesTotal = 0;
+
+		&#x2F;**
+		loader 와 관련하여 총 로드될 byte 값과 로드된 byte 값의 percentage 값.[0~1]
+		@property bytesPercent
+		@default null
+		@type {Number}
+		*&#x2F;
+		this.bytesPercent = 0;
+	}
+
+	return EXEvent;
+});
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

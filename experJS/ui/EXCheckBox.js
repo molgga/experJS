@@ -11,13 +11,61 @@ define(function(require , exports){
 		, DESIGN_CHECKBOX_VIEW_CHECKED : "checked"
 		, DESIGN_CHECKBOX_VIEW_DISABLED : "disabled"
 	};
-
 	var _designCheckBoxArr = null;
+
+	/**
+	Component checkbox 와 1:1로 대응하는 Design checkbox 를 생성합니다. 
+	@class EXCheckBox
+	@static
+	*/
 		
 	/**
-	DeisgnCheckBox 를 초기화 합니다.
+	EXCheckBox 를 초기화 합니다.
 	@method init
-	@param originalCheckBoxClassName {String}
+	@param originalCheckBoxClassName {String} exper 에서 제공하고 파싱하는 클래스가 아닌 직접 지정 가능한 className
+	@example
+		<!DOCTYPE html>
+		<html>
+		<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<link type="text/css" rel="stylesheet" href="../../experCSS/exper.css" />
+		<script type="text/javascript" src="../../experJS/experJS.js"></script>
+		<script type="text/javascript">
+		(function(){
+			EX.includeBegin("../../experJS");
+			EX.include("events/EXEventListener");
+			EX.include("ui/EXCheckBox");
+			EX.includeEnd();
+			EX.ready(function(){
+				
+				EXCheckBox.init();
+				
+			});
+		})();
+		</script>
+
+		<!--Test - original visible //-->
+		<style type="text/css">
+		.exUIKit_checkBox.original { position:static; left:auto; visibility:visible; }
+		</style>
+
+		</head>
+		<body>
+			<div>
+				<input id="check1" class="exUIKit_checkBox" disabled="disabled" type="checkbox" />
+				<label for="check1">checkBox1</label>
+			</div>
+			<div>
+				<input id="check2" class="exUIKit_checkBox" type="checkbox" />
+				<label for="check2">checkBox2</label>
+			</div>
+			<div>
+				<input id="check3" class="exUIKit_checkBox" type="checkbox" />
+				<label for="check3">checkBox3</label>
+			</div>
+		</body>
+		</html>
 	*/
 	exports.init = function(originalCheckBoxClassName){
 		if(window.EXEventListener != undefined){
@@ -36,14 +84,60 @@ define(function(require , exports){
 
 			if(orignCheckBox.is_experCSS_designUI_checkBox == true) continue; //ajax 중첩 호출. 테스트.
 
-			designCheckBox = new CheckBox();
+			designCheckBox = new exports.CheckBox();
 			designCheckBox.init(orignCheckBox);
 			_designCheckBoxArr.push(designCheckBox);
 		}
 	}
 
 	/**
+	지정된 checkbox 객체를 다시 생성합니다.
+	@method remake
+	@public
+	@param originalCheckBox {HTMLInputElement} 다시 생성할 checkbox 객체
+	*/
+	exports.remake = function(originalCheckBox){
+		var len = _designCheckBoxArr.length;
+		var designCheckBox = null;
+		var remakeCheckBox = null;
+		for(var i = 0 ; i < len ; i++){
+			designCheckBox = _designCheckBoxArr[i];
+			if(designCheckBox.getOriginalCheckBox() == originalCheckBox){
+				designCheckBox.destroy();
+				designCheckBox = null;
+				_designCheckBoxArr.splice(i,1);
+				remakeCheckBox = new exports.CheckBox();
+				remakeCheckBox.init( originalCheckBox );
+				_designCheckBoxArr.push(remakeCheckBox);
+				break;
+			}
+		}
+	};
+
+	/**
+	Design Component 로 생성된 객체(들)를 배열 형태로 반환합니다.
+	@method getList
+	@public
+	@return {Array}
+	*/
+	exports.getList = function(){
+		return _designCheckBoxArr;
+	};
+
+	/**
+	Design Component 로 생성된 객체(들)의 총 갯수를 반환합니다.
+	@method getLength
+	@public
+	@return {integer}
+	*/
+	exports.getLength = function(){
+		return _designCheckBoxArr.length;
+	};
+
+	/**
+	EXCheckBox 객체를 파기합니다.
 	@method destroy
+	@public
 	*/
 	exports.destroy = function(){
 		try{
@@ -64,13 +158,13 @@ define(function(require , exports){
 
 
 	/**
-	CheckBox 를 생성합니다.
+	EXCheckBox.CheckBox 객체
 	originalCheckBox 한 개에 대응하는 designCheckBox 를 만들어 냅니다.
-	@class hcap.ui.DesignCheckBox.CheckBox
+	@class EXCheckBox.CheckBox
 	@private
 	@constructor
 	*/
-	function CheckBox(){
+	exports.CheckBox = function(){
 		var _this = document.createElement("span");
 		var _originalCheckBox = null;
 		var _checkedBox = null;
@@ -79,12 +173,12 @@ define(function(require , exports){
 		var _isChecked = false;
 		
 		/**
-		designCheckBox 에서 대응하는(참조한) originalCheckBox 를 반환합니다.
-		@method getOriginal
+		EXCheckBox 에 의해 생성된(참조한) checkbox의 originalCheckBox 를 반환합니다.
+		@method getOriginalCheckBox
 		@public
-		@return {HTMLElement} originalCheckBox 를 반환합니다.
+		@return {HTMLInputElement} originalCheckBox 를 반환합니다.
 		*/
-		_this.getOriginal = function(){
+		_this.getOriginalCheckBox = function(){
 			return _originalCheckBox;
 		}
 		
@@ -111,7 +205,7 @@ define(function(require , exports){
 			parentNode.replaceChild( _this , _originalCheckBox );
 			parentNode.appendChild( _originalCheckBox );
 
-			EXEventListener.add( _this , "click" , interactionDeisgnCheckBoxEventHandler);
+			EXEventListener.add( _this , "click" , interactionEXCheckBoxEventHandler);
 			EXEventListener.add( _originalCheckBox , "click" , interactionOriginalCheckBoxEventHandler);
 			if(_originalCheckBox.addEventListener){
 				EXEventListener.add( _originalCheckBox , "DOMSubtreeModified" , eventDomChange );
@@ -142,11 +236,11 @@ define(function(require , exports){
 		click 시 실제 동작은 originalCheckBox 를 click 시킴으로써
 		designCheckBox 와 originalCheckBox 의 click 시 일어나는 동작을 같은 동일하게 할 수 있도록 합니다.
 		designCheckBox 의 click 이벤트는 실제로는 interactionOriginalCheckBoxEventHandler 메소드로 전이 되는것과 같습니다.
-		@method interactionDeisgnCheckBoxEventHandler
+		@method interactionEXCheckBoxEventHandler
 		@private
-		@param evt {EventVW.Event} 이벤트 객체.
+		@param evt {EXEvent} 이벤트 객체.
 		*/
-		function interactionDeisgnCheckBoxEventHandler(evt){
+		function interactionEXCheckBoxEventHandler(evt){
 			switch(evt.type){
 				case "click" :
 					_originalCheckBox.click();
@@ -158,7 +252,7 @@ define(function(require , exports){
 		originalCheckBox 의 interaction 을 핸들링 합니다.
 		@method interactionOriginalCheckBoxEventHandler
 		@private
-		@param evt {EventVW.Event} 이벤트 객체.
+		@param evt {EXEvent} 이벤트 객체.
 		*/
 		function interactionOriginalCheckBoxEventHandler(evt){
 			switch(evt.type){
@@ -231,7 +325,7 @@ define(function(require , exports){
 		*/
 		_this.destroy = function(){
 			try{
-				EXEventListener.remove( _this , "click" , interactionDeisgnCheckBoxEventHandler);
+				EXEventListener.remove( _this , "click" , interactionEXCheckBoxEventHandler);
 				if(_originalCheckBox != null){
 					EXEventListener.remove( _originalCheckBox , "click" , interactionOriginalCheckBoxEventHandler);
 					if(_originalCheckBox.addEventListener){

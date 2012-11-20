@@ -53,6 +53,24 @@ define(function(require, exports){
 		_this.uiScrollBar = null;
 
 		/**
+		@method smooth
+		@public
+		@param value {number}
+		*/
+		_this.smooth = function(value){
+			SMOOTH_SCROLLING = value;
+		};
+		
+		/**
+		@method wheelSpace
+		@public
+		@param value {number}
+		*/
+		_this.wheelSpace = function(value){
+			WHEEL_SPACE = value;
+		};
+
+		/**
 		EXScrollViewY 인스턴스를 초기화 합니다.
 		@method init
 		@param scrollContainer {HTMLElement}
@@ -213,7 +231,7 @@ define(function(require, exports){
 				scroll = -WHEEL_SPACE;
 			}
 			if(booster == true){
-				scroll = scroll*5;
+				scroll = scroll*2;
 				if(maxScroll == true){
 					scroll = scroll*10000;
 				}
@@ -419,7 +437,7 @@ define(function(require, exports){
 			_scrollContainerOffsetHeight = _scrollContainer.offsetHeight;
 			_uiBarHeight = Math.floor( _scrollContainerOffsetHeight * Math.abs(_scrollContainerOffsetHeight/(_scrollContainerOffsetHeight - _tempMaxY)));
 			if(_uiBarHeight < 20 ) _uiBarHeight = 20;
-			_maxScrollY = (_scrollContainerOffsetHeight - _uiBarHeight) - _uiArrowUp.offsetHeight - _uiArrowDown.offsetHeight;// - 0;
+			_maxScrollY = (_scrollContainerOffsetHeight - _uiBarHeight) - _uiBar.offsetHeight - _uiArrowUp.offsetHeight - _uiArrowDown.offsetHeight;// - 0;
 			_minScrollY = _uiArrowUp.offsetHeight;
 
 			try{

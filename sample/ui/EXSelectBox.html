@@ -5,21 +5,19 @@
 <title></title>
 <link type="text/css" rel="stylesheet" href="../../experCSS/exper.css" />
 <script type="text/javascript" src="../../experJS/experJS.js"></script>
+
 <script type="text/javascript">
 (function(){
 	EX.includeBegin("../../experJS");
 	EX.include("events/EXEventListener");
-	EX.include("ui/EXSelectBox");
 	EX.include("utils/EXMath");
 	EX.include("utils/EXString");
+	EX.include("ui/EXSelectBox");
 	EX.includeEnd();
 	EX.ready(function(){
-
 		EXSelectBox.init(); // EXSelectBox initialize
-
 	});
 })();
-
 
 
 function option1Change(){
@@ -79,10 +77,9 @@ function testSubmit(){
 	document.charset = testForm.acceptCharset;
 	testForm.submit();
 }
-
 </script>
 
-<style>
+<style type="text/css">
 .exampleBox { padding:20px; border:1px dotted #999999; }
 select.exUIKit_selectBox { visibility:visible !important; position:static  !important; left:0  !important; } /* for example */
 </style>
@@ -103,11 +100,11 @@ select.exUIKit_selectBox { visibility:visible !important; position:static  !impo
 	<form id="testForm" accept-charset="utf-8">
 		<div class="exampleBox">
 			<select id="testSelectBox1" name="selectBox1" class="exUIKit_selectBox">
-				<option>가</option>
-				<option>나나</option>
-				<option>다다다</option>
-				<option>안녕하세요</option>
-				<option>이윤석 입니다.</option>
+				<option class="op1">가</option>
+				<option class="op2">나나</option>
+				<option class="op3">다다다</option>
+				<option class="op4">안녕하세요</option>
+				<option class="op5">이윤석 입니다.</option>
 			</select>
 		</div>
 

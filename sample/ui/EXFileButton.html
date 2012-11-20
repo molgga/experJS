@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="../../experCSS/exper.css" />
+<script type="text/javascript" src="../../experJS/experJS.js"></script>
+<script type="text/javascript">
+(function(){
+	EX.includeBegin("../../experJS");
+	EX.include("events/EXEventListener");
+	EX.include("ui/EXFileButton");
+	EX.includeEnd();
+	EX.ready(function(){
+		
+		EXFileButton.init();
+
+	});
+})();
+</script>
+
+<!--Test - original visible //-->
+<style type="text/css">
+</style>
+
+</head>
+<body>
+	<form method="get" target="_blank">
+		<div>
+			<span class="exUIKit_fileButton"> <!-- 이 클래스명을 기준으로 css 는 view 를 바꿈. js는 기능(이벤트)을 연결해줌 //-->
+				<input class="fileText" type="text" readonly="readonly"/> <!-- 가짜 input -->
+				<span class="fileButton">파일선택</span>	<!-- 가짜 버튼 -->
+				<input class="fileOriginal" type="file" name="fileFake1" /> <!-- 진짜 input[type=file] 객체 -->
+			</span>
+		</div>
+		<br/>
+		<div class="fileStyle1">
+			<span class="exUIKit_fileButton"> <!-- 이 클래스명을 기준으로 css 는 view 를 바꿈. js는 기능(이벤트)을 연결해줌 //-->
+				<input class="fileText" type="text" readonly="readonly"/> <!-- 가짜 input -->
+				<span class="fileButton">파일선택</span>	<!-- 가짜 버튼 -->
+				<input class="fileOriginal" type="file" name="fileFake2" /> <!-- 진짜 input[type=file] 객체 -->
+			</span>
+		</div>
+		<br/>
+		<div>
+
+		<input type="file" name="fileDefault" /> <!-- 진짜 input[type=file] 객체 -->
+		<br/>
+		<br/>
+
+		<button>Test submit</button>
+	</form>
+</body>
+</html>

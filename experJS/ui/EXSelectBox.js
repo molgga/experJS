@@ -279,7 +279,8 @@ define(function(require , exports){
 			_originalSelectBox.is_exUIKit_selectBox = true;
 			_selectFocusBox = document.createElement("span");
 			_selectFocusBox.className = ClassOf.SELECTION;
-			EXElement.addClass( _this , ClassOf.SELECTBOX );
+			//EXElement.addClass( _this , ClassOf.SELECTBOX );
+			EXElement.addClass( _this , originalSelectBox.className);
 			EXElement.addClass( _this , ClassOf.SELECTBOX_DESIGN );
 
 			_selectOptionGroupContainer = document.createElement("div");
@@ -699,12 +700,15 @@ define(function(require , exports){
 		*/
 		_this.init = function(optionObj){
 			//EX.debug("SelectBoxOption init");
-			_this.className = ClassOf.OPTION;
 			_value = optionObj.value;
 			_index = optionObj.index;
 			_innerText = optionObj.text;
 			_this.innerHTML = _innerText
 			_this.index = _index;
+			
+			_this.className = ClassOf.OPTION;
+			EXElement.addClass(_this , "index" + _index);
+			EXElement.addClass(_this , optionObj.className);
 		}
 		
 		/**

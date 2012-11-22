@@ -207,7 +207,9 @@ define(function(require , exports){
 		var key;
 		var asynchronous = _loader.asynchronous;
 		if(method == "GET"){
-			url = url + "?" + _loader.params;
+			if(_loader.params != null){
+				url = url + "?" + _loader.params;
+			}
 		}
 		_urlRequest.open(method , url , asynchronous);
 		for(key in headers){

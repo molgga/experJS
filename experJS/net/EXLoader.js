@@ -203,17 +203,28 @@ define(function(require , exports){
 		var _urlRequest = _loader._urlRequest;
 		var method = _loader.method;
 		var url = _loader._addURLData[_loader._loadCnt].url;
+		var headers = _loader.header;
+		var key;
 		var asynchronous = _loader.asynchronous;
-		_urlRequest.open(method , url , asynchronous);
 		if(method == "GET"){
-			var headers = _loader.header;
-			var key;
-			for(key in headers){
+			url = url + "?" + _loader.params;
+		}
+		_urlRequest.open(method , url , asynchronous);
+		for(key in headers){
+			if(key == "Content-type"){
+				_urlRequest.setRequestHeader( key , "application/x-www-form-urlencoded" );
+			}else{
 				_urlRequest.setRequestHeader( key , headers[key] );
 			}
 		}
-		if(_urlRequest.overrideMimeType != undefined && _loader.mimeType != null) _urlRequest.overrideMimeType(_loader.mimeType);
-		_urlRequest.send(_loader.params);
+		if(_urlRequest.overrideMimeType != undefined && _loader.mimeType != null){
+			_urlRequest.overrideMimeType(_loader.mimeType);
+		}
+		if(method == "POST"){
+			_urlRequest.send( _loader.params );
+		}else{
+			_urlRequest.send();
+		}
 	};
 
 	EXLoader.prototype.stateLoad = function(){};
